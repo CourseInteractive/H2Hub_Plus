@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7584a8c681a9544e8ad8f54f23c9d1e, type: 3}
+  m_Name: BuildSetup
+  m_EditorClassIdentifier: 
+  steam_releaseGameID: 0
+  steam_demoGameID: 0
+  steam_playTestGameID: 0
+  iOS_appID: 0
+  versionInfos:
+  - useMainInfo: 0
+    title: 
+    identifier: 
+    steam_GameID: 0
+    splitBinary: 0
+    specialKeystore: 0
+  - useMainInfo: 0
+    title: 
+    identifier: 
+    steam_GameID: 0
+    splitBinary: 0
+    specialKeystore: 0
+  - useMainInfo: 0
+    title: 
+    identifier: 
+    steam_GameID: 0
+    splitBinary: 0
+    specialKeystore: 0
+  - useMainInfo: 0
+    title: 
+    identifier: 
+    steam_GameID: 0
+    splitBinary: 0
+    specialKeystore: 0
+  activeBuildKind: 0
+  mainPlayMode: 3
+  testModeType: 0
+  marketingModeType: 0
+  customSetups:
+  - name: NoUI
+    active: 0
+  - name: DoorsOpen
+    active: 1
+  - name: NoGuards
+    active: 1
+  - name: SlowDetection
+    active: 0
+  - name: NoGameOver
+    active: 0
+  - name: NoDetection
+    active: 1
+  - name: DevUI
+    active: 0
+  - name: NoFog
+    active: 0

@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c18f87621964be469dbbd7850427c58, type: 3}
+  m_Name: QSG_Data
+  m_EditorClassIdentifier: 
+  filterFoldout: 0
+  showOnlyFavs: 0
+  hideInactiveScenes: 0
+  showPath: 0
+  searchIn: 0
+  settingsOpened: 0
+  hideMainToolbar: 0
+  displayInChapters: 0
+  searchInput: 
+  foldoutChapter: 7
+  mainSettingsFoldout: 0
+  chapterSettingsFoldout: 0
+  chapterContentFoldout: 0
+  showChaptersHorizontal: 0
+  chapterDisplayFoldout: 0101010101010101
+  showCopySceneNameButton: 1
+  showFirstScene: 0
+  chapters:
+  - Meta
+  - I_Schiffswrack
+  - II_Sumpf
+  - III_Station_Teil1
+  - III_Station_Teil2
+  - III_Station_Teil3
+  - V_Monolith
+  - Videos
+  chapterContent:
+  - Assets/MONOLITH/Scenes/Meta/MonolithPreStart.unity,Assets/MONOLITH/Scenes/Meta/MainMenu.unity,Assets/MONOLITH/Scenes/Meta/Portal.unity,Assets/MONOLITH/Scenes/Meta/ChapterScene.unity,Assets/MONOLITH/Scenes/Testing/Spielwiese01.unity,Assets/MONOLITH/Scenes/Testing/Spielwiese02.unity,Assets/MONOLITH/Scenes/Testing/Spielwiese_Nacht.unity,Assets/MONOLITH/Scenes/Meta/DevBuild_IntroInformation.unity,Assets/MONOLITH/Scenes/Meta/End.unity,Assets/MONOLITH/Scenes/Meta/Text-Overview.unity,Assets/MONOLITH/Scenes/Meta/DevBuild_SwampInformation.unity,Assets/AssetPackages/HospitalRoom/Ward/Scenes/Hospital_NoFamily.unity
+  - Assets/MONOLITH/Scenes/VideoScenes/Intro.unity,Assets/MONOLITH/Scenes/Locations/01_Crashsite/1_1_CryoChamber/1_1_CryoChamber.unity,Assets/MONOLITH/Scenes/Locations/01_Crashsite/1_2_WreckInside/1_2_WreckInside.unity,Assets/MONOLITH/Scenes/Locations/01_Crashsite/1_2_2_BrokenConsolePuzzle/1_2_2_BrokenConsolePuzzle.unity,Assets/MONOLITH/Scenes/Locations/01_Crashsite/1_2_3_NumberLock/1_2_3_NumberLock.unity,Assets/MONOLITH/Scenes/Locations/01_Crashsite/1_3_Wreck/1_3_Wreck.unity,Assets/MONOLITH/Scenes/Locations/01_Crashsite/1_3_Wreck/1_3_1_Wreck_Morning.unity,Assets/MONOLITH/Scenes/Locations/01_Crashsite/1_4_Cockpit/1_4_Cockpit.unity,Assets/MONOLITH/Scenes/Locations/01_Crashsite/1_4_1_BatteryConsole/1_4_1_BatteryConsole.unity,Assets/MONOLITH/Scenes/Locations/01_Crashsite/1_6_CargoHold/1_6_CargoHold.unity,Assets/MONOLITH/Scenes/Locations/01_Crashsite/01_NightWreck/01_NightWreck.unity,Assets/MONOLITH/Scenes/Locations/02_Swamp/2_1_Entrance/2_1_Entrance.unity
+  - Assets/MONOLITH/Scenes/Locations/02_Swamp/2_3_Water/2_3_Water.unity,Assets/MONOLITH/Scenes/Locations/02_Swamp/2_2_Labyrinth/2_2_Labyrinth.unity,Assets/MONOLITH/Scenes/Locations/02_Swamp/2_3_Meteorit/2_3_Meteorit.unity,Assets/MONOLITH/Scenes/Locations/02_Swamp/2_4_Flower/2_4_Flower.unity,Assets/MONOLITH/Scenes/Locations/02_Swamp/2_5_Edge/2_5_Edge.unity,Assets/MONOLITH/Scenes/Locations/02_Swamp/2_2_Labyrinth/2_2_Labyrinth02.unity,Assets/MONOLITH/Scenes/Locations/02_Swamp/2_2_Labyrinth/2_2_LabyrinthLeft.unity,Assets/MONOLITH/Scenes/Locations/02_Swamp/2_2_Labyrinth/2_2_LabyrinthRight.unity,Assets/MONOLITH/Scenes/Locations/02_Swamp/2_2_Labyrinth/2_2_LabyrinthGeneric.unity,Assets/MONOLITH/Scenes/Locations/02_Swamp/2_2_Labyrinth/2_6_SwampLowerLevel.unity,Assets/MONOLITH/Scenes/Locations/02_Swamp/2_4_Flower/2_7_DeadEnd.unity,Assets/MONOLITH/Scenes/Meta/MonolithPreStart.unity,Assets/MONOLITH/Scenes/Locations/02_Swamp/2_2_Labyrinth/2_2_Labyrinth_Extended_Mid.unity,Assets/MONOLITH/Scenes/Locations/02_Swamp/2_2_Labyrinth/2_2_Labyrinth_Extended_Left.unity,Assets/MONOLITH/Scenes/Locations/02_Swamp/2_2_Labyrinth/2_2_Labyrinth_Extended_Right.unity,Assets/MONOLITH/Scenes/Locations/02_Swamp/2_4_Flower/2_4_Flower_GamePlayDemo2.unity
+  - Assets/MONOLITH/Scenes/Locations/03_Outpost/3_1_Gate/3_1_Gate.unity,Assets/MONOLITH/Scenes/Locations/03_Outpost/3_2_Magnet/3_2_Magnet.unity,Assets/MONOLITH/Scenes/Locations/03_Outpost/3_2_1_GeneratorBattery/3_2_1_GeneratorBattery.unity,Assets/MONOLITH/Scenes/Locations/03_Outpost/3_2_1_FusionGenerator/3_2_1_FusionGenerator.unity,Assets/MONOLITH/Scenes/Locations/03_Outpost/3_2_2_OreSample/3_2_2_OreSample.unity
+  - Assets/MONOLITH/Scenes/Locations/03_Outpost/3_3_Hallway/3_3_Hallway.unity,Assets/MONOLITH/Scenes/Locations/03_Outpost/3_4_Center/3_4_Center.unity,Assets/MONOLITH/Scenes/Locations/03_Outpost/3_5_MainHall/3_5_MainHall.unity,Assets/MONOLITH/Scenes/Locations/03_Outpost/3_6_ControlRoom/3_6_ControlRoom.unity,Assets/MONOLITH/Scenes/Locations/03_Outpost/3_12_IncineratorEntrance/3_12_IncineratorEntrance.unity,Assets/MONOLITH/Scenes/Locations/03_Outpost/3_12_1_IncineratorEntranceCloseUp/3_12_1_IncineratorEntranceCloseUp.unity,Assets/MONOLITH/Scenes/Locations/03_Outpost/3_13_Incinerator/3_13_Incinerator.unity,Assets/MONOLITH/Scenes/Locations/03_Outpost/3_14_StorageWorkshop/3_14_StorageWorkshop.unity,Assets/MONOLITH/Scenes/Locations/03_Outpost/3_8_ScienceLab/3_8_ScienceLab.unity,Assets/MONOLITH/Scenes/Locations/03_Outpost/02_Night_Generator.unity
+  - Assets/MONOLITH/Scenes/Locations/03_Outpost/3_7_MedicalWard/3_7_MedicalWard.unity,Assets/MONOLITH/Scenes/Locations/03_Outpost/3_9_HallwayLiving/3_9_HallwayLiving.unity,Assets/MONOLITH/Scenes/Locations/03_Outpost/3_8_2_ScienceOvenWiresCloseUp/3_8_2_ScienceOvenWiresCloseUp.unity,Assets/MONOLITH/Scenes/Locations/03_Outpost/3_8_1_ScienceLabDisplay/3_8_1_ScienceLabDisplay.unity,Assets/MONOLITH/Scenes/Locations/03_Outpost/3_11_Quarters/3_11_Quarters.unity,Assets/MONOLITH/Scenes/Locations/03_Outpost/3_11_2_Safe/3_11_2_Safe.unity,Assets/MONOLITH/Scenes/Locations/03_Outpost/3_6_1_ControlRoomConsole/3_6_1_ControlRoomConsole.unity,Assets/MONOLITH/Scenes/Locations/03_Outpost/3_2_1_GeneratorBattery/3_2_1_GeneratorBattery.unity,Assets/MONOLITH/Scenes/Locations/03_Outpost/3_13_1_RoverBattery/3_13_1_RoverBattery.unity,Assets/MONOLITH/Scenes/Locations/03_Outpost/3_8_3_ScaleCloseUp/3_8_3_ScaleCloseUp.unity,Assets/MONOLITH/Scenes/Locations/03_Outpost/03_Quarters_Night.unity,Assets/MONOLITH/Scenes/Locations/05_Monolith/5_5_Childhood/5_5_Childhood_Dream.unity,Assets/MONOLITH/Scenes/Locations/03_Outpost/04_Quarters_Night.unity,Assets/MONOLITH/Scenes/Locations/03_Outpost/04_Night_Rover.unity
+  - Assets/MONOLITH/Scenes/VideoScenes/RoverTrip.unity,Assets/MONOLITH/Scenes/Locations/05_Monolith/5_1_Plain/5_1_Plain.unity,Assets/MONOLITH/Scenes/Locations/05_Monolith/5_2_MirrorBattle/5_2_MirrorBattle.unity,Assets/MONOLITH/Scenes/Locations/05_Monolith/5_3_Womb/5_3_Womb.unity,Assets/MONOLITH/Scenes/Locations/05_Monolith/5_4_Library/5_4_Library.unity,Assets/MONOLITH/Scenes/Locations/05_Monolith/5_5_Childhood/5_5_Childhood.unity,Assets/MONOLITH/Scenes/Locations/05_Monolith/5_6_Office/5_6_Office.unity,Assets/MONOLITH/Scenes/Locations/05_Monolith/5_6_Office_Meeting/5_6_Office_Meeting.unity,Assets/MONOLITH/Scenes/Locations/05_Monolith/5_6_1_ComputerScreen/5_6_1_ComputerScreen.unity,Assets/MONOLITH/Scenes/Locations/05_Monolith/5_7_Forest/5_7_Forest.unity,Assets/MONOLITH/Scenes/Locations/05_Monolith/5_8_Church/5_8_Church.unity,Assets/MONOLITH/Scenes/Meta/MonolithPreStart.unity,Assets/MONOLITH/Scenes/Locations/05_Monolith/5_10_Beach/5_10_Beach.unity,Assets/MONOLITH/Scenes/Locations/05_Monolith/5_5_Childhood/5_5_Childhood_Dream.unity
+  - Assets/MONOLITH/Locations/00_Shared/Hospital/Hospital_Video_GameIntro.unity,Assets/MONOLITH/Locations/00_Shared/Hospital/Hospital_Video_FirstInsert.unity,Assets/MONOLITH/Locations/00_Shared/Hospital/Hospital_Video_BeforeAttack.unity,Assets/MONOLITH/Scenes/VideoScenes/MedicalFight.unity,Assets/MONOLITH/Locations/00_Shared/Hospital/Hospital_Video_Melissa.unity,Assets/MONOLITH/Locations/00_Shared/Hospital/Hospital_Video_Family.unity,Assets/MONOLITH/Locations/00_Shared/Hospital/Hospital_Video_BeforeLibrary.unity,Assets/MONOLITH/Locations/00_Shared/Hospital/Hospital_Video_Realization.unity,Assets/MONOLITH/Scenes/VideoScenes/CarAccident.unity,Assets/MONOLITH/Locations/00_Shared/Hospital/Hospital_Video_Finale.unity
+  favs:
+  - Assets/MONOLITH/Scenes/Locations/02_Swamp/2_1_Entrance/2_1_Entrance.unity
+  - Assets/MONOLITH/Scenes/Locations/02_Swamp/2_2_Labyrinth/2_2_Labyrinth.unity
+  - Assets/MONOLITH/Scenes/Locations/02_Swamp/2_3_Meteorit/2_3_Meteorit.unity
+  - Assets/MONOLITH/Scenes/Locations/02_Swamp/2_4_Flower/2_4_Flower.unity
+  - Assets/MONOLITH/Scenes/Locations/02_Swamp/2_5_Edge/2_5_Edge.unity
