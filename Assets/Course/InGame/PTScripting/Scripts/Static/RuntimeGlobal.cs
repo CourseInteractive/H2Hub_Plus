@@ -13,8 +13,8 @@ namespace Course.PrototypeScripting
 
         public static InteractionHighlight[] selectionHighlights;
 
-       // public static MovementPerKeyboard keyboardMovement;
-        //public static MovementPerMouse mouseMovement;
+        //public static MovementPerKeyboard keyboardMovement;
+        public static MovementPerMouse mouseMovement;
 
         public static bool interactionBlockByInvCombination;
 

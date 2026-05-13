@@ -19,6 +19,8 @@ public class ContainerUI : MonoBehaviour
 
     public TMP_Text label;
 
+    public Image fillAmountDisplay;
+
 
     private void Update()
     {
@@ -36,6 +38,9 @@ public class ContainerUI : MonoBehaviour
             .Replace("{type}",    container.ResourceType.ToString())
             .Replace("{current}", current)
             .Replace("{max}",     max)
-            .Replace("{percent}", pct);
+            .Replace("{percent}", pct)
+            .Replace("$$", "\n");
+        if(fillAmountDisplay)
+        fillAmountDisplay.fillAmount = percent / 100f;
     }
 }
