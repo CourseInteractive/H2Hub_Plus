@@ -90,12 +90,12 @@ public class InteractableObject : SelectableObject
     #endif
     public void Execute()
     {
-        if(fromEverywhere)
-        {
+        //if(fromEverywhere)
+        //{ 
             // Teleport
             seqOnInteraction.ExecuteCompleteSequence();
             return;
-        }
+        //}
 
 
        // bool toolSelected = InventoryManager.Instance.itemSelected;
