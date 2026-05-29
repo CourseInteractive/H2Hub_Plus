@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -39,6 +40,9 @@ public class Workshop : MonoBehaviour
 
     public int Money => _money;
 
+    public Socket[] sellSockets;
+    List<Container> connectedContainers;
+
     private void Start()
     {
         // Startwert setzen und UI sofort informieren
@@ -76,4 +80,60 @@ public class Workshop : MonoBehaviour
 
     /// <summary>Prüft, ob mindestens <paramref name="amount"/> vorhanden ist.</summary>
     public bool HasMoney(int amount) => _money >= amount;
+
+    public bool AmountAvailable(int amount, ResourceType type)
+    {
+        FetchContainersFromSellSockets();
+        List<Container> containers = FindModules(connectedContainers, type);
+        float amountAvailable = 0;
+        foreach(Container c in containers)
+        {
+            amountAvailable += c.CurrentAmount;
+        }
+        Container mainContainer = MainMachine.instance.FindOutputModule(type);
+        if (mainContainer)
+            amountAvailable += mainContainer.CurrentAmount;
+        return amountAvailable >= amount;
+    }
+
+    public void RemoveAmount(int amount, ResourceType type)
+    {
+        FetchContainersFromSellSockets();
+        List<Container> containers = FindModules(connectedContainers, type);
+        float amountLeft = amount;
+        foreach (Container c in containers)
+        {
+            if(c.CurrentAmount >= amountLeft)
+            {
+                c.Remove(amountLeft);
+                return;
+            }
+            float x = c.CurrentAmount;
+            c.Remove(c.CurrentAmount);
+            amountLeft -= x;
+        }
+        Container mainContainer = MainMachine.instance.FindOutputModule(type);
+        mainContainer.Remove(amountLeft);
+       
+    }
+
+    void FetchContainersFromSellSockets()
+    {
+        connectedContainers = new List<Container>();
+        foreach(Socket socket in sellSockets)
+        {
+            if(socket.lockedInteractable != null)
+            {
+                Container c = socket.lockedInteractable.GetComponent<Container>();
+                if (c)
+                    connectedContainers.Add(c);
+            }
+        }
+
+    }
+
+    private List<Container> FindModules(List<Container> list, ResourceType type)
+    {
+        return list.FindAll(c => c != null && c.ResourceType == type);
+    }
 }

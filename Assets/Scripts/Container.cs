@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 /// <summary>
 /// Basisklasse für alle Module. Hält eine Ressource bis zu einem Maximalwert.
@@ -105,7 +106,15 @@ public class Container : MonoBehaviour
 
     public void HandleDisconnect()
     {
-        gameObject.SetActive(false);
+        if(GetComponent<XRGrabInteractable>())
+        {
+
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
+
     }
 
     public void ConnectToMachine()

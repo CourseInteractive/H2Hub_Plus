@@ -74,8 +74,12 @@ namespace Course.PrototypeScripting
                 }
                 else
                 {
-                    player.enabled = true;
-                    player.SetDestination(positionObject.transform.position);
+                    if(player)
+                    {
+                        player.enabled = true;
+                        player.SetDestination(positionObject.transform.position);
+                    }
+                    
                 }
 
             }

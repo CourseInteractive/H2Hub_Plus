@@ -15,7 +15,9 @@ public class Commission : MonoBehaviour
     public int amount;
 
     [Tooltip("The type of resource required (as integer ID).")]
-    public int resourceType;
+    public ResourceType resourceType;
+
+    public CommissionPresetType presetType;
 
     public int internIndex;
 
@@ -31,15 +33,17 @@ public class Commission : MonoBehaviour
 
     public void PerformAndComplete()
     {
-       
-        MainMachine.instance.RemoveHydrogen(amount);
+
+        // MainMachine.instance.RemoveHydrogen(amount);
+        Workshop.Instance.RemoveAmount(amount, resourceType);
         Workshop.Instance.AddMoney((int)reward);
         CommissionManager.instance.Remove(internIndex);
     }
 
     public bool CanBePerformed()
     {
-        if (!MainMachine.instance.AmountAvailableInOutput(amount, ResourceType.H))
+        //if (!MainMachine.instance.AmountAvailableInOutput(amount, ResourceType.H))
+        if (!Workshop.Instance.AmountAvailable(amount, resourceType))
         {
             return false;
         }
@@ -50,6 +54,7 @@ public class Commission : MonoBehaviour
     {
         reward = dummy.reward;
         amount = dummy.amount;
+        resourceType = dummy.resourceType;
         internIndex = index;
     }
 }

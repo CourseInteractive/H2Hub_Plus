@@ -16,12 +16,27 @@ MonoBehaviour:
   - type: 0
     amountLimits: {x: 10, y: 30}
     rewardLimits: {x: 250, y: 400}
-  - type: 0
-    amountLimits: {x: 25, y: 40}
-    rewardLimits: {x: 400, y: 550}
+    resource: 2
   - type: 1
     amountLimits: {x: 50, y: 70}
     rewardLimits: {x: 800, y: 1200}
+    resource: 2
   - type: 2
     amountLimits: {x: 100, y: 150}
     rewardLimits: {x: 1800, y: 2500}
+    resource: 2
+  - type: 0
+    amountLimits: {x: 20, y: 40}
+    rewardLimits: {x: 300, y: 500}
+    resource: 3
+  - type: 1
+    amountLimits: {x: 30, y: 50}
+    rewardLimits: {x: 400, y: 650}
+    resource: 3
+  limits:
+  - type: 0
+    limits: {x: 1, y: 2}
+  - type: 1
+    limits: {x: 1, y: 3}
+  - type: 2
+    limits: {x: 0, y: 2}

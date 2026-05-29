@@ -35,11 +35,12 @@ public class StoreEntry : MonoBehaviour
     {
         Workshop.Instance.SubMoney(price);
         Deactivate();
-        Container c = objToActivate.GetComponent<Container>();
-        if(c)
+        //Container c = objToActivate.GetComponent<Container>();
+        /*if(c)
         {
             c.ConnectToMachine();
-        }
+        }*/
+        objToActivate.SetActive(true);
     }
 
     void Deactivate()

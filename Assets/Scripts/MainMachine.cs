@@ -42,6 +42,8 @@ public class MainMachine : MonoBehaviour
     [SerializeField] private List<Container> inputModules = new();
     [SerializeField] private List<Container> outputModules = new();
 
+    public MachineProblem currentProblem;
+
     // Laufzeit-Zustand
     private float tickTimer = 0f;
 
@@ -66,6 +68,11 @@ public class MainMachine : MonoBehaviour
     [ContextMenu("Turn On")]
     public void TurnOn()
     {
+        if(currentProblem != null)
+        {
+            // TODO: Problem Indicator
+            return;
+        }
         currentState = MachineState.PowerUp;
         powerTimer = timeToFullPower;
         currentPowerLevel = 0f;
@@ -188,6 +195,10 @@ public class MainMachine : MonoBehaviour
             {
                 if (!module.IsFull)
                     module.Add(realOutput);
+                if(output.outputType == ResourceType.H)
+                {
+                    problemManager.IncreaseRegisteredOutput(realOutput);
+                }
             }
             else
             {
@@ -196,7 +207,7 @@ public class MainMachine : MonoBehaviour
             }
         }
     }
-
+    public ProblemManager problemManager;
     /// <summary>
     /// Wird aufgerufen, wenn ein Output erzeugt wird, aber kein Modul angeschlossen ist.
     /// Hier kann z.B. ein Partikelsystem getriggert werden.
@@ -210,7 +221,12 @@ public class MainMachine : MonoBehaviour
     // Hilfsmethoden
     // -------------------------------------------------------------------------
 
-    private Container FindModule(List<Container> list, ResourceType type)
+    public Container FindOutputModule(ResourceType type)
+    {
+        return outputModules.Find(c => c != null && c.ResourceType == type);
+    }
+
+    public Container FindModule(List<Container> list, ResourceType type)
     {
         return list.Find(c => c != null && c.ResourceType == type);
     }
@@ -331,5 +347,16 @@ public class MainMachine : MonoBehaviour
         if (c == null)
             return false;
         return c.CurrentAmount >= amount;
+    }
+
+    public void ImposeProblem(MachineProblem problem)
+    {
+        currentProblem = problem;
+        TurnOff();
+    }
+
+    public void ProblemSolved()
+    {
+        currentProblem = null;
     }
 }

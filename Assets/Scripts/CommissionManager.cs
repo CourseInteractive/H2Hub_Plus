@@ -19,6 +19,7 @@ public class CommissionManager : MonoBehaviour
         instance = this;
         currentCommissions = new List<Commission>();
         CreateNewCommission();
+        CreateNewCommission();
         SetNewCommissionTimer();
     }
 
@@ -27,7 +28,7 @@ public class CommissionManager : MonoBehaviour
     {
         GameObject newCommissionEntry = (GameObject)Instantiate(commissionPrefab, commissionList);
         Commission c = newCommissionEntry.GetComponent<Commission>();
-        c.Initialize(database.GetRandomCommission(), commissionCounter);
+        c.Initialize(database.GetRandomCommission(currentCommissions), commissionCounter);
         commissionCounter++;
         currentCommissions.Add(c);
         newCommissionEntry.SetActive(true);
