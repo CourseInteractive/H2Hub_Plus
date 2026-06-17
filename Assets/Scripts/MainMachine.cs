@@ -56,9 +56,17 @@ public class MainMachine : MonoBehaviour
     public float currentPowerLevel = 0;
     float powerTimer;
 
+    public Socket repairModuleSocket;
+
     private void Awake()
     {
         instance = this;
+        
+    }
+
+    private void Start()
+    {
+        
     }
 
     // -------------------------------------------------------------------------
@@ -268,6 +276,12 @@ public class MainMachine : MonoBehaviour
         }
     }
 
+    public void Connect(RepairModule module)
+    {
+        if (module.working)
+            ProblemSolved();
+    }
+
     /// <summary>
     /// Trennt den Container mit dem angegebenen ResourceType (Input oder Output).
     /// </summary>
@@ -301,6 +315,12 @@ public class MainMachine : MonoBehaviour
     {
         if (module == null) return;
         Disconnect(module.ResourceType);
+    }
+
+    public void Disconnect(RepairModule module)
+    {
+        if (module == null) return;
+        //Disconnect(module.ResourceType);
     }
 
     public void RemoveHydrogen(int amount)
@@ -351,12 +371,20 @@ public class MainMachine : MonoBehaviour
 
     public void ImposeProblem(MachineProblem problem)
     {
+        if(repairModuleSocket && repairModuleSocket.lockedInteractable != null)
+        {
+            repairModuleSocket.lockedInteractable.GetComponent<RepairModule>().Break();
+        }
         currentProblem = problem;
         TurnOff();
+        problemDisplay.Activate();
     }
 
     public void ProblemSolved()
     {
+        problemDisplay.SetOff();
         currentProblem = null;
     }
+
+    public AlternatingMeshLight problemDisplay;
 }

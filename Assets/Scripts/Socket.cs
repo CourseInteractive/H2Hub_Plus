@@ -24,9 +24,15 @@ public class Socket : MonoBehaviour
             lockedInteractable = obj;
 
             Container cont = obj.GetComponent<Container>();
-            if(cont)
+            RepairModule repairM = obj.GetComponent<RepairModule>();
+            if (cont)
             {
                 machine.Connect(cont);
+            }
+            else if(repairM)
+            {
+                machine.Connect(repairM);
+                Debug.Log("Connect Module");
             }
         }
     }
@@ -35,7 +41,15 @@ public class Socket : MonoBehaviour
     {
         ToSocketInteractable obj = args.interactableObject.transform.gameObject.GetComponent<ToSocketInteractable>();
         Container cont = obj.GetComponent<Container>();
-        machine.Disconnect(cont);
+        RepairModule repairM = obj.GetComponent<RepairModule>();
+        if (cont)
+        {
+            machine.Disconnect(cont);
+        }
+        else if (repairM)
+        {
+            machine.Disconnect(repairM);
+        }
     }
 
     public void GiveFreeLockedElement()

@@ -34,13 +34,8 @@ public class StoreEntry : MonoBehaviour
     public void Purchase()
     {
         Workshop.Instance.SubMoney(price);
-        Deactivate();
-        //Container c = objToActivate.GetComponent<Container>();
-        /*if(c)
-        {
-            c.ConnectToMachine();
-        }*/
-        objToActivate.SetActive(true);
+        GameObject nObj = Instantiate(objToActivate);
+        nObj.SetActive(true);
     }
 
     void Deactivate()

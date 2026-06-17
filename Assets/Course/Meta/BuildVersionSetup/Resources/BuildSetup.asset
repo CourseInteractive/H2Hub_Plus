@@ -18,8 +18,8 @@ MonoBehaviour:
   iOS_appID: 0
   versionInfos:
   - useMainInfo: 0
-    title: 
-    identifier: 
+    title: Collapse 2
+    identifier: com.HoMe.collapse_plus
     steam_GameID: 0
     splitBinary: 0
     specialKeystore: 0
@@ -36,13 +36,13 @@ MonoBehaviour:
     splitBinary: 0
     specialKeystore: 0
   - useMainInfo: 0
-    title: 
+    title: Collapse 2 - Test
     identifier: 
     steam_GameID: 0
     splitBinary: 0
     specialKeystore: 0
   activeBuildKind: 0
-  mainPlayMode: 3
+  mainPlayMode: 0
   testModeType: 0
   marketingModeType: 0
   customSetups:
