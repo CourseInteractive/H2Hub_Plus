@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LowPoly_Machine_VR.unity
     guid: 8435e1021495b644cb56bc77a7893773
+  - enabled: 0
+    path: Assets/Samples/XR Interaction Toolkit/3.4.0/Starter Assets/DemoSceneSetup.unity
+    guid: dc64eb1c94603514aa2682e8d2871136
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260, type: 2}
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: dc5a169419fa04987b057f65238cf3ba, type: 2}

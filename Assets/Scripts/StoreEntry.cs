@@ -12,7 +12,8 @@ public class StoreEntry : MonoBehaviour
     public Button btn;
 
     public bool activateImmediately;
-
+    public bool repeatable = true;
+    public bool instantiate = true;
     private void Start()
     {
         label.text = $"{labelText} ({price})";
@@ -23,6 +24,8 @@ public class StoreEntry : MonoBehaviour
         if(PurchasePossible())
         {
             Purchase();
+            if (!repeatable)
+                btn.interactable = false;
         }
     }
 
@@ -34,8 +37,15 @@ public class StoreEntry : MonoBehaviour
     public void Purchase()
     {
         Workshop.Instance.SubMoney(price);
-        GameObject nObj = Instantiate(objToActivate);
-        nObj.SetActive(true);
+        if(instantiate)
+        {
+            GameObject nObj = Instantiate(objToActivate);
+            nObj.SetActive(true);
+        }
+      else
+        {
+            objToActivate.SetActive(true);
+        }
     }
 
     void Deactivate()

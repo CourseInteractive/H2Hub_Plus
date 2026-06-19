@@ -130,15 +130,20 @@ public class Container : MonoBehaviour
 
     public void TriggerImmediateRefill()
     {
-        if(ImmediateRefill)
-        {
-            RefillAmountForMoney((int)maxAmount);
-        }
+        Refill();
     }
 
     public void SellAmount(int amount)
     {
         Village.Instance.SellContentOfContainer(this, amount);
+    }
+
+    public virtual void Refill()
+    {
+        if (ImmediateRefill)
+        {
+            RefillAmountForMoney((int)maxAmount);
+        }
     }
 
 }

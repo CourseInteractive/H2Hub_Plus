@@ -12,7 +12,7 @@ public class WorkshopUI : MonoBehaviour
 
     [Header("Referenzen")]
     [SerializeField] private TMP_Text moneyLabel;
-
+    [SerializeField] private TMP_Text timeLabel;
     [Header("Zähler-Animation")]
     [Tooltip("Zeit in Sekunden, über die der Betrag animiert wird (0 = sofort).")]
     [SerializeField] private float countDuration = 0.6f;
@@ -51,6 +51,11 @@ public class WorkshopUI : MonoBehaviour
             _targetValue    = _displayedValue;
             UpdateLabel(_displayedValue);
         }
+    }
+
+    private void Update()
+    {
+        timeLabel.text = DayNightCycle.instance.GetFormattedTime();
     }
 
     // ── Event-Handler ─────────────────────────────────────────────────────────

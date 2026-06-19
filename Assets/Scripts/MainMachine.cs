@@ -61,13 +61,11 @@ public class MainMachine : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        
+        TurnOff();
+        SetRunningPower(0.6f);
+        runningPowerKnob.value = runningPower;
     }
 
-    private void Start()
-    {
-        
-    }
 
     // -------------------------------------------------------------------------
     // Steuerung
@@ -76,9 +74,11 @@ public class MainMachine : MonoBehaviour
     [ContextMenu("Turn On")]
     public void TurnOn()
     {
-        if(currentProblem != null)
+        mainLever.value = true;
+        if (currentProblem != null)
         {
             // TODO: Problem Indicator
+            Invoke("TurnOff", 1.0f);
             return;
         }
         currentState = MachineState.PowerUp;
@@ -86,12 +86,24 @@ public class MainMachine : MonoBehaviour
         currentPowerLevel = 0f;
         Debug.Log("[MainMachine] Eingeschaltet.");
     }
+
+    public float runningPower;
+    public TMPro.TMP_Text powerDisplay;
+    public UnityEngine.XR.Content.Interaction.XRKnob runningPowerKnob;
+
+    public void SetRunningPower(float value)
+    {
+        runningPower = value;
+        powerDisplay.text = Mathf.RoundToInt(Mathf.Lerp(0, 130, value)) + "%";
+    }
+
     [ContextMenu("Turn Off")]
     public void TurnOff()
     {
         currentState = MachineState.Off;
         currentPowerLevel = 0f;
         Debug.Log("[MainMachine] Ausgeschaltet.");
+        mainLever.value = false;
     }
 
     public void Toggle() { 
@@ -387,4 +399,5 @@ public class MainMachine : MonoBehaviour
     }
 
     public AlternatingMeshLight problemDisplay;
+    public UnityEngine.XR.Content.Interaction.XRLever mainLever;
 }

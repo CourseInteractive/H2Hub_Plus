@@ -4,14 +4,30 @@ public class Village : MonoBehaviour
 {
     public static Village Instance;
 
+    public int defaultWaterPrice = 4;
+    public int defaultEnergyPrice = 2;
+
     public int waterPrice = 4;
     public int energyPrice = 2;
     public int hydrogenPrice = 10;
 
+    public int waterSpikePrice = 10;
+    public int energySpikePrice = 10;
 
+    public Vector2 waterProblemTimeLimits;
+    public Vector2 energyProblemTimeLimits;
+    public Vector2 waterProblemRunningTimeLimits;
+    public Vector2 energyProblemRunningTimeLimits;
+    float waterProblemTimer;
+    float energyProblemTimer;
+
+    public bool waterProblemRunning;
+    public bool energyProblemRunning;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
+        waterProblemTimer = Random.Range(waterProblemTimeLimits.x, waterProblemTimeLimits.y);
+        energyProblemTimer = Random.Range(energyProblemTimeLimits.x, energyProblemTimeLimits.y);
         Instance = this;
     }
 
@@ -43,6 +59,42 @@ public class Village : MonoBehaviour
         Workshop.Instance.AddMoney(profit);
         container.Remove(amount);
 
+    }
+
+    private void Update()
+    {
+        waterProblemTimer -= Time.deltaTime;
+        if(waterProblemTimer < 0)
+        {
+            if(waterProblemRunning)
+            {
+                waterProblemRunning = false;
+                waterPrice = defaultWaterPrice;
+                waterProblemTimer = Random.Range(waterProblemTimeLimits.x, waterProblemTimeLimits.y);
+            }
+            else
+            {
+                waterProblemRunning = true;
+                waterPrice = waterSpikePrice;
+                waterProblemTimer = Random.Range(waterProblemRunningTimeLimits.x, waterProblemRunningTimeLimits.y);
+            }
+        }
+        energyProblemTimer -= Time.deltaTime;
+        if (energyProblemTimer < 0)
+        {
+            if (energyProblemRunning)
+            {
+                energyProblemRunning = false;
+                energyPrice = defaultEnergyPrice;
+                energyProblemTimer = Random.Range(energyProblemTimeLimits.x, energyProblemTimeLimits.y);
+            }
+            else
+            {
+                energyProblemRunning = true;
+                energyPrice = energySpikePrice;
+                energyProblemTimer = Random.Range(energyProblemRunningTimeLimits.x, energyProblemRunningTimeLimits.y);
+            }
+        }
     }
 
 }

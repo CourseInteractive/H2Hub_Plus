@@ -16,12 +16,21 @@ public class ProblemManager : MonoBehaviour
 
     public void IncreaseRegisteredOutput(float amount)
     {
-        registeredHydrogenOutput+= amount;
+        registeredHydrogenOutput += amount * GetRunningPowerFactor();
         if(registeredHydrogenOutput >= nextProblemAt)
         {
             ImposeProblem();
             RandomizeNextProblemTime();
         }
+    }
+
+    float GetRunningPowerFactor()
+    {
+        if (MainMachine.instance.runningPower < 0.3f)
+            return 0f;
+        if (MainMachine.instance.runningPower < 0.8f)
+            return 0.5f;
+        return 2f;
     }
 
     void RandomizeNextProblemTime()
