@@ -17,9 +17,10 @@ public class SolarModuleSource : Container
 
     public override void Refill()
     {
-        if (running)
+        if (running && currentAmount < MaxAmount)
         {
-            Add(10);
+            Add(4);
+            ShowFlowIndicator();
         }
     }
 }

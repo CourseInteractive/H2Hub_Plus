@@ -18,6 +18,7 @@ public class QuickConsoleDisplay : MonoBehaviour
     void Start()
     {
         Close();
+        if(quickInfoText)
         quickInfoText.text = "";
     }
 

@@ -210,7 +210,9 @@ public class MainMachine : MonoBehaviour
         foreach (var output in outputs)
         {
             Container module = FindModule(outputModules, output.outputType);
-            float realOutput = output.outputAmount * currentPowerLevel;
+            float outputPower = currentPowerLevel * Mathf.Lerp(GameData.Instance.Values.outputFactorLimitsByDial.x, GameData.Instance.Values.outputFactorLimitsByDial.y, runningPower);
+
+            float realOutput = output.outputAmount * outputPower;
             if (module != null)
             {
                 if (!module.IsFull)
@@ -234,7 +236,7 @@ public class MainMachine : MonoBehaviour
     /// </summary>
     protected virtual void OnOutputWithoutModule(ResourceType type, float amount)
     {
-        Debug.Log($"[MainMachine] Output '{type}' ({amount}) – kein Modul angeschlossen.");
+        //Debug.Log($"[MainMachine] Output '{type}' ({amount}) – kein Modul angeschlossen.");
     }
 
     // -------------------------------------------------------------------------

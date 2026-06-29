@@ -23,6 +23,8 @@ public class Village : MonoBehaviour
 
     public bool waterProblemRunning;
     public bool energyProblemRunning;
+
+    public int warmthPrice;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -53,6 +55,16 @@ public class Village : MonoBehaviour
     public void SellContentOfContainer(Container container, int amount)
     {
         int price = hydrogenPrice;
+        switch (container.ResourceType)
+        {
+            case ResourceType.O:
+                break;
+            case ResourceType.W:
+                price = warmthPrice;
+                break;
+        }
+
+      
         if (!container.HasAtLeast(amount))
             amount = (int)container.CurrentAmount;
         int profit = price * amount;

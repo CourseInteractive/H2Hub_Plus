@@ -14,6 +14,8 @@ public class CommissionUI : MonoBehaviour
     // ── Inspector References ────────────────────────────────────────────────
 
     [Header("TMP Text Fields")]
+    [SerializeField] private TMP_Text receiverText;
+
     [Tooltip("Displays the reward value.")]
     [SerializeField] private TMP_Text rewardText;
 
@@ -63,6 +65,8 @@ public class CommissionUI : MonoBehaviour
             ClearUI();
             return;
         }
+        if (receiverText != null)
+            receiverText.text = commission.receiver;
 
         if (rewardText != null)
             rewardText.text = rewardPrefix + commission.reward.ToString(rewardFormat);

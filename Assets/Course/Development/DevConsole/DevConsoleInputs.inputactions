@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "DevConsoleInputs",
     "maps": [
         {
@@ -9,7 +10,7 @@
                     "name": "Num1",
                     "type": "Button",
                     "id": "f2748c5e-7b55-4482-8b55-c7e540f4f7d1",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -99,7 +100,7 @@
                     "name": "Starter",
                     "type": "Button",
                     "id": "2df05cab-a323-4dac-986a-5b2d4343c2a9",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false

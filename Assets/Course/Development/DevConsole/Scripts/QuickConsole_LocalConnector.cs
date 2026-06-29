@@ -49,7 +49,7 @@ public class QuickConsole_LocalConnector : MonoBehaviour
         DeleteAllChildren();
     }
 
-    void Awake()
+    void Start()
     {
         if (instance != null)
             return;

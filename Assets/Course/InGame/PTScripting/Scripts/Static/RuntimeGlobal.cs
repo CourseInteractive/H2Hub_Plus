@@ -20,6 +20,7 @@ namespace Course.PrototypeScripting
 
         public static void Select(SelectableObject obj)
         {
+       //     InGameLog.Log($"Objekt {obj.gameObject.name} Select");
             ClearSelection();
             selectedObject = obj;
             obj.Select();

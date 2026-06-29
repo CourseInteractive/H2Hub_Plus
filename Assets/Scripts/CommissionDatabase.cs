@@ -7,7 +7,7 @@ public class CommissionDatabase : ScriptableObject
 {
     public CommissionPreset[] presets;
     public CommissionPresetLimits[] limits;
-
+    public float unlockOxygenRatio = 0.5f;
     /*public CommissionDummy GetRandomCommission(List<Commission> currentCommission)
     {
         CommissionPreset preset = presets[Random.Range(0, presets.Length)];
@@ -19,20 +19,34 @@ public class CommissionDatabase : ScriptableObject
     {
         // Zähle aktuelle Aufträge pro Typ
         Dictionary<CommissionPresetType, int> currentCounts = new Dictionary<CommissionPresetType, int>();
+        Dictionary<ResourceType, int> currentResourceCounts = new Dictionary<ResourceType, int>();
+        currentResourceCounts.Add(ResourceType.H, 0);
+        currentResourceCounts.Add(ResourceType.O, 0);
         foreach (Commission c in currentCommission)
         {
             if (!currentCounts.ContainsKey(c.presetType))
                 currentCounts[c.presetType] = 0;
+
             currentCounts[c.presetType]++;
+            currentResourceCounts[c.resourceType]++;
         }
 
+        float ratio = ((currentResourceCounts[ResourceType.H]+1) * 1f / (currentResourceCounts[ResourceType.O]+1) * 1f)-1f;
+        bool oxygenPossible = ratio > unlockOxygenRatio;
+        Debug.Log($"Oxygen possible {ratio}: => {oxygenPossible}");
         // Filtere Presets, die ihr Limit.y (Maximum) noch nicht erreicht haben
-        List<CommissionPreset> available = presets.Where(p => {
-            CommissionPresetLimits l = limits.FirstOrDefault(l => l.type == p.type);
+        List<CommissionPreset> available = 
+            presets.Where(p => 
+            
+            {
+                if (!oxygenPossible && p.resource == ResourceType.O)
+                    return false;
+                CommissionPresetLimits l = limits.FirstOrDefault(l => l.type == p.type);
             if (l == null) return true; // Kein Limit definiert → immer erlaubt
             int count = currentCounts.ContainsKey(p.type) ? currentCounts[p.type] : 0;
             return count < l.limits.y;
-        }).ToList();
+        }
+            ).ToList();
 
         // Wenn nichts verfügbar → komplett random als Fallback
         if (available.Count == 0)
@@ -68,6 +82,7 @@ public class CommissionPreset
     public Vector2 amountLimits;
     public Vector2 rewardLimits;
     public ResourceType resource;
+    public string receiver;
 
     public int GetAmount()
     {
@@ -88,12 +103,14 @@ public class CommissionDummy
         amount = preset.GetAmount();
         reward = preset.GetReward();
         resourceType = preset.resource;
+        receiver = preset.receiver;
     }
 
     public CommissionPresetType type;
     public int amount;
     public ResourceType resourceType;
     public int reward;
+    public string receiver;
 }
 
 public enum CommissionPresetType

@@ -17,6 +17,8 @@ public class Commission : MonoBehaviour
     [Tooltip("The type of resource required (as integer ID).")]
     public ResourceType resourceType;
 
+    public string receiver;
+
     public CommissionPresetType presetType;
 
     public int internIndex;
@@ -52,6 +54,7 @@ public class Commission : MonoBehaviour
 
     public void Initialize(CommissionDummy dummy, int index)
     {
+        receiver = dummy.receiver;
         reward = dummy.reward;
         amount = dummy.amount;
         resourceType = dummy.resourceType;

@@ -16,6 +16,7 @@ public class CommissionManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        commissionPrefab.SetActive(false);
         instance = this;
         currentCommissions = new List<Commission>();
         CreateNewCommission();

@@ -29,15 +29,22 @@ public class InteractableObject : SelectableObject
         grabComp = GetComponent<XRGrabInteractable>();
         comp = GetComponent<XRSimpleInteractable>();
        // XRSimpleInteractable interact = CopyComponent<XRSimpleInteractable>(VR_InteractionConnector.Instance.simpleInteraction, gameObject);
-        comp.activated.AddListener(ExecuteInteraction);
-        comp.hoverEntered.AddListener(VR_HoverEnter);
-        comp.hoverExited.AddListener(VR_HoverExit);
-     /*   if (grabComp)
+        if(comp)
         {
+        //    InGameLog.Log($"Objekt {name} has SimpleInteraction");
+            comp.activated.AddListener(ExecuteInteraction);
+            comp.hoverEntered.AddListener(VR_HoverEnter);
+            comp.hoverExited.AddListener(VR_HoverExit);
+        }
+
+       if (grabComp)
+        {
+        //    InGameLog.Log($"Objekt {name} has Grab");
             grabComp.hoverEntered.AddListener(VR_HoverEnter);
             grabComp.hoverExited.AddListener(VR_HoverExit);
+        //    InGameLog.Log($"Objekt {name} has Grab Listeners added");
         }
-        else
+        /* else
         if (comp == null)
         {
             XRSimpleInteractable interact = CopyComponent<XRSimpleInteractable>(VR_InteractionConnector.Instance.simpleInteraction, gameObject);
@@ -45,8 +52,8 @@ public class InteractableObject : SelectableObject
             interact.hoverEntered.AddListener(VR_HoverEnter);
             interact.hoverExited.AddListener(VR_HoverExit);
         }*/
-        if (deactivateInteraction)
-            enabled = false;
+     //   if (deactivateInteraction)
+     //       enabled = false;
     }
 
     public void ExecuteInteraction(ActivateEventArgs args)
@@ -56,6 +63,7 @@ public class InteractableObject : SelectableObject
 
     public void VR_HoverEnter(HoverEnterEventArgs args)
     {
+       // InGameLog.Log($"Objekt {name} HOVER ENTER");
         HoverOver();
     }
 
@@ -67,6 +75,7 @@ public class InteractableObject : SelectableObject
     [ContextMenu("Hover")]
     public void HoverOver()
     {
+       // InGameLog.Log($"Objekt {name} HOVER OVER");
         if (onHover)
             onHover.SetActive(true);
         if (!fromEverywhere)

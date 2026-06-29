@@ -25,6 +25,8 @@ public class Socket : MonoBehaviour
 
             Container cont = obj.GetComponent<Container>();
             RepairModule repairM = obj.GetComponent<RepairModule>();
+            if (!machine)
+                return;
             if (cont)
             {
                 machine.Connect(cont);
@@ -42,6 +44,8 @@ public class Socket : MonoBehaviour
         ToSocketInteractable obj = args.interactableObject.transform.gameObject.GetComponent<ToSocketInteractable>();
         Container cont = obj.GetComponent<Container>();
         RepairModule repairM = obj.GetComponent<RepairModule>();
+        if (!machine)
+            return;
         if (cont)
         {
             machine.Disconnect(cont);

@@ -172,6 +172,11 @@ namespace UnityEngine.XR.Content.Interaction
             SetValue(newValue);
         }
 
+        public void Toggle()
+        {
+            SetValue(!m_Value, true);
+        }
+
         void SetValue(bool isOn, bool forceRotation = false)
         {
             if (m_Value == isOn)
@@ -226,5 +231,6 @@ namespace UnityEngine.XR.Content.Interaction
         {
             SetHandleAngle(m_Value ? m_MaxAngle : m_MinAngle);
         }
+
     }
 }

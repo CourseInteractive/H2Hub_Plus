@@ -9,7 +9,7 @@ public class Container : MonoBehaviour
     [Header("Container Settings")]
     [SerializeField] private ResourceType resourceType;
     [SerializeField] private float maxAmount = 100f;
-    [SerializeField] private float currentAmount = 0f;
+    [SerializeField] protected float currentAmount = 0f;
 
     public ResourceType ResourceType => resourceType;
     public float MaxAmount => maxAmount;
@@ -21,10 +21,45 @@ public class Container : MonoBehaviour
     public float timePerLoss = -1;
     float lossTimer = 0;
 
+    public GameObject flowIndicator;
+
+    private void Awake()
+    {
+        HideFlowIndicator();
+    }
+
+    protected void HideFlowIndicator()
+    {
+        if (flowIndicator)
+            flowIndicator.SetActive(false);
+    }
+
+    protected void ShowFlowIndicator()
+    {
+        if (flowIndicator)
+        {
+            flowIndicator.SetActive(true);
+            hideFlowIndicatorTimer = 0.2f;
+           
+        }
+       
+    }
+
+    float hideFlowIndicatorTimer;
+
     private void Update()
     {
+        if(hideFlowIndicatorTimer > 0)
+        {
+            hideFlowIndicatorTimer -= Time.deltaTime;
+            if (hideFlowIndicatorTimer < 0)
+                HideFlowIndicator();
+        }
+
         if (timePerLoss < 0 || IsEmpty)
             return;
+
+
 
         if(lossTimer > 0)
         {
@@ -71,6 +106,7 @@ public class Container : MonoBehaviour
         }
 
         OnAmountChanged(currentAmount);
+        ShowFlowIndicator();
         return removed;
     }
 
