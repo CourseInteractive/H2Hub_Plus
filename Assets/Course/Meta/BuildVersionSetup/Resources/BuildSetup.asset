@@ -42,23 +42,17 @@ MonoBehaviour:
     splitBinary: 0
     specialKeystore: 0
   activeBuildKind: 0
-  mainPlayMode: 0
+  mainPlayMode: 3
   testModeType: 0
   marketingModeType: 0
   customSetups:
   - name: NoUI
     active: 0
-  - name: DoorsOpen
+  - name: NoCosts
     active: 1
-  - name: NoGuards
+  - name: MachineDoesNotBreak
     active: 1
-  - name: SlowDetection
-    active: 0
-  - name: NoGameOver
-    active: 0
-  - name: NoDetection
+  - name: UnlimitedWater
     active: 1
   - name: DevUI
-    active: 0
-  - name: NoFog
     active: 0

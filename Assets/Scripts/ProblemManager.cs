@@ -19,7 +19,11 @@ public class ProblemManager : MonoBehaviour
         registeredHydrogenOutput += amount * GetRunningPowerFactor();
         if(registeredHydrogenOutput >= nextProblemAt)
         {
-            ImposeProblem();
+            if(!BuildVersionSetup_Ingame.IsCustomSettingActive("MachineDoesNotBreak"))
+            {
+                ImposeProblem();
+            }
+            
             RandomizeNextProblemTime();
         }
     }

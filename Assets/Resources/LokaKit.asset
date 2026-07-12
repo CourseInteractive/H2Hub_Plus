@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b4dbf7f46d7404aa588f39229f9cdd, type: 3}
+  m_Name: LokaKit
+  m_EditorClassIdentifier: Assembly-CSharp::LokaKit
+  nextLineID: 2
+  entries:
+  - lineID: 0
+    token: Tutorial_Interact01
+    textType: 0
+    translationText:
+    - Test - Interact
+    - 
+    lastChangedInVersion: 0.3.0.000
+    tagMask: 0
+  - lineID: 1
+    token: Tutorial_Teleport
+    textType: 0
+    translationText:
+    - Teleport Test
+    - 
+    lastChangedInVersion: 0.3.0.000
+    tagMask: 0
+  tagList:
+  - TEST
+  types:
+  - UI
+  languageCount: 1
+  exportOptions: []

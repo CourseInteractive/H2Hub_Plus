@@ -28,7 +28,7 @@ public class UI_JuiceState
 public class UI_Juice : MonoBehaviour
 {
  
-    public enum Style { Scale, Rect}
+    public enum Style { Scale, Rect, OnlyFade}
     public Style style;
     public bool toBigOnEnable;
 
@@ -142,23 +142,26 @@ public class UI_Juice : MonoBehaviour
 
     void SetToState(UI_JuiceState jState)
     {
-        if(style == Style.Rect)
-        {
-            RectTransform r = GetComponent<RectTransform>();
-            r.anchoredPosition = jState.rect.position;
-            if(changeWidth)
-                r.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, jState.rect.width);
-            if (changeHeight) 
-                r.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, jState.rect.height);
-        }
-        if(style == Style.Scale)
-        {
-            GetComponent<RectTransform>().localScale = jState.scale;
-        }
-       
-        if(GetComponent<CanvasGroup>())
+        if (GetComponent<CanvasGroup>())
         {
             GetComponent<CanvasGroup>().alpha = jState.alpha;
         }
+        switch(style)
+        {
+            case Style.OnlyFade:
+                break;
+            case Style.Rect:
+                RectTransform r = GetComponent<RectTransform>();
+                r.anchoredPosition = jState.rect.position;
+                if (changeWidth)
+                    r.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, jState.rect.width);
+                if (changeHeight)
+                    r.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, jState.rect.height);
+                break;
+            case Style.Scale:
+                GetComponent<RectTransform>().localScale = jState.scale;
+                break;
+        }
+        
     }
 }

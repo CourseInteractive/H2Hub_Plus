@@ -11,6 +11,8 @@ public class GameEventManager : MonoBehaviour
 
     public TutorialEventLibrary tutEventLibrary;
 
+    public bool dev_DisplayAllEvents;
+
     private void Awake()
     {
         Instance = this;
@@ -38,6 +40,10 @@ public class GameEventManager : MonoBehaviour
 
     public void ReportGameEvent(GameEvent gEvent)
     {
+        if(dev_DisplayAllEvents)
+        {
+            InGameLog.Log("[GAME EVENT]:" + gEvent.eventKey + " => " + gEvent.eventParameter);
+        }
         foreach(GameEventListen listener in listeners)
         {
             foreach (GameEvent possEvent in listener.possibleEvents)

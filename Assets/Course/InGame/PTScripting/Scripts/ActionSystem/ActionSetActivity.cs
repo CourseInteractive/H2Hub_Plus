@@ -9,7 +9,8 @@ namespace Course.PrototypeScripting
         public bool state;
         override public void ExecuteAction()
         {
-            obj.SetActive(state);
+            if(obj)
+                obj.SetActive(state);
             // NUR IN RZZ LLK4 VR
          //   if (ObjectInfoManager._instance)
           //      ObjectInfoManager.Instance.UpdateDisplayedPanels();

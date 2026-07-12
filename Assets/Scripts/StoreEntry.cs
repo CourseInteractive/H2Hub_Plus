@@ -36,7 +36,8 @@ public class StoreEntry : MonoBehaviour
 
     public void Purchase()
     {
-        Workshop.Instance.SubMoney(price);
+
+            Workshop.Instance.SubMoney(price);
         if(instantiate)
         {
             GameObject nObj = Instantiate(objToActivate, objToActivate.transform.position, objToActivate.transform.rotation);

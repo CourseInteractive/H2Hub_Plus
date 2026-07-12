@@ -67,19 +67,32 @@ public class Workshop : MonoBehaviour
     public void SubMoney(int amount)
     {
         if (amount <= 0) return;
-
-        if (_money < amount)
+        if (!BuildVersionSetup_Ingame.IsCustomSettingActive("NoCosts"))
         {
-            // Kein ausreichendes Guthaben – nichts abziehen
-            return;
+            if (_money < amount)
+            {
+                // Kein ausreichendes Guthaben – nichts abziehen
+                return;
+            }
+            _money -= amount;
         }
 
-        _money -= amount;
         OnMoneyChanged?.Invoke(_money);
     }
 
     /// <summary>Prüft, ob mindestens <paramref name="amount"/> vorhanden ist.</summary>
-    public bool HasMoney(int amount) => _money >= amount;
+    public bool HasMoney(int amount)
+    {
+        if (BuildVersionSetup_Ingame.IsCustomSettingActive("NoCosts"))
+        {
+            return true;
+        }
+        else
+        {
+            return _money >= amount;
+        }
+        
+    }
 
     public bool AmountAvailable(int amount, ResourceType type)
     {

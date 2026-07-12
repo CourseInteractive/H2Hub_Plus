@@ -54,7 +54,7 @@ public class OnControllerTooltip : MonoBehaviour
         string localizedTooltip = SimpleLocalization.GetLocalization(message);
         panel.SetActive(true);
         text.text = localizedTooltip;
-        InGameLog.Log(localizedTooltip);
+        //InGameLog.Log(localizedTooltip);
         if (Vector3.Distance(hitPosition, transform.parent.TransformPoint(closePosition)) < Vector3.Distance(transform.parent.TransformPoint(closePosition), transform.parent.TransformPoint(rayPosition)))
             position = Position.Close;
         
@@ -69,7 +69,7 @@ public class OnControllerTooltip : MonoBehaviour
     {
         panel.SetActive(false);
         text.text = "";
-        InGameLog.Log("ClearTooltip");
+        //InGameLog.Log("ClearTooltip");
     }
 
 

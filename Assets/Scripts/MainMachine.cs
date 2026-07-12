@@ -183,7 +183,11 @@ public class MainMachine : MonoBehaviour
         foreach (var recipe in inputs)
         {
             Container module = FindModule(inputModules, recipe.inputType);
-            module?.Remove(recipe.inputAmount * currentPowerLevel);
+            if (module.ResourceType == ResourceType.H2O && !BuildVersionSetup_Ingame.IsCustomSettingActive("UnlimitedWater"))
+            {
+                module?.Remove(recipe.inputAmount * currentPowerLevel);
+            }
+            
         }
     }
 
