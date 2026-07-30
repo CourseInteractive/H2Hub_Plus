@@ -35,7 +35,7 @@ public class Commission : MonoBehaviour
 
     public void PerformAndComplete()
     {
-
+        GameEventManager.Instance.ReportGameEvent("CommissionEnd");
         // MainMachine.instance.RemoveHydrogen(amount);
         Workshop.Instance.RemoveAmount(amount, resourceType);
         Workshop.Instance.AddMoney((int)reward);

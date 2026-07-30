@@ -72,12 +72,15 @@ public class Container : MonoBehaviour
                 
         }
     }
-
-    /// <summary>
-    /// Fügt eine Menge hinzu. Überschreitet nie das Maximum.
-    /// Gibt die tatsächlich hinzugefügte Menge zurück.
-    /// </summary>
-    public float Add(float amount)
+    public void AddExtern(int amount)
+    {
+        Add(amount);
+    }
+        /// <summary>
+        /// Fügt eine Menge hinzu. Überschreitet nie das Maximum.
+        /// Gibt die tatsächlich hinzugefügte Menge zurück.
+        /// </summary>
+        public float Add(float amount)
     {
         if (amount <= 0f) return 0f;
 

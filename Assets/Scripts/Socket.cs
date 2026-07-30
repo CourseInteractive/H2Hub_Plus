@@ -10,6 +10,8 @@ public class Socket : MonoBehaviour
     public ToSocketInteractable lockedInteractable;
     XRSocketInteractor thisInteractor;
 
+    public RepairModule.RepairKind kind;
+
     private void Awake()
     {
         thisInteractor = GetComponent<XRSocketInteractor>();
@@ -25,6 +27,10 @@ public class Socket : MonoBehaviour
 
             Container cont = obj.GetComponent<Container>();
             RepairModule repairM = obj.GetComponent<RepairModule>();
+
+
+            
+            GameEventManager.Instance.ReportGameEvent("SocketConnect", gameObject.name + "-" + obj.identifier);
             if (!machine)
                 return;
             if (cont)
@@ -33,8 +39,15 @@ public class Socket : MonoBehaviour
             }
             else if(repairM)
             {
-                machine.Connect(repairM);
-                Debug.Log("Connect Module");
+                if(repairM.kind == kind)
+                {
+                    machine.Connect(repairM);
+                    Debug.Log("Connect Module");
+                }
+                else
+                {
+                    Debug.Log("Wrong Module");
+                }
             }
         }
     }
@@ -44,6 +57,7 @@ public class Socket : MonoBehaviour
         ToSocketInteractable obj = args.interactableObject.transform.gameObject.GetComponent<ToSocketInteractable>();
         Container cont = obj.GetComponent<Container>();
         RepairModule repairM = obj.GetComponent<RepairModule>();
+        GameEventManager.Instance.ReportGameEvent("SocketDisconnect", gameObject.name + "-" + obj.identifier);
         if (!machine)
             return;
         if (cont)

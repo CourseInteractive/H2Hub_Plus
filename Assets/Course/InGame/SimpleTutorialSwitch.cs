@@ -13,6 +13,7 @@ public class SimpleTutorialSwitch : MonoBehaviour
     [Header("Liste aller Tutorial-Displays")]
     public List<TutorialDisplay> displays = new List<TutorialDisplay>();
 
+
     public void Hide()
     {
         foreach (var display in displays)

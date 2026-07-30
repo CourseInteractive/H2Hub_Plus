@@ -95,6 +95,7 @@ public class CommissionPreset
     }
 }
 
+[System.Serializable]
 public class CommissionDummy
 {
     public CommissionDummy(CommissionPreset preset)

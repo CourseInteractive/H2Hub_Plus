@@ -67,15 +67,15 @@ public class Workshop : MonoBehaviour
     public void SubMoney(int amount)
     {
         if (amount <= 0) return;
-        if (!BuildVersionSetup_Ingame.IsCustomSettingActive("NoCosts"))
-        {
+        if (BuildVersionSetup_Ingame.IsCustomSettingActive("NoCosts")) return;
+       
             if (_money < amount)
             {
                 // Kein ausreichendes Guthaben – nichts abziehen
                 return;
             }
             _money -= amount;
-        }
+
 
         OnMoneyChanged?.Invoke(_money);
     }

@@ -29,4 +29,9 @@ public class InGameLogConsole : MonoBehaviour
     {
         InGameLog.Log(data);
     }
+
+    public void OnDisable()
+    {
+        InGameLog.Clear();
+    }
 }

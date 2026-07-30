@@ -44,6 +44,10 @@ public class ObjectTransformCombination : MonoBehaviour
    //Todo: Repair
     }
 
+    public void MoveIntoState_10(string name)
+    {
+        MoveIntoState(name, 10);
+    }
     public void MoveIntoState(string name, float time)
     {
         currentState = GetStateByName(name);

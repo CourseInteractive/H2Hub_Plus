@@ -13,23 +13,39 @@ public class CommissionManager : MonoBehaviour
 
     int commissionCounter = 0;
     public int maximumCommissions = 4;
+
+    public bool isActive = true;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         commissionPrefab.SetActive(false);
         instance = this;
         currentCommissions = new List<Commission>();
+        SetToState(state);
         CreateNewCommission();
         CreateNewCommission();
         SetNewCommissionTimer();
     }
 
+    public void SetActivity(bool value)
+    {
+        isActive = value;
+    }
+
     [ContextMenu("Create New")]
     public void CreateNewCommission()
     {
+        CommissionDummy com = database.GetRandomCommission(currentCommissions);
+        
+        AddCommission(com);
+    }
+
+    public void AddCommission(CommissionDummy com)
+    {
         GameObject newCommissionEntry = (GameObject)Instantiate(commissionPrefab, commissionList);
         Commission c = newCommissionEntry.GetComponent<Commission>();
-        c.Initialize(database.GetRandomCommission(currentCommissions), commissionCounter);
+        c.Initialize(com, commissionCounter);
         commissionCounter++;
         currentCommissions.Add(c);
         newCommissionEntry.SetActive(true);
@@ -58,6 +74,8 @@ public class CommissionManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (state != ActivationState.RunningNormally)
+            return;
         if(timer > 0)
         {
             timer -= Time.deltaTime;
@@ -78,4 +96,48 @@ public class CommissionManager : MonoBehaviour
         else
             timer = timeForUpdate;
     }
+
+    public void ClearCommissions()
+    {
+        if (currentCommissions != null && currentCommissions.Count > 0)
+            Remove(0);
+        if (currentCommissions != null && currentCommissions.Count > 0)
+            Remove(1);
+        if (currentCommissions != null && currentCommissions.Count > 0)
+            Remove(2);
+    }
+
+    public enum ActivationState { RunningNormally, Untouchable, Deactivated, OnlyDisplay }
+    public ActivationState state;
+    public GameObject startUpPanel;
+
+    public void SetToState(ActivationState newState)
+    {
+        state = newState;
+        switch (newState)
+        {
+            case ActivationState.RunningNormally:
+                startUpPanel.SetActive(false);
+                commissionList.gameObject.SetActive(true);
+                break;
+            case ActivationState.Deactivated:
+                startUpPanel.SetActive(true);
+                commissionList.gameObject.SetActive(false);
+                break;
+            case ActivationState.Untouchable:
+                startUpPanel.SetActive(false);
+                commissionList.gameObject.SetActive(false);
+                break;
+            case ActivationState.OnlyDisplay:
+                startUpPanel.SetActive(false);
+                commissionList.gameObject.SetActive(true);
+                break;
+        }
+    }
+
+    public void SetToState(int i)
+    {
+        SetToState((ActivationState)i);
+    }
+
 }

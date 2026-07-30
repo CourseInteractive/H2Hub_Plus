@@ -88,8 +88,14 @@ public class CommissionUI : MonoBehaviour
 
     public void ButtonClick()
     {
-        if(commission.CanBePerformed())
+        if (commission.CanBePerformed())
             commission.PerformAndComplete();
+        else
+            PerformFailed();
     }
 
+    public void PerformFailed()
+    {
+        GameEventManager.Instance.ReportGameEvent("CommissionFailed");
+    }
 }

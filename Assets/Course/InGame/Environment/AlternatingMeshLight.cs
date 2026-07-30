@@ -39,6 +39,10 @@ public class AlternatingMeshLight : MonoBehaviour
             _baseLightIntensity = targetLight.intensity;
         SetOff();
     }
+    private void Start()
+    {
+        SetOff();
+    }
 
     void Update()
     {

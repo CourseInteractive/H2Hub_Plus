@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 812333998}
   - component: {fileID: 812333999}
   - component: {fileID: 812333993}
+  - component: {fileID: 2657576257087608060}
+  - component: {fileID: 2579925460506066168}
   m_Layer: 0
   m_Name: SimpleGameEngine
   m_TagString: Untagged
@@ -29,12 +31,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4864128798939333221}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7592937933601962614
 MonoBehaviour:
@@ -49,6 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   variableSavedData: {fileID: 0}
+  listOfTimers: []
 --- !u!114 &5766761350278519046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,6 +65,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c32b436deea0b0c4f82d3dd716a627bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parallelSequences:
+  - currentSequence:
+      seq: {fileID: 0}
+      actionPointer: 0
+    silent: 0
+    internIndex: 0
+    executingObject: {fileID: 0}
+  - currentSequence:
+      seq: {fileID: 0}
+      actionPointer: 0
+    silent: 0
+    internIndex: 0
+    executingObject: {fileID: 0}
+  - currentSequence:
+      seq: {fileID: 0}
+      actionPointer: 0
+    silent: 0
+    internIndex: 0
+    executingObject: {fileID: 0}
+  - currentSequence:
+      seq: {fileID: 0}
+      actionPointer: 0
+    silent: 0
+    internIndex: 0
+    executingObject: {fileID: 0}
+  - currentSequence:
+      seq: {fileID: 0}
+      actionPointer: 0
+    silent: 0
+    internIndex: 0
+    executingObject: {fileID: 0}
+  - currentSequence:
+      seq: {fileID: 0}
+      actionPointer: 0
+    silent: 0
+    internIndex: 0
+    executingObject: {fileID: 0}
+  - currentSequence:
+      seq: {fileID: 0}
+      actionPointer: 0
+    silent: 0
+    internIndex: 0
+    executingObject: {fileID: 0}
+  - currentSequence:
+      seq: {fileID: 0}
+      actionPointer: 0
+    silent: 0
+    internIndex: 0
+    executingObject: {fileID: 0}
+  - currentSequence:
+      seq: {fileID: 0}
+      actionPointer: 0
+    silent: 0
+    internIndex: 0
+    executingObject: {fileID: 0}
+  - currentSequence:
+      seq: {fileID: 0}
+      actionPointer: 0
+    silent: 0
+    internIndex: 0
+    executingObject: {fileID: 0}
   currentSequence:
     seq: {fileID: 0}
     actionPointer: 0
@@ -89,6 +154,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -185,6 +251,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -284,3 +351,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   source1: {fileID: 812333999}
   source2: {fileID: 812333998}
+--- !u!114 &2657576257087608060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4864128798939333221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afba489a1890c2548ba43d5dc3ece114, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameData
+  values: {fileID: 11400000, guid: 126fd02b0bf70294e82284014935afe1, type: 2}
+  dontDestroyOnLoad: 1
+--- !u!114 &2579925460506066168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4864128798939333221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c15e45c6bf2e224aa1ac0487c860367, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleLocalization_InGame
+  kit: {fileID: 11400000, guid: 4e6468a8fee1b80479b155dc37988cb8, type: 2}

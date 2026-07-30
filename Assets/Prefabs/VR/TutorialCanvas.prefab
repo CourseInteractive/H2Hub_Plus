@@ -406,7 +406,7 @@ MonoBehaviour:
       y: 0
       width: 0
       height: 0
-    scale: {x: 0.0013, y: 0.0013, z: 0.0013}
+    scale: {x: 0.0022, y: 0.0022, z: 0.0022}
     alpha: 0
   stateBig:
     rect:
@@ -415,7 +415,7 @@ MonoBehaviour:
       y: 0
       width: 0
       height: 0
-    scale: {x: 0.0016, y: 0.0016, z: 0.0016}
+    scale: {x: 0.0025, y: 0.0025, z: 0.0025}
     alpha: 1
   time: 0.4
   changeWidth: 0

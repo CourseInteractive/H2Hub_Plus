@@ -4,7 +4,7 @@ using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
 public class ToSocketInteractable : MonoBehaviour
 {
-
+    public string identifier;
     public XRSocketInteractor lockedSocketInteractor;
     public Socket lockedSocket;
 

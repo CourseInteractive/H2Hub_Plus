@@ -16,10 +16,11 @@ public class ProblemManager : MonoBehaviour
 
     public void IncreaseRegisteredOutput(float amount)
     {
+        return;
         registeredHydrogenOutput += amount * GetRunningPowerFactor();
         if(registeredHydrogenOutput >= nextProblemAt)
         {
-            if(!BuildVersionSetup_Ingame.IsCustomSettingActive("MachineDoesNotBreak"))
+            if (!BuildVersionSetup_Ingame.IsCustomSettingActive("MachineDoesNotBreak"))
             {
                 ImposeProblem();
             }
@@ -31,7 +32,7 @@ public class ProblemManager : MonoBehaviour
     float GetRunningPowerFactor()
     {
         if (MainMachine.instance.runningPower < 0.3f)
-            return 0f;
+            return 0.1f;
         if (MainMachine.instance.runningPower < 0.8f)
             return 0.5f;
         return 2f;
@@ -46,7 +47,14 @@ public class ProblemManager : MonoBehaviour
 
     public void ImposeProblem()
     {
+        
         MachineProblem selectedProblem = problems[Random.Range(0, problems.Length)];
         selectedProblem.Execute();
+    
+    }
+
+    public void Tutorial_SetProblemsClose()
+    {
+        registeredHydrogenOutput = nextProblemAt - 4;
     }
 }

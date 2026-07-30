@@ -15,7 +15,9 @@ public class MachineProblem : MonoBehaviour
     }
     public void Execute()
     {
-        switch(machine)
+        InGameLog.Log("Problem Executed");
+        GameEventManager.Instance.ReportGameEvent("Problem");
+        switch (machine)
         {
             case MachineToBreak.Main:
                 MainMachine.instance.ImposeProblem(this);

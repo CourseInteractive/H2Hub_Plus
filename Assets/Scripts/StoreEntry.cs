@@ -10,6 +10,7 @@ public class StoreEntry : MonoBehaviour
 
     public TMP_Text label;
     public Button btn;
+    public string identifier;
 
     public bool activateImmediately;
     public bool repeatable = true;
@@ -36,7 +37,7 @@ public class StoreEntry : MonoBehaviour
 
     public void Purchase()
     {
-
+        GameEventManager.Instance.ReportGameEvent("Purchase", identifier);
             Workshop.Instance.SubMoney(price);
         if(instantiate)
         {

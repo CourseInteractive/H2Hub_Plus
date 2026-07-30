@@ -48,15 +48,17 @@ public class MainMachine : MonoBehaviour
     private float tickTimer = 0f;
 
     //public bool IsRunning => currentState == MachineState.Running;
-    public enum MachineState { Off, PowerUp, Running }
+    public enum MachineState { Off, PowerUp, Running}
     public MachineState currentState;
-
+    public bool problemOnMachine;
 
     public float timeToFullPower = 4f;
     public float currentPowerLevel = 0;
     float powerTimer;
 
     public Socket repairModuleSocket;
+
+    public Socket inputSocket_Water;
 
     private void Awake()
     {
@@ -139,6 +141,16 @@ public class MainMachine : MonoBehaviour
 
     private void Tick()
     {
+        if(!CheckModulesForProblems())
+        {
+            ProblemFound();
+            return;
+        }
+        else
+        {
+            ProblemSolved();
+        }
+
         // 1. Inputs prüfen
         if (!CanConsumeInputs())
         {
@@ -146,6 +158,7 @@ public class MainMachine : MonoBehaviour
             TurnOff();
             return;
         }
+        
 
         // 2. Outputs prüfen: alle angeschlossenen und ALLE voll → stopp
         if (AllConnectedOutputsFull())
@@ -161,12 +174,61 @@ public class MainMachine : MonoBehaviour
         ProduceOutputs();
     }
 
+    bool CheckModulesForProblems()
+    {
+        if (repairModuleSocket.lockedInteractable != null)
+        {
+            ToSocketInteractable interactable = repairModuleSocket.lockedInteractable;
+            RepairModule module = interactable.GetComponent<RepairModule>();
+            if (repairModuleSocket.kind != module.kind)
+            {
+                Debug.Log("1");
+                return false;
+            }
+                
+            if (!module.working)
+            {
+                Debug.Log("2");
+                return false;
+            }
+        }
+        else
+        {
+            Debug.Log("3");
+            return false;
+        }
+
+        if (inputSocket_Water.lockedInteractable != null)
+        {
+            ToSocketInteractable interactable = inputSocket_Water.lockedInteractable;
+            RepairModule module = interactable.GetComponent<RepairModule>();
+            if (inputSocket_Water.kind != module.kind)
+            {
+                Debug.Log("4");
+                return false;
+            }
+            if (!module.working)
+            {
+                Debug.Log("5");
+                return false;
+            }
+        }
+        else
+        {
+            Debug.Log("6");
+            return false;
+        }
+        return true;
+    }
+
+
     // -------------------------------------------------------------------------
     // Input-Logik
     // -------------------------------------------------------------------------
 
     private bool CanConsumeInputs()
     {
+      
         foreach (var recipe in inputs)
         {
             Container module = FindModule(inputModules, recipe.inputType);
@@ -183,11 +245,17 @@ public class MainMachine : MonoBehaviour
         foreach (var recipe in inputs)
         {
             Container module = FindModule(inputModules, recipe.inputType);
+            float realInputUsed = recipe.inputAmount * currentPowerLevel;
             if (module.ResourceType == ResourceType.H2O && !BuildVersionSetup_Ingame.IsCustomSettingActive("UnlimitedWater"))
             {
-                module?.Remove(recipe.inputAmount * currentPowerLevel);
+                module?.Remove(realInputUsed);
             }
-            
+            else
+                module?.Remove(realInputUsed);
+            if(module.ResourceType == ResourceType.H2O)
+            {
+                ReduceInputDurability(realInputUsed);
+            }
         }
     }
 
@@ -197,6 +265,7 @@ public class MainMachine : MonoBehaviour
 
     private bool AllConnectedOutputsFull()
     {
+        return false;
         foreach (var output in outputs)
         {
             Container module = FindModule(outputModules, output.outputType);
@@ -210,8 +279,8 @@ public class MainMachine : MonoBehaviour
 
     private void ProduceOutputs()
     {
-        
-        foreach (var output in outputs)
+
+        foreach (ConversionOutput output in outputs)
         {
             Container module = FindModule(outputModules, output.outputType);
             float outputPower = currentPowerLevel * Mathf.Lerp(GameData.Instance.Values.outputFactorLimitsByDial.x, GameData.Instance.Values.outputFactorLimitsByDial.y, runningPower);
@@ -221,18 +290,37 @@ public class MainMachine : MonoBehaviour
             {
                 if (!module.IsFull)
                     module.Add(realOutput);
+
                 if(output.outputType == ResourceType.H)
                 {
+                    ReduceOutputDurability(realOutput);
                     problemManager.IncreaseRegisteredOutput(realOutput);
                 }
             }
             else
             {
+                if (output.outputType == ResourceType.H)
+                {
+                    ReduceOutputDurability(realOutput);
+                    problemManager.IncreaseRegisteredOutput(realOutput);
+                }
                 // Kein Modul angeschlossen: Fallback für z.B. Partikeleffekte
                 OnOutputWithoutModule(output.outputType, realOutput);
             }
         }
     }
+
+    void ReduceOutputDurability(float amount)
+    {
+        repairModuleSocket.lockedInteractable.GetComponent<RepairModule>().UseUpAmount(amount);
+    }
+
+
+    void ReduceInputDurability(float amount)
+    {
+        inputSocket_Water.lockedInteractable.GetComponent<RepairModule>().UseUpAmount(amount);
+    }
+
     public ProblemManager problemManager;
     /// <summary>
     /// Wird aufgerufen, wenn ein Output erzeugt wird, aber kein Modul angeschlossen ist.
@@ -260,6 +348,8 @@ public class MainMachine : MonoBehaviour
     // -------------------------------------------------------------------------
     // Öffentliche Modul-Verwaltung (zur Laufzeit)
     // -------------------------------------------------------------------------
+    #region SocketConnection
+
 
     /// <summary>
     /// Schließt einen Container an. Bestimmt anhand des ResourceType automatisch,
@@ -269,7 +359,7 @@ public class MainMachine : MonoBehaviour
     public void Connect(Container module)
     {
         if (module == null) return;
-
+        InGameLog.Log("Socket Connect " + gameObject.name);
         ResourceType type = module.ResourceType;
 
         // Prüfe, ob der Typ im Rezept als Input oder Output definiert ist
@@ -280,13 +370,13 @@ public class MainMachine : MonoBehaviour
         {
             Disconnect(type);
             inputModules.Add(module);
-            Debug.Log($"[MainMachine] Input-Modul '{type}' angeschlossen.");
+            InGameLog.Log($"[MainMachine] Input-Modul '{type}' angeschlossen.");
         }
         else if (isOutput)
         {
             Disconnect(type);
             outputModules.Add(module);
-            Debug.Log($"[MainMachine] Output-Modul '{type}' angeschlossen.");
+            InGameLog.Log($"[MainMachine] Output-Modul '{type}' angeschlossen.");
         }
         else
         {
@@ -296,8 +386,8 @@ public class MainMachine : MonoBehaviour
 
     public void Connect(RepairModule module)
     {
-        if (module.working)
-            ProblemSolved();
+       // if (module.working)
+            
     }
 
     /// <summary>
@@ -340,6 +430,10 @@ public class MainMachine : MonoBehaviour
         if (module == null) return;
         //Disconnect(module.ResourceType);
     }
+
+    #endregion
+
+    #region ChangeResources
 
     public void RemoveHydrogen(int amount)
     {
@@ -387,21 +481,38 @@ public class MainMachine : MonoBehaviour
         return c.CurrentAmount >= amount;
     }
 
+    #endregion
+
     public void ImposeProblem(MachineProblem problem)
     {
-        if(repairModuleSocket && repairModuleSocket.lockedInteractable != null)
+     /*   if(repairModuleSocket && repairModuleSocket.lockedInteractable != null)
         {
             repairModuleSocket.lockedInteractable.GetComponent<RepairModule>().Break();
         }
         currentProblem = problem;
+        TurnOff();
+        problemDisplay.Activate();*/
+    }
+
+    void ProblemFound()
+    {
+        if (problemOnMachine)
+            return;
+        GameEventManager.Instance.ReportGameEvent("Problem");
+        problemOnMachine = true;
+        Debug.Log("Problem");
         TurnOff();
         problemDisplay.Activate();
     }
 
     public void ProblemSolved()
     {
+        if (!problemOnMachine)
+            return;
+        GameEventManager.Instance.ReportGameEvent("ProblemSolved");
         problemDisplay.SetOff();
         currentProblem = null;
+        problemOnMachine = false;
     }
 
     public AlternatingMeshLight problemDisplay;

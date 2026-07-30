@@ -31,6 +31,21 @@ public class GameEventManager : MonoBehaviour
         listeners.Add(listener);
     }
 
+    public void PrintListeners()
+    {
+        foreach(GameEventListen listener in listeners)
+        {
+            Debug.Log($"{listener.internName}  ({listener.possibleEvents[0].eventKey},{listener.possibleEvents[0].eventParameter})");
+            InGameLog.Log($"{listener.internName}  ({listener.possibleEvents[0].eventKey},{listener.possibleEvents[0].eventParameter})");
+        }
+    }
+
+    public void ReportGameEvent(string key)
+    {
+
+        ReportGameEvent(new GameEvent(key, ""));
+    }
+
     public void ReportGameEvent(string key, string para)
     {
       

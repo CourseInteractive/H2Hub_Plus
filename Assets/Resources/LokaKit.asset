@@ -12,23 +12,156 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00b4dbf7f46d7404aa588f39229f9cdd, type: 3}
   m_Name: LokaKit
   m_EditorClassIdentifier: Assembly-CSharp::LokaKit
-  nextLineID: 2
+  nextLineID: 15
   entries:
   - lineID: 0
     token: Tutorial_Interact01
     textType: 0
     translationText:
-    - Test - Interact
+    - "Du bet\xE4tigst Objekte mit dem Trigger.\n(Zeigefinger)\nRichte den Strahl
+      auf den T\xFCrknopf.\nDr\xFCcke dann den Trigger."
     - 
-    lastChangedInVersion: 0.3.0.000
+    lastChangedInVersion: 0.3.0.006
     tagMask: 0
   - lineID: 1
     token: Tutorial_Teleport
     textType: 0
     translationText:
-    - Teleport Test
+    - "Teleportiere dich durch den Raum.\nDr\xFCcke den Stick am Controller \nnach
+      vorn.\nRichte den Strahl auf einen \nTeleport-Punkt aus.\n(Wird blau) \n\nLasse
+      dann los."
     - 
-    lastChangedInVersion: 0.3.0.000
+    lastChangedInVersion: 0.3.0.006
+    tagMask: 0
+  - lineID: 2
+    token: Tutorial_Dialog
+    textType: 0
+    translationText:
+    - "--Ein Mann redet durch InterCom--\n\nErz\xE4hlt von einem noch \noffenen Auftrag
+      von gestern.\nDu sollst schauen, \nob du ihn abgeschlossen hast.\n\n--Dialog
+      an rotem Knopf beenden--"
+    - 
+    lastChangedInVersion: 0.3.0.006
+    tagMask: 0
+  - lineID: 3
+    token: Tutorial_Commission
+    textType: 0
+    translationText:
+    - "Auftr\xE4ge erscheinen im \nDisplay hier rechts.\n\nStarte es. \nDer Auftrag
+      von gestern ist noch aktiv.\n\nSchlie\xDFe ihn ab, indem du ihn anklickst.\n(Trigger)"
+    - 
+    lastChangedInVersion: 0.3.0.006
+    tagMask: 0
+  - lineID: 4
+    token: Tutorial_Grab
+    textType: 0
+    translationText:
+    - 'Hebe den Container mit dem Grip auf.
+
+      (Mittelfinger)'
+    - 
+    lastChangedInVersion: 0.3.0.006
+    tagMask: 0
+  - lineID: 5
+    token: Tutorial_SellSocket
+    textType: 0
+    translationText:
+    - "Mit dem Stick kannst du Objekte\nauch nach vorn und hinten bewegen.\n\nStelle
+      den Container \nauf eines der \"Verkaufs-Ventile\"."
+    - 
+    lastChangedInVersion: 0.3.0.006
+    tagMask: 0
+  - lineID: 6
+    token: Tutorial_Commission02
+    textType: 0
+    translationText:
+    - "Um einen Auftrag abschlie\xDFen\nzu k\xF6nnen,\nmuss ein Container mit \ngen\xFCgend
+      Inhalt auf\neiner dieser Ventile stehen.\n\nSchlie\xDFe nun den Auftrag ab."
+    - 
+    lastChangedInVersion: 0.3.0.006
+    tagMask: 0
+  - lineID: 7
+    token: Tutorial_StartMachine
+    textType: 0
+    translationText:
+    - "--Dialog mit Mann vom Beginn--\nNun kannst du die Maschine starten. \n\nBewege
+      den gro\xDFen Hebel nach oben.\n"
+    - 
+    lastChangedInVersion: 0.3.0.006
+    tagMask: 0
+  - lineID: 8
+    token: Tutorial_TakeFilter
+    textType: 0
+    translationText:
+    - "Mist, die Maschine hat ein Problem.\nDas m\xFCssen wir l\xF6sen\n\nDer Filter
+      ist verstopft.\n(Siehe unteres gelbes Licht)\n\nEntferne ihn mit dem Grip\nund
+      lege ihn weg."
+    - 
+    lastChangedInVersion: 0.3.1.007
+    tagMask: 0
+  - lineID: 9
+    token: Tutorial_Shop
+    textType: 0
+    translationText:
+    - "An diesem Display kannst \ndu Objekte kaufen,\nwenn du gen\xFCgend Geld besitzt.\n\nKaufe
+      einen neuen Filter \nund setze ihn ein."
+    - 
+    lastChangedInVersion: 0.3.0.006
+    tagMask: 0
+  - lineID: 10
+    token: Tutorial_CommissionFail
+    textType: 0
+    translationText:
+    - "Das hat nicht geklappt, \nvielleicht ist nicht genug \nWasserstoff vorhanden."
+    - 
+    lastChangedInVersion: 0.3.0.006
+    tagMask: 0
+  - lineID: 11
+    token: Tutorial_NeedNewFilter
+    textType: 0
+    translationText:
+    - 'Diesen kannst du wegwerfen.
+
+
+      Wir brauchen einen neuen Filter.
+
+
+      Drehe
+      dich zum Einkaufs-Modul.'
+    - 
+    lastChangedInVersion: 0.3.0.006
+    tagMask: 0
+  - lineID: 12
+    token: Tutorial_ContainerOnMachine
+    textType: 0
+    translationText:
+    - 'Damit der produzierte Wasserstoff
+
+      aufgefangen wird, musst du einen
+
+      Container
+      auf das Ventil stellen.'
+    - 
+    lastChangedInVersion: 0.3.0.006
+    tagMask: 0
+  - lineID: 13
+    token: Tutorial_EnterFilter
+    textType: 0
+    translationText:
+    - 'Setze den Filter unten ein
+
+      und starte die Maschine erneut.'
+    - 
+    lastChangedInVersion: 0.3.1.040
+    tagMask: 0
+  - lineID: 14
+    token: Tutorial_OpenWindow
+    textType: 0
+    translationText:
+    - "Okay, der Laden l\xE4uft.\nDann lassen wir den Tag hinein.\n\n\xD6ffne hinter
+      dir die Fenster.\n(Knopf hinter Auftragsmonitor)"
+    - 
+    lastChangedInVersion: 0.3.1.007
     tagMask: 0
   tagList:
   - TEST

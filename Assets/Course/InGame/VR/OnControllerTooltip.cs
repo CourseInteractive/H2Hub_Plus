@@ -38,6 +38,15 @@ public class OnControllerTooltip : MonoBehaviour
             instanceRight = this;
         ClearTooltip();
     }
+    private void Start()
+    {
+        ClearTooltip();
+    }
+
+    private void OnEnable()
+    {
+        ClearTooltip();
+    }
 
     public void SetTooltip(string message)
     {
