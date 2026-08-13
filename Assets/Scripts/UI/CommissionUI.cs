@@ -96,6 +96,6 @@ public class CommissionUI : MonoBehaviour
 
     public void PerformFailed()
     {
-        GameEventManager.Instance.ReportGameEvent("CommissionFailed");
+        GameEventManager.Instance.ReportGameEvent("Commission", "Failed");
     }
 }

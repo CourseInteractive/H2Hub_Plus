@@ -18,6 +18,8 @@ public class CameraRelative_UI : MonoBehaviour
 
     bool moving;
     bool needsMoving;
+
+    public bool noMovement;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,16 @@ public class CameraRelative_UI : MonoBehaviour
         HardPositioning();
     }
 
+    public void SetPositionToHold(Vector3 position)
+    {
+        noMovement = true;
+        transform.position = position;
+    }
+
+    public void FreeFromPosition()
+    {
+        noMovement = false;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -41,6 +53,7 @@ public class CameraRelative_UI : MonoBehaviour
         if (camera == null)
             camera = Camera.main;
         GetOffsetAngle(true);
+        if(!noMovement)
         transform.position = Vector3.Lerp(transform.position, targetPosition, 1f) + Vector3.up * height;
         transform.forward = transform.position - camera.transform.position;
     }
@@ -55,10 +68,12 @@ public class CameraRelative_UI : MonoBehaviour
 
     void HandleMovement()
     {
-        
+        transform.forward = transform.position - camera.transform.position;
+        if (noMovement)
+            return;
         transform.position = Vector3.Lerp(transform.position, targetPosition, moveSpeed / 100f) + Vector3.up * height;
 
-        transform.forward = transform.position - camera.transform.position;
+      
         if (Vector3.Distance(transform.position, targetPosition) < 1f)
         {
             moving = false;

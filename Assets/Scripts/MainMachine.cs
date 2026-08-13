@@ -58,6 +58,8 @@ public class MainMachine : MonoBehaviour
 
     public Socket repairModuleSocket;
 
+    public Socket[] elektrolyseModuleSockets;
+
     public Socket inputSocket_Water;
 
     private void Awake()
@@ -176,6 +178,29 @@ public class MainMachine : MonoBehaviour
 
     bool CheckModulesForProblems()
     {
+        bool elModulePresent = false;
+        foreach(Socket elSocket in elektrolyseModuleSockets)
+        {
+            if (elSocket.lockedInteractable != null)
+            {
+                elModulePresent = true;
+                ToSocketInteractable interactable = elSocket.lockedInteractable;
+                RepairModule module = interactable.GetComponent<RepairModule>();
+                if (elSocket.kind != module.kind)
+                {
+                    return false;
+                }
+                if (!module.working)
+                {
+                    return false;
+                }
+            }
+             
+        }
+
+        if(!elModulePresent)
+            return false;
+        /*
         if (repairModuleSocket.lockedInteractable != null)
         {
             ToSocketInteractable interactable = repairModuleSocket.lockedInteractable;
@@ -196,7 +221,7 @@ public class MainMachine : MonoBehaviour
         {
             Debug.Log("3");
             return false;
-        }
+        }*/
 
         if (inputSocket_Water.lockedInteractable != null)
         {
@@ -279,13 +304,21 @@ public class MainMachine : MonoBehaviour
 
     private void ProduceOutputs()
     {
+        float elModuleFactor = 0f;
+        foreach (Socket elSocket in elektrolyseModuleSockets)
+        {
+            if (elSocket.lockedInteractable)
+                elModuleFactor += 0.3333f;
+        }
+
 
         foreach (ConversionOutput output in outputs)
         {
             Container module = FindModule(outputModules, output.outputType);
             float outputPower = currentPowerLevel * Mathf.Lerp(GameData.Instance.Values.outputFactorLimitsByDial.x, GameData.Instance.Values.outputFactorLimitsByDial.y, runningPower);
 
-            float realOutput = output.outputAmount * outputPower;
+            float realOutput = output.outputAmount * outputPower * elModuleFactor;
+            float dividedOutput = realOutput * (1f / (realOutput * 3f));
             if (module != null)
             {
                 if (!module.IsFull)
@@ -293,7 +326,7 @@ public class MainMachine : MonoBehaviour
 
                 if(output.outputType == ResourceType.H)
                 {
-                    ReduceOutputDurability(realOutput);
+                    ReduceOutputDurability(dividedOutput);
                     problemManager.IncreaseRegisteredOutput(realOutput);
                 }
             }
@@ -301,7 +334,7 @@ public class MainMachine : MonoBehaviour
             {
                 if (output.outputType == ResourceType.H)
                 {
-                    ReduceOutputDurability(realOutput);
+                    ReduceOutputDurability(dividedOutput);
                     problemManager.IncreaseRegisteredOutput(realOutput);
                 }
                 // Kein Modul angeschlossen: Fallback für z.B. Partikeleffekte
@@ -312,7 +345,12 @@ public class MainMachine : MonoBehaviour
 
     void ReduceOutputDurability(float amount)
     {
-        repairModuleSocket.lockedInteractable.GetComponent<RepairModule>().UseUpAmount(amount);
+        foreach (Socket elSocket in elektrolyseModuleSockets)
+        {
+            if(elSocket.lockedInteractable != null)
+                elSocket.lockedInteractable.GetComponent<RepairModule>().UseUpAmount(amount);
+        }
+         //   repairModuleSocket.lockedInteractable.GetComponent<RepairModule>().UseUpAmount(amount);
     }
 
 

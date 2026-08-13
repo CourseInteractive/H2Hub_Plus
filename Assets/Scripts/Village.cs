@@ -25,12 +25,19 @@ public class Village : MonoBehaviour
     public bool energyProblemRunning;
 
     public int warmthPrice;
+
+    public bool openForProblems;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         waterProblemTimer = Random.Range(waterProblemTimeLimits.x, waterProblemTimeLimits.y);
         energyProblemTimer = Random.Range(energyProblemTimeLimits.x, energyProblemTimeLimits.y);
         Instance = this;
+    }
+
+    public void SetActivity(bool value)
+    {
+        openForProblems = value;
     }
 
     public void RefillContainer(Container container, int amount)
@@ -75,6 +82,8 @@ public class Village : MonoBehaviour
 
     private void Update()
     {
+        if (!openForProblems)
+            return;
         waterProblemTimer -= Time.deltaTime;
         if(waterProblemTimer < 0)
         {
@@ -86,9 +95,7 @@ public class Village : MonoBehaviour
             }
             else
             {
-                waterProblemRunning = true;
-                waterPrice = waterSpikePrice;
-                waterProblemTimer = Random.Range(waterProblemRunningTimeLimits.x, waterProblemRunningTimeLimits.y);
+                WaterProblem();
             }
         }
         energyProblemTimer -= Time.deltaTime;
@@ -102,11 +109,34 @@ public class Village : MonoBehaviour
             }
             else
             {
-                energyProblemRunning = true;
-                energyPrice = energySpikePrice;
-                energyProblemTimer = Random.Range(energyProblemRunningTimeLimits.x, energyProblemRunningTimeLimits.y);
+                EnergyProblem();
             }
         }
+    }
+
+    public void EnergyProblem()
+    {
+        energyProblemRunning = true;
+        energyPrice = energySpikePrice;
+        energyProblemTimer = Random.Range(energyProblemRunningTimeLimits.x, energyProblemRunningTimeLimits.y);
+        IncomingMessageUI.instance.FreeFromPosition();
+        IncomingMessageUI.instance.ShowMessage("Brennstoffmangel", "Problem! Energie wird teuer. Wir arbeiten dran.", 1, 1);
+    }
+
+    public void WaterProblem()
+    {
+        waterProblemRunning = true;
+        waterPrice = waterSpikePrice;
+        waterProblemTimer = Random.Range(waterProblemRunningTimeLimits.x, waterProblemRunningTimeLimits.y);
+
+        IncomingMessageUI.instance.FreeFromPosition();
+        IncomingMessageUI.instance.ShowMessage("Wasserknappheit", "Problem! Wasser wird teuer. Wir arbeiten dran.", 1, 1);
+    }
+
+    public void PrintTimers()
+    {
+        InGameLog.Log("Energy Problem in " + energyProblemTimer);
+        InGameLog.Log("Water Problem in " + waterProblemTimer);
     }
 
 }

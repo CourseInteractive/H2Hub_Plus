@@ -7,6 +7,7 @@ public class StoreEntry : MonoBehaviour
     public GameObject objToActivate;
     public int price;
     public string labelText;
+    public string detailToken;
 
     public TMP_Text label;
     public Button btn;
@@ -15,19 +16,22 @@ public class StoreEntry : MonoBehaviour
     public bool activateImmediately;
     public bool repeatable = true;
     public bool instantiate = true;
+
+    public Store store;
     private void Start()
     {
-        label.text = $"{labelText} ({price})";
+        label.text = $"{labelText}"; // ({price})";
     }
 
     public void ButtonClick()
     {
-        if(PurchasePossible())
-        {
-            Purchase();
-            if (!repeatable)
-                btn.interactable = false;
-        }
+        /* if(PurchasePossible())
+         {
+             Purchase();
+             if (!repeatable)
+                 btn.interactable = false;
+         }*/
+        store.SelectEntry(this);
     }
 
     public bool PurchasePossible()

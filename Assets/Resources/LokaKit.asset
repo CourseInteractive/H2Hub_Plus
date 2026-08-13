@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00b4dbf7f46d7404aa588f39229f9cdd, type: 3}
   m_Name: LokaKit
   m_EditorClassIdentifier: Assembly-CSharp::LokaKit
-  nextLineID: 15
+  nextLineID: 20
   entries:
   - lineID: 0
     token: Tutorial_Interact01
@@ -37,11 +37,10 @@ MonoBehaviour:
     token: Tutorial_Dialog
     textType: 0
     translationText:
-    - "--Ein Mann redet durch InterCom--\n\nErz\xE4hlt von einem noch \noffenen Auftrag
-      von gestern.\nDu sollst schauen, \nob du ihn abgeschlossen hast.\n\n--Dialog
-      an rotem Knopf beenden--"
+    - "Hey! Da bist du ja.\nKann es sein, dass du gestern einen Auftrag nicht abgeschlossen
+      hast?\nGeh durch die n\xE4chste T\xFCr und schau aufs Display."
     - 
-    lastChangedInVersion: 0.3.0.006
+    lastChangedInVersion: 0.3.2.040
     tagMask: 0
   - lineID: 3
     token: Tutorial_Commission
@@ -84,20 +83,19 @@ MonoBehaviour:
     token: Tutorial_StartMachine
     textType: 0
     translationText:
-    - "--Dialog mit Mann vom Beginn--\nNun kannst du die Maschine starten. \n\nBewege
-      den gro\xDFen Hebel nach oben.\n"
+    - "Nun kannst du die Maschine starten. \n\nBewege den gro\xDFen Hebel nach oben.\n"
     - 
-    lastChangedInVersion: 0.3.0.006
+    lastChangedInVersion: 0.3.2.040
     tagMask: 0
   - lineID: 8
     token: Tutorial_TakeFilter
     textType: 0
     translationText:
-    - "Mist, die Maschine hat ein Problem.\nDas m\xFCssen wir l\xF6sen\n\nDer Filter
-      ist verstopft.\n(Siehe unteres gelbes Licht)\n\nEntferne ihn mit dem Grip\nund
-      lege ihn weg."
+    - "Mist, die Maschine hat ein Problem.\nDas m\xFCssen wir l\xF6sen\n\nDas Elektrolyse-Modul
+      ist defekt.\n(Siehe unteres gelbes Licht)\n\nEntferne es mit dem Grip\nund
+      lege es weg."
     - 
-    lastChangedInVersion: 0.3.1.007
+    lastChangedInVersion: 0.3.2.040
     tagMask: 0
   - lineID: 9
     token: Tutorial_Shop
@@ -120,16 +118,16 @@ MonoBehaviour:
     token: Tutorial_NeedNewFilter
     textType: 0
     translationText:
-    - 'Diesen kannst du wegwerfen.
+    - 'Dieses kannst du wegwerfen.
 
 
-      Wir brauchen einen neuen Filter.
+      Wir brauchen ein neues Elektrolyse-Modul.
 
 
       Drehe
       dich zum Einkaufs-Modul.'
     - 
-    lastChangedInVersion: 0.3.0.006
+    lastChangedInVersion: 0.3.2.040
     tagMask: 0
   - lineID: 12
     token: Tutorial_ContainerOnMachine
@@ -148,11 +146,11 @@ MonoBehaviour:
     token: Tutorial_EnterFilter
     textType: 0
     translationText:
-    - 'Setze den Filter unten ein
+    - 'Setze das neue Modul unten ein
 
       und starte die Maschine erneut.'
     - 
-    lastChangedInVersion: 0.3.1.040
+    lastChangedInVersion: 0.3.2.040
     tagMask: 0
   - lineID: 14
     token: Tutorial_OpenWindow
@@ -162,6 +160,50 @@ MonoBehaviour:
       dir die Fenster.\n(Knopf hinter Auftragsmonitor)"
     - 
     lastChangedInVersion: 0.3.1.007
+    tagMask: 0
+  - lineID: 15
+    token: InMessage_Stahlwerk
+    textType: 0
+    translationText:
+    - "Hi!  Wir brauchen mal wieder deine Dienste. Eine neue Kuppel wird gebaut und
+      f\xFCr den Stahl brauchen wir Wasserstoff. Sonst m\xFCssen wir wieder Kohle
+      nehmen...."
+    - 
+    lastChangedInVersion: 0.3.2.040
+    tagMask: 0
+  - lineID: 16
+    token: InMessage_Stahlwerk_Caller
+    textType: 0
+    translationText:
+    - '- Stahlwerk -'
+    - 
+    lastChangedInVersion: 0.3.2.040
+    tagMask: 0
+  - lineID: 17
+    token: Tut_DialogEnd
+    textType: 0
+    translationText:
+    - "Danke! Immer dran denken: Wenn du Auftr\xE4ge nicht abschlie\xDFt, gibt es
+      kein Geld.\nDann starte mal deine Maschine."
+    - 
+    lastChangedInVersion: 0.3.2.040
+    tagMask: 0
+  - lineID: 18
+    token: Tut_CommissionStartUp
+    textType: 0
+    translationText:
+    - "Ha! Dacht ichs doch!\nDann schlie\xDF den Auftrag mal ab. Hop hop. Wir brauchen
+      das Zeug."
+    - 
+    lastChangedInVersion: 0.3.2.040
+    tagMask: 0
+  - lineID: 19
+    token: RepairModule-ShopEntry
+    textType: 0
+    translationText:
+    - 'Elektrolyse-Zellen:500|Haltbarkeit: Mittel'
+    - 
+    lastChangedInVersion: 0.3.2.040
     tagMask: 0
   tagList:
   - TEST

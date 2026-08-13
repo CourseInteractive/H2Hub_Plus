@@ -13,9 +13,6 @@ public class CommissionManager : MonoBehaviour
 
     int commissionCounter = 0;
     public int maximumCommissions = 4;
-
-    public bool isActive = true;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -23,32 +20,48 @@ public class CommissionManager : MonoBehaviour
         instance = this;
         currentCommissions = new List<Commission>();
         SetToState(state);
-        CreateNewCommission();
-        CreateNewCommission();
+        CreateNewCommission(false);
+        CreateNewCommission(false);
         SetNewCommissionTimer();
     }
 
     public void SetActivity(bool value)
     {
-        isActive = value;
+        SetToState(ActivationState.RunningNormally);
     }
 
     [ContextMenu("Create New")]
-    public void CreateNewCommission()
+    public void CreateNewCommission(bool showMessage = true)
     {
         CommissionDummy com = database.GetRandomCommission(currentCommissions);
         
-        AddCommission(com);
+        AddCommission(com, showMessage);
     }
 
-    public void AddCommission(CommissionDummy com)
+    public void AddCommission(CommissionDummy com, bool showMessage = true)
     {
         GameObject newCommissionEntry = (GameObject)Instantiate(commissionPrefab, commissionList);
         Commission c = newCommissionEntry.GetComponent<Commission>();
         c.Initialize(com, commissionCounter);
         commissionCounter++;
         currentCommissions.Add(c);
+        if(showMessage)
+            ShowCommissionMessage(c);
         newCommissionEntry.SetActive(true);
+    }
+
+    public void ShowCommissionMessage(Commission c)
+    {
+        IncomingMessageUI.instance.FreeFromPosition();
+        IncomingMessageUI.instance.ShowMessage("Auftraggeber", "Neuer Auftrag!", 2, 2);
+        IncomingMessageUI.instance.OnMessageAccepted += MessageAccepted;
+        SetToState(ActivationState.OnlyDisplay);
+    }
+
+    public void MessageAccepted()
+    {
+        IncomingMessageUI.instance.OnMessageAccepted -= MessageAccepted;
+        SetToState(ActivationState.RunningNormally);
     }
 
     public void Remove(int internIndex)
@@ -131,6 +144,7 @@ public class CommissionManager : MonoBehaviour
             case ActivationState.OnlyDisplay:
                 startUpPanel.SetActive(false);
                 commissionList.gameObject.SetActive(true);
+                GameEventManager.Instance.ReportGameEvent("Commission", "OnlyDisplay");
                 break;
         }
     }
@@ -138,6 +152,11 @@ public class CommissionManager : MonoBehaviour
     public void SetToState(int i)
     {
         SetToState((ActivationState)i);
+    }
+
+    public void PrintTimers()
+    {
+        InGameLog.Log("Next Commission in " + timer);
     }
 
 }

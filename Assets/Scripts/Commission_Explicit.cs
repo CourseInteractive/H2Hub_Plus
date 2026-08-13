@@ -7,6 +7,6 @@ public class Commission_Explicit : MonoBehaviour
 
     public void AddToList()
     {
-        CommissionManager.instance.AddCommission(commission);
+        CommissionManager.instance.AddCommission(commission, false);
     }
 }
