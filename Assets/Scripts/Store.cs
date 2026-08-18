@@ -81,6 +81,8 @@ public class Store : MonoBehaviour
             buyButton.interactable = true;
         else
             buyButton.interactable = false;
+        if(blockAllOther && activeEntry != allowedEntry)
+            buyButton.interactable = false;
         string details = activeEntry.detailToken;
         detail01_Text.text = "";
         detail02_Text.text = "";
@@ -105,5 +107,14 @@ public class Store : MonoBehaviour
     public void SetToState(int i)
     {
         SetToState((ActivationState)i);
+    }
+
+    public StoreEntry allowedEntry;
+    public bool blockAllOther;
+    public void ReduceAllowedPurchases(bool value)
+    {
+        blockAllOther = true;
+
+        UpdateDetailDisplay();
     }
 }

@@ -23,6 +23,9 @@ public class Commission : MonoBehaviour
 
     public int internIndex;
 
+    public int icon;
+    public string message;
+
     // ── Constructors ────────────────────────────────────────────────────────
 
     // ── Helpers ─────────────────────────────────────────────────────────────
@@ -59,5 +62,7 @@ public class Commission : MonoBehaviour
         amount = dummy.amount;
         resourceType = dummy.resourceType;
         internIndex = index;
+        icon = dummy.icon;
+        message = dummy.message;
     }
 }

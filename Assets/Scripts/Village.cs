@@ -130,7 +130,7 @@ public class Village : MonoBehaviour
         waterProblemTimer = Random.Range(waterProblemRunningTimeLimits.x, waterProblemRunningTimeLimits.y);
 
         IncomingMessageUI.instance.FreeFromPosition();
-        IncomingMessageUI.instance.ShowMessage("Wasserknappheit", "Problem! Wasser wird teuer. Wir arbeiten dran.", 1, 1);
+        IncomingMessageUI.instance.ShowMessage("Wasserknappheit", "Problem! Wasser wird teuer. Wir arbeiten dran.", 4, 1);
     }
 
     public void PrintTimers()

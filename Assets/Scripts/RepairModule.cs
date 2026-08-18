@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class RepairModule : MonoBehaviour
 {
@@ -60,5 +61,29 @@ public class RepairModule : MonoBehaviour
     public void SetNearlyBroken(int amountLeft)
     {
         amountUsed = nextDefect - amountLeft;
+    }
+
+    Rigidbody rBody;
+    XRGrabInteractable grabable;
+    public void SetGrabActivity(bool value)
+    {
+        grabable = GetComponent<XRGrabInteractable>();
+        rBody = GetComponent<Rigidbody>();
+        if (grabable)
+        {
+            if(value)
+            {
+                rBody.useGravity = true;
+                grabable.enabled = true;
+                rBody.isKinematic = false;
+            }
+            else
+            {
+                rBody.useGravity = false;
+                rBody.isKinematic = true;
+                grabable.enabled = false;
+            }
+
+        }
     }
 }

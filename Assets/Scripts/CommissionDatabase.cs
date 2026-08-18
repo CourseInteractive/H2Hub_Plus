@@ -83,6 +83,8 @@ public class CommissionPreset
     public Vector2 rewardLimits;
     public ResourceType resource;
     public string receiver;
+    public int icon;
+    public string message;
 
     public int GetAmount()
     {
@@ -105,6 +107,8 @@ public class CommissionDummy
         reward = preset.GetReward();
         resourceType = preset.resource;
         receiver = preset.receiver;
+        icon = preset.icon;
+        message = preset.message;
     }
 
     public CommissionPresetType type;
@@ -112,6 +116,8 @@ public class CommissionDummy
     public ResourceType resourceType;
     public int reward;
     public string receiver;
+    public int icon;
+    public string message;
 }
 
 public enum CommissionPresetType

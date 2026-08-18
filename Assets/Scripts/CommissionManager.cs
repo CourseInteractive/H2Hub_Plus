@@ -53,7 +53,11 @@ public class CommissionManager : MonoBehaviour
     public void ShowCommissionMessage(Commission c)
     {
         IncomingMessageUI.instance.FreeFromPosition();
-        IncomingMessageUI.instance.ShowMessage("Auftraggeber", "Neuer Auftrag!", 2, 2);
+        string message = "Neuer Auftrag!";
+        if (c.message.Trim() != "")
+            message = c.message;
+        IncomingMessageUI.instance.ShowMessage(c.receiver, message, c.icon, 2);
+        IncomingMessageUI.instance.SetResourceInfo(c.resourceType);
         IncomingMessageUI.instance.OnMessageAccepted += MessageAccepted;
         SetToState(ActivationState.OnlyDisplay);
     }

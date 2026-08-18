@@ -10,7 +10,9 @@ public class IncomingMessageUI : MonoBehaviour
     public TMP_Text messageText;
     public Image icon;
     public TMP_Text buttonText;
-    public Sprite[] icons;
+    
+    public Sprite[] portraits;
+    public GameObject[] resourceIcons;
     public string[] buttonTexts;
 
     public delegate void AcceptingMessage();
@@ -43,11 +45,33 @@ public class IncomingMessageUI : MonoBehaviour
 
     public void ShowMessage(string caller, string message, int iconIndex, int buttonTextIndex)
     {
+        ClearResourceInfo();
         messageText.text = SimpleLocalization.GetLocalization(message);
         callerText.text = SimpleLocalization.GetLocalization(caller);
-        icon.sprite = icons[iconIndex];
+        icon.sprite = portraits[iconIndex];
         buttonText.text = buttonTexts[buttonTextIndex];
         gameObject.SetActive(true);
+    }
+
+    public void SetResourceInfo(ResourceType type)
+    {
+        switch (type)
+        {
+            case ResourceType.H:
+                resourceIcons[0].SetActive(true);
+                break;
+            case ResourceType.O:
+                resourceIcons[1].SetActive(true);
+                break;
+        }
+    }
+
+    void ClearResourceInfo()
+    {
+        foreach(GameObject resIcon in resourceIcons)
+        {
+            resIcon.SetActive(false);
+        }
     }
 
     public void ButtonClick()

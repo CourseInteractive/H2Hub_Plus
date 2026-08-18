@@ -30,13 +30,14 @@ public class CommissionUI : MonoBehaviour
     [Header("Label Prefixes (optional)")]
     [SerializeField] private string rewardPrefix       = "Belohnung: ";
     [SerializeField] private string amountPrefix       = "Menge: ";
+    [SerializeField] private string amountSuffix = " l";
     [SerializeField] private string resourceTypePrefix = "Ressourcentyp: ";
 
     [Header("Reward Format")]
     [Tooltip("C# format string for the reward float, e.g. \"0\" or \"0.##\"")]
     [SerializeField] private string rewardFormat = "0";
 
-   
+    public GameObject[] resourceIcons;
 
     // ── Public API ──────────────────────────────────────────────────────────
 
@@ -72,10 +73,22 @@ public class CommissionUI : MonoBehaviour
             rewardText.text = rewardPrefix + commission.reward.ToString(rewardFormat);
 
         if (amountText != null)
-            amountText.text = amountPrefix + commission.amount.ToString();
+            amountText.text = amountPrefix + commission.amount.ToString() + amountSuffix;
 
-        if (resourceTypeText != null)
-            resourceTypeText.text = resourceTypePrefix + commission.resourceType.ToString();
+        //if (resourceTypeText != null)
+        //    resourceTypeText.text = resourceTypePrefix + commission.resourceType.ToString();
+        foreach (GameObject icon in resourceIcons)
+            icon.SetActive(false);
+        switch(commission.resourceType)
+        {
+            case ResourceType.H:
+                resourceIcons[0].SetActive(true);
+                break;
+            case ResourceType.O:
+                resourceIcons[1].SetActive(true);
+                break;
+        }
+        
     }
 
     /// <summary>Clears all text fields (e.g. when no commission is active).</summary>

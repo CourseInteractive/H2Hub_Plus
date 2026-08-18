@@ -48,7 +48,7 @@ public class MainMachine : MonoBehaviour
     private float tickTimer = 0f;
 
     //public bool IsRunning => currentState == MachineState.Running;
-    public enum MachineState { Off, PowerUp, Running}
+    public enum MachineState { Off, PowerUp, Running, TutorialBlock}
     public MachineState currentState;
     public bool problemOnMachine;
 
@@ -85,10 +85,23 @@ public class MainMachine : MonoBehaviour
             Invoke("TurnOff", 1.0f);
             return;
         }
+        if(currentState == MachineState.TutorialBlock)
+        {
+            TurnOff();
+            return;
+        }
         currentState = MachineState.PowerUp;
         powerTimer = timeToFullPower;
         currentPowerLevel = 0f;
         Debug.Log("[MainMachine] Eingeschaltet.");
+    }
+
+    public void SetTutorialBlockValue(bool value)
+    {
+        if (value)
+            currentState = MachineState.TutorialBlock;
+        else
+            currentState = MachineState.Off;
     }
 
     public float runningPower;

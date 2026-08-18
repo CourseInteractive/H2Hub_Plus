@@ -18,26 +18,36 @@ MonoBehaviour:
     rewardLimits: {x: 250, y: 400}
     resource: 2
     receiver: "Gew\xE4chshaus"
+    icon: 5
+    message: "Hi, Gew\xE4chshaus braucht Wasserstoff!"
   - type: 1
     amountLimits: {x: 50, y: 70}
     rewardLimits: {x: 800, y: 1200}
     resource: 2
     receiver: Stahlwerk
+    icon: 2
+    message: Wir brauchen dringend Wasserstoff, um Stahl zu produzieren.
   - type: 2
     amountLimits: {x: 100, y: 150}
     rewardLimits: {x: 1800, y: 2500}
     resource: 2
     receiver: "Gew\xE4chshaus"
+    icon: 5
+    message: Hey, unser Wasserstoff wird knapp!
   - type: 0
     amountLimits: {x: 20, y: 40}
     rewardLimits: {x: 300, y: 500}
     resource: 3
     receiver: Kolonie
+    icon: 3
+    message: Die Kolonie braucht mehr Sauerstoff.
   - type: 1
     amountLimits: {x: 30, y: 50}
     rewardLimits: {x: 400, y: 650}
     resource: 3
     receiver: Kolonie
+    icon: 3
+    message: Eine Maschine ist ausgefallen, liefere uns bitte Sauerstoff.
   limits:
   - type: 0
     limits: {x: 1, y: 2}
@@ -45,3 +55,4 @@ MonoBehaviour:
     limits: {x: 1, y: 3}
   - type: 2
     limits: {x: 0, y: 2}
+  unlockOxygenRatio: 0.5

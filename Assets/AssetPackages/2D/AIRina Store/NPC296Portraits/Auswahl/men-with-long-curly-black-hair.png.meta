@@ -1,5 +1,12 @@
 fileFormatVersion: 2
-guid: ac9e4f643d0710d49a29c01c8812dfd8
+guid: 147bb9ae3f7eef140aac2d33b6f48058
+AssetOrigin:
+  serializedVersion: 1
+  productId: 306642
+  packageName: 296 Unique NPC Portraits
+  packageVersion: 1.0
+  assetPath: Assets/AIRina Store/NPC296Portraits/Sprites/men-with-long-curly-black-hair.png
+  uploadId: 720749
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -69,7 +76,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 256
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -82,6 +89,19 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
     buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
