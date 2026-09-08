@@ -58,6 +58,7 @@ public class Socket : MonoBehaviour
         Container cont = obj.GetComponent<Container>();
         RepairModule repairM = obj.GetComponent<RepairModule>();
         GameEventManager.Instance.ReportGameEvent("SocketDisconnect", gameObject.name + "-" + obj.identifier);
+        lockedInteractable = null;
         if (!machine)
             return;
         if (cont)

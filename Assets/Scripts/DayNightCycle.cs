@@ -1,16 +1,22 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 /// <summary>
 /// Steuert einen Tag/Nacht-Zyklus mit einem Directional Light.
-/// 
+/// Lichtfarbe und -stärke werden zwischen Tag und Nacht automatisch übergeblendet.
+///
+/// ZEITSTRUKTUR (Beispiel-Defaults):
+///   Tag        08:00 – 18:00   → volle Tageinstellungen
+///   Abend      18:00 – 22:00   → Überblendung Nacht → Tag (rückwärts)
+///   Nacht      22:00 – 06:00   → volle Nachteinstellungen
+///   Morgen     06:00 – 08:00   → Überblendung Nacht → Tag
+///
 /// SETUP:
-/// 1. Dieses Script einer beliebigen GameObject hinzufügen.
-/// 2. Das Directional Light (Sonne) im Inspector zuweisen.
-/// 3. Zeitbereiche (Time Ranges) im Inspector konfigurieren.
-/// 4. Tagesgeschwindigkeit anpassen.
+/// 1. Script einer beliebigen GameObject hinzufügen.
+/// 2. Directional Light (Sonne) im Inspector zuweisen.
+/// 3. Tag- und Nacht-Einstellungen konfigurieren.
+/// 4. Überblendzeiten und Tagesgeschwindigkeit anpassen.
 /// </summary>
 public class DayNightCycle : MonoBehaviour
 {
@@ -19,25 +25,19 @@ public class DayNightCycle : MonoBehaviour
     // ─────────────────────────────────────────────
 
     [Serializable]
-    public class TimeRange
+    public class PhaseSettings
     {
-        [Tooltip("Name dieses Zeitbereichs (z.B. 'Morgen', 'Nacht').")]
-        public string rangeName = "Neuer Bereich";
+        [Tooltip("Lichtfarbe dieser Phase.")]
+        public Color lightColor = Color.white;
 
-        [Tooltip("Startzeit in Stunden (0–24).")]
-        [Range(0f, 24f)] public float startHour = 6f;
+        [Tooltip("Lichtstärke dieser Phase.")]
+        [Range(0f, 8f)] public float lightIntensity = 1f;
 
-        [Tooltip("Endzeit in Stunden (0–24).")]
-        [Range(0f, 24f)] public float endHour = 8f;
+        [Tooltip("Schattenintensität dieser Phase (0 = kein Schatten, 1 = voller Schatten).")]
+        [Range(0f, 1f)] public float shadowStrength = 1f;
 
-        [Tooltip("Wird aufgerufen, wenn dieser Bereich beginnt.")]
-        public UnityEvent onRangeStart;
-
-        [Tooltip("Wird aufgerufen, wenn dieser Bereich endet.")]
-        public UnityEvent onRangeEnd;
-
-        // Interne Zustandsverfolgung (nicht sichtbar im Inspector)
-        [HideInInspector] public bool isActive = false;
+        [Tooltip("Umgebungslichtfarbe (RenderSettings.ambientLight) dieser Phase.")]
+        public Color ambientColor = new Color(0.2f, 0.2f, 0.2f);
     }
 
     // ─────────────────────────────────────────────
@@ -45,36 +45,85 @@ public class DayNightCycle : MonoBehaviour
     // ─────────────────────────────────────────────
 
     [Header("Licht")]
-    [Tooltip("Das Directional Light, das als Sonne fungiert.")]
+    [Tooltip("Das Directional Light, das als Sonne/Mond fungiert.")]
     [SerializeField] private Light sunLight;
 
-    [Tooltip("Rotation bei 0 Uhr (Mitternacht).")]
-    [SerializeField] private Vector3 rotationAtMidnight = new Vector3(-90f, 0f, 0f);
+    [Tooltip("Achse, um die die Sonne rotiert (z.B. (1,0,0) = Ost-West-Bahn).")]
+    [SerializeField] private Vector3 sunAxis = new Vector3(1f, 0f, 0f);
 
-    [Tooltip("Rotation bei 12 Uhr (Mittag).")]
-    [SerializeField] private Vector3 rotationAtNoon = new Vector3(90f, 0f, 0f);
+    [Tooltip("Winkel-Offset in Grad: verschiebt den Sonnenhochstand relativ zu 0 Uhr.\n" +
+             "Standard -90: Sonne geht um 6 Uhr auf, steht um 12 Uhr oben, geht um 18 Uhr unter.")]
+    [SerializeField] private float sunNoonOffset = -90f;
+
+    [Header("Tag-Phase")]
+    [SerializeField] private PhaseSettings daySettings = new PhaseSettings
+    {
+        lightColor = Color.white,
+        lightIntensity = 1f
+    };
+
+    [Tooltip("Beginn der vollen Tagphase (Ende der Morgen-Überblendung).")]
+    [Range(0f, 24f)] [SerializeField] private float dayStartHour = 8f;
+
+    [Tooltip("Ende der vollen Tagphase (Beginn der Abend-Überblendung).")]
+    [Range(0f, 24f)] [SerializeField] private float dayEndHour = 18f;
+
+    [Tooltip("Events für den Beginn und das Ende der Tagphase.")]
+    [SerializeField] private UnityEvent onDayStart;
+    [SerializeField] private UnityEvent onDayEnd;
+
+    [Header("Nacht-Phase")]
+    [SerializeField] private PhaseSettings nightSettings = new PhaseSettings
+    {
+        lightColor     = new Color(0.3f, 0.4f, 0.8f), // Blau
+        lightIntensity = 0.5f,
+        shadowStrength = 0.6f
+    };
+
+    [Tooltip("Beginn der vollen Nachtphase (Ende der Abend-Überblendung).")]
+    [Range(0f, 24f)] [SerializeField] private float nightStartHour = 22f;
+
+    [Tooltip("Ende der vollen Nachtphase (Beginn der Morgen-Überblendung).")]
+    [Range(0f, 24f)] [SerializeField] private float nightEndHour = 6f;
+
+    [Tooltip("Events für den Beginn und das Ende der Nachtphase.")]
+    [SerializeField] private UnityEvent onNightStart;
+    [SerializeField] private UnityEvent onNightEnd;
 
     [Header("Zeit")]
     [Tooltip("Startzeit beim Spielbeginn (0–24 Stunden).")]
-    [Range(0f, 24f)]
-    [SerializeField] private float startHour = 6f;
+    [Range(0f, 24f)] [SerializeField] private float startHour = 8f;
 
-    [Tooltip("Wie viele Spielminuten pro echter Sekunde vergehen.\nZ.B. 1 = Echtzeit, 60 = 1 Spielminute pro Sekunde.")]
+    [Tooltip("Wie viele Spielminuten pro echter Sekunde vergehen.\n" +
+             "1 = Echtzeit | 60 = 1 Min/Sek | 720 = voller Tag in 2 Min.")]
     [SerializeField] private float timeMultiplier = 60f;
-
-    [Header("Zeitbereiche")]
-    [Tooltip("Definiere Zeitbereiche, die beim Start/Ende Events auslösen.")]
-    [SerializeField] private List<TimeRange> timeRanges = new List<TimeRange>();
 
     // ─────────────────────────────────────────────
     // Private Felder
     // ─────────────────────────────────────────────
 
-    // Aktuelle Tageszeit in Stunden (0–24)
     private float currentHour;
-
-    // Ob der Zyklus läuft
     private bool isRunning = true;
+
+    // Zustandsverfolgung für Events
+    private bool isDayActive   = false;
+    private bool isNightActive = false;
+
+    // ─────────────────────────────────────────────
+    // Interne Enum für die aktuelle Phase
+    // ─────────────────────────────────────────────
+
+    private enum CyclePhase { Day, NightToDay, Night, DayToNight }
+
+    // ─────────────────────────────────────────────
+    // Singleton
+    // ─────────────────────────────────────────────
+
+    /// <summary>
+    /// Globale Instanz des DayNightCycle (Singleton).
+    /// Zugriff von überall: DayNightCycle.Instance.CurrentHour
+    /// </summary>
+    public static DayNightCycle Instance { get; private set; }
 
     // ─────────────────────────────────────────────
     // Properties
@@ -86,28 +135,40 @@ public class DayNightCycle : MonoBehaviour
     /// <summary>Ob der Zyklus gerade läuft.</summary>
     public bool IsRunning => isRunning;
 
-    public static DayNightCycle instance;
-
     // ─────────────────────────────────────────────
     // Unity Lifecycle
     // ─────────────────────────────────────────────
 
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Debug.LogWarning("[DayNightCycle] Zweite Instanz gefunden – wird zerstört.");
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+    }
+
     private void Start()
     {
-        currentHour = startHour;
-        instance = this;
         if (sunLight == null)
         {
-            Debug.LogError("[DayNightCycle] Kein Directional Light zugewiesen! Bitte im Inspector setzen.");
+            Debug.LogError("[DayNightCycle] Kein Directional Light zugewiesen!");
+            return;
         }
 
-        // Initialen Zustand der Zeitbereiche evaluieren
-        foreach (var range in timeRanges)
-        {
-            range.isActive = IsHourInRange(currentHour, range);
-        }
+        currentHour = startHour;
 
+        // Initialen Zustand setzen ohne Events auszulösen
+        var phase = GetCurrentPhase();
+        float t    = GetBlendT(phase);
+        ApplyLightSettings(t);
         ApplyRotation();
+
+        isDayActive   = (phase == CyclePhase.Day);
+        isNightActive = (phase == CyclePhase.Night);
     }
 
     private void Update()
@@ -115,143 +176,242 @@ public class DayNightCycle : MonoBehaviour
         if (!isRunning) return;
 
         AdvanceTime();
-        ApplyRotation();
-        EvaluateTimeRanges();
-    }
 
+        var phase = GetCurrentPhase();
+        float t   = GetBlendT(phase);
+
+        ApplyLightSettings(t);
+        ApplyRotation();
+        Debug.DrawRay(rayStart.position, sunAxis, Color.red);
+        EvaluatePhaseEvents(phase);
+    }
+    public Transform rayStart;
     // ─────────────────────────────────────────────
     // Öffentliche Methoden
     // ─────────────────────────────────────────────
 
-    /// <summary>Pausiert den Tag/Nacht-Zyklus.</summary>
+    /// <summary>Pausiert den Zyklus.</summary>
     public void Pause()
     {
         isRunning = false;
-        Debug.Log("[DayNightCycle] Zyklus pausiert.");
+        Debug.Log("[DayNightCycle] Pausiert.");
     }
 
-    /// <summary>Setzt den Tag/Nacht-Zyklus fort.</summary>
+    /// <summary>Setzt den Zyklus fort.</summary>
     public void Resume()
     {
         isRunning = true;
-        Debug.Log("[DayNightCycle] Zyklus fortgesetzt.");
+        Debug.Log("[DayNightCycle] Fortgesetzt.");
     }
 
     /// <summary>Wechselt zwischen Pause und Fortsetzen.</summary>
     public void TogglePause()
     {
-        if (isRunning) Pause();
-        else Resume();
+        if (isRunning) Pause(); else Resume();
     }
 
-    /// <summary>Setzt die aktuelle Uhrzeit direkt (0–24).</summary>
+    /// <summary>Setzt die aktuelle Uhrzeit direkt (0–24). Kein Event-Fire.</summary>
     public void SetTime(float hour)
     {
         currentHour = Mathf.Repeat(hour, 24f);
+
+        var phase  = GetCurrentPhase();
+        float t    = GetBlendT(phase);
+        ApplyLightSettings(t);
         ApplyRotation();
 
-        // Zeitbereiche neu evaluieren ohne Events auszulösen
-        foreach (var range in timeRanges)
-        {
-            range.isActive = IsHourInRange(currentHour, range);
-        }
+        // Zustand synchronisieren ohne Events
+        isDayActive   = (phase == CyclePhase.Day);
+        isNightActive = (phase == CyclePhase.Night);
     }
 
-    /// <summary>Setzt den Zeitmultiplikator (Spielminuten pro Echtzeit-Sekunde).</summary>
+    /// <summary>Setzt den Zeitmultiplikator (Spielminuten pro Echtzeitsekunde).</summary>
     public void SetTimeMultiplier(float multiplier)
     {
         timeMultiplier = Mathf.Max(0f, multiplier);
     }
 
-    /// <summary>
-    /// Gibt die aktuelle Uhrzeit als formatierten String zurück (HH:MM).
-    /// </summary>
+    /// <summary>Gibt die aktuelle Uhrzeit als "HH:MM" zurück.</summary>
     public string GetFormattedTime()
     {
-        int hours = Mathf.FloorToInt(currentHour);
-        int minutes = Mathf.FloorToInt((currentHour - hours) * 60f);
-        return $"{hours:D2}:{minutes:D2}";
+        int h = Mathf.FloorToInt(currentHour);
+        int m = Mathf.FloorToInt((currentHour - h) * 60f);
+        return $"{h:D2}:{m:D2}";
     }
 
     // ─────────────────────────────────────────────
-    // Private Methoden
+    // Kern-Logik
     // ─────────────────────────────────────────────
 
-    /// <summary>Schreitet die Zeit basierend auf dem Multiplikator fort.</summary>
     private void AdvanceTime()
     {
-        // timeMultiplier = Spielminuten/Echtzeitsekunde
-        // Pro Update: (timeMultiplier / 60) Spielstunden vergehen pro Echtzeitsekunde
         float hoursPerSecond = timeMultiplier / 60f;
-        currentHour += hoursPerSecond * Time.deltaTime;
-        currentHour = Mathf.Repeat(currentHour, 24f); // 0–24 wrap
+        currentHour = Mathf.Repeat(currentHour + hoursPerSecond * Time.deltaTime, 24f);
     }
 
-    /// <summary>Rotiert das Directional Light basierend auf der aktuellen Uhrzeit.</summary>
+    /// <summary>
+    /// Bestimmt die aktuelle Phase basierend auf der Uhrzeit.
+    ///
+    /// Zeitleiste (Defaults):
+    ///   [nightEnd=06] --Morgen-Blend--> [dayStart=08] --Tag--> [dayEnd=18]
+    ///   --Abend-Blend--> [nightStart=22] --Nacht--> [nightEnd=06]
+    /// </summary>
+    private CyclePhase GetCurrentPhase()
+    {
+        float h = currentHour;
+
+        // Vollständige Tagphase
+        if (IsInRange(h, dayStartHour, dayEndHour))
+            return CyclePhase.Day;
+
+        // Vollständige Nachtphase (kann über Mitternacht gehen)
+        if (IsInRange(h, nightStartHour, nightEndHour))
+            return CyclePhase.Night;
+
+        // Überblendung: Abend (Tag → Nacht): dayEnd → nightStart
+        if (IsInRange(h, dayEndHour, nightStartHour))
+            return CyclePhase.DayToNight;
+
+        // Überblendung: Morgen (Nacht → Tag): nightEnd → dayStart
+        // (Rest der Uhr)
+        return CyclePhase.NightToDay;
+    }
+
+    /// <summary>
+    /// Berechnet den Blend-Faktor t (0 = Nacht, 1 = Tag) für die aktuelle Phase.
+    /// </summary>
+    private float GetBlendT(CyclePhase phase)
+    {
+        switch (phase)
+        {
+            case CyclePhase.Day:
+                return 1f;
+
+            case CyclePhase.Night:
+                return 0f;
+
+            case CyclePhase.DayToNight:
+            {
+                // Abend: von dayEndHour bis nightStartHour, t geht 1 → 0
+                float duration = WrapDuration(dayEndHour, nightStartHour);
+                float elapsed  = WrapDuration(dayEndHour, currentHour);
+                return Mathf.Clamp01(1f - elapsed / duration);
+            }
+
+            case CyclePhase.NightToDay:
+            {
+                // Morgen: von nightEndHour bis dayStartHour, t geht 0 → 1
+                float duration = WrapDuration(nightEndHour, dayStartHour);
+                float elapsed  = WrapDuration(nightEndHour, currentHour);
+                return Mathf.Clamp01(elapsed / duration);
+            }
+
+            default:
+                return 1f;
+        }
+    }
+
+    /// <summary>Wendet Lichtfarbe, -stärke und Schattenintensität interpoliert auf das Directional Light an.</summary>
+    private void ApplyLightSettings(float t)
+    {
+        if (sunLight == null) return;
+
+        sunLight.color          = Color.Lerp(nightSettings.lightColor,      daySettings.lightColor,      t);
+        sunLight.intensity      = Mathf.Lerp(nightSettings.lightIntensity,  daySettings.lightIntensity,  t);
+        sunLight.shadowStrength = Mathf.Lerp(nightSettings.shadowStrength,  daySettings.shadowStrength,  t);
+        RenderSettings.ambientLight = Color.Lerp(nightSettings.ambientColor, daySettings.ambientColor,   t);
+    }
+
+    /// <summary>
+    /// Rotiert die Sonne 360° um <see cref="sunAxis"/>.
+    /// 0 Uhr entspricht 0°, jede Stunde = 15°. sunNoonOffset verschiebt den Orbit,
+    /// sodass die Sonne zum gewünschten Zeitpunkt aufgeht/untergeht.
+    /// </summary>
     private void ApplyRotation()
     {
         if (sunLight == null) return;
 
-        // t = 0 bei Mitternacht (0h), t = 0.5 bei Mittag (12h), t = 1 bei Mitternacht (24h)
-        float t = currentHour / 24f;
-        Vector3 rotation = Vector3.Lerp(rotationAtMidnight, rotationAtNoon, Mathf.PingPong(t * 2f, 1f));
-        sunLight.transform.rotation = Quaternion.Euler(rotation);
+        // 360° / 24h = 15° pro Stunde
+        float angle = currentHour * 15f + sunNoonOffset;
+        sunLight.transform.rotation = Quaternion.AngleAxis(angle, sunAxis.normalized);
     }
 
-    /// <summary>Überprüft alle Zeitbereiche und löst Events aus bei Änderungen.</summary>
-    private void EvaluateTimeRanges()
+    /// <summary>Feuert Events wenn eine Phase beginnt oder endet.</summary>
+    private void EvaluatePhaseEvents(CyclePhase phase)
     {
-        foreach (var range in timeRanges)
-        {
-            bool inRange = IsHourInRange(currentHour, range);
+        bool dayNow   = (phase == CyclePhase.Day);
+        bool nightNow = (phase == CyclePhase.Night);
 
-            if (inRange && !range.isActive)
-            {
-                range.isActive = true;
-                Debug.Log($"[DayNightCycle] Zeitbereich '{range.rangeName}' beginnt um {GetFormattedTime()}.");
-                range.onRangeStart?.Invoke();
-            }
-            else if (!inRange && range.isActive)
-            {
-                range.isActive = false;
-                Debug.Log($"[DayNightCycle] Zeitbereich '{range.rangeName}' endet um {GetFormattedTime()}.");
-                range.onRangeEnd?.Invoke();
-            }
+        if (dayNow && !isDayActive)
+        {
+            isDayActive = true;
+            Debug.Log($"[DayNightCycle] Tag beginnt um {GetFormattedTime()}.");
+            onDayStart?.Invoke();
         }
+        else if (!dayNow && isDayActive)
+        {
+            isDayActive = false;
+            Debug.Log($"[DayNightCycle] Tag endet um {GetFormattedTime()}.");
+            onDayEnd?.Invoke();
+        }
+
+        if (nightNow && !isNightActive)
+        {
+            isNightActive = true;
+            Debug.Log($"[DayNightCycle] Nacht beginnt um {GetFormattedTime()}.");
+            onNightStart?.Invoke();
+        }
+        else if (!nightNow && isNightActive)
+        {
+            isNightActive = false;
+            Debug.Log($"[DayNightCycle] Nacht endet um {GetFormattedTime()}.");
+            onNightEnd?.Invoke();
+        }
+    }
+
+    // ─────────────────────────────────────────────
+    // Hilfsmethoden
+    // ─────────────────────────────────────────────
+
+    /// <summary>
+    /// Prüft ob 'hour' in [from, to) liegt, mit Wrap über Mitternacht.
+    /// </summary>
+    private static bool IsInRange(float hour, float from, float to)
+    {
+        if (from < to)
+            return hour >= from && hour < to;
+        else // über Mitternacht
+            return hour >= from || hour < to;
     }
 
     /// <summary>
-    /// Prüft ob eine Uhrzeit in einem Zeitbereich liegt.
-    /// Unterstützt Bereiche über Mitternacht (z.B. 22:00–02:00).
+    /// Gibt die Dauer von 'from' bis 'to' in Stunden zurück (mit Mitternacht-Wrap).
     /// </summary>
-    private bool IsHourInRange(float hour, TimeRange range)
+    private static float WrapDuration(float from, float to)
     {
-        if (range.startHour <= range.endHour)
-        {
-            // Normaler Bereich (z.B. 06:00–18:00)
-            return hour >= range.startHour && hour < range.endHour;
-        }
-        else
-        {
-            // Über Mitternacht (z.B. 22:00–04:00)
-            return hour >= range.startHour || hour < range.endHour;
-        }
+        float d = to - from;
+        return d < 0 ? d + 24f : d;
     }
 
     // ─────────────────────────────────────────────
-    // Gizmos (Editor-Hilfe)
+    // Editor-Vorschau
     // ─────────────────────────────────────────────
+
+    public bool ItIsDaytime()
+    {
+        return GetCurrentPhase() == CyclePhase.Day;
+    }
+
 
 #if UNITY_EDITOR
     private void OnValidate()
     {
-        // Vorschau im Editor: Rotation aktualisieren wenn Werte geändert werden
-        if (sunLight != null && !Application.isPlaying)
-        {
-            float t = startHour / 24f;
-            Vector3 rotation = Vector3.Lerp(rotationAtMidnight, rotationAtNoon, Mathf.PingPong(t * 2f, 1f));
-            sunLight.transform.rotation = Quaternion.Euler(rotation);
-        }
+        if (sunLight == null || Application.isPlaying) return;
+
+        var phase = GetCurrentPhase();
+        float t   = GetBlendT(phase);
+        ApplyLightSettings(t);
+        ApplyRotation();
     }
 #endif
 }

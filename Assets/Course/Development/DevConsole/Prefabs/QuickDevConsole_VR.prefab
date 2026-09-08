@@ -203,6 +203,7 @@ MonoBehaviour:
   gotPressedFeedbackTime: 0.2
   gotPressedScaling: 0.85
   pressDelay: 0.1
+  quickInfoText: {fileID: 0}
 --- !u!1 &1541255993040129180
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,8 +515,8 @@ GameObject:
   - component: {fileID: 2257209693832167755}
   - component: {fileID: 8820823197970178168}
   - component: {fileID: 4259867277637287305}
-  - component: {fileID: 6533820822335187491}
-  - component: {fileID: 962873014605595728}
+  - component: {fileID: 3022504643210138584}
+  - component: {fileID: 2673561946305366609}
   m_Layer: 5
   m_Name: QuickDevConsole_VR
   m_TagString: Untagged
@@ -642,20 +643,21 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RaycastTriggerInteraction: 1
---- !u!114 &6533820822335187491
+--- !u!114 &3022504643210138584
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4605051917784953958}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fbf654a179fc7c4fb9257f2cb200ee5, type: 3}
+  m_Script: {fileID: 11500000, guid: 9bf3fd6b0adca0f438eaa20909180910, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BuildRelative_AutomaticDestroy
   destroyOnScenario: 0
---- !u!114 &962873014605595728
+  vrActive: 0
+--- !u!114 &2673561946305366609
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -664,16 +666,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 4605051917784953958}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00c85b404b643eb45886bfc1434fcc32, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c7b55192e72c20469c9bfb7072883b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraRelative_UI
   camera: {fileID: 0}
   distance: 3
   angle: 0
-  height: 0.025
+  height: 0.03
   delay: 0.5
   movementThresholdAngle: 10
   moveSpeed: 2
+  noMovement: 0
 --- !u!1 &4795082836968152166
 GameObject:
   m_ObjectHideFlags: 0

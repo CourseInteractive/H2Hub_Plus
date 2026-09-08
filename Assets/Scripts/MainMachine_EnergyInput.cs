@@ -13,6 +13,8 @@ public class MainMachine_EnergyInput : MonoBehaviour
         solarUsed = false;
         machine.Disconnect(solarModule);
         machine.Connect(defaultEnergyModule);
+        defaultEnergyModule.gameObject.SetActive(true);
+        InGameLog.Log("Switch To NormalEnergy");
     }
 
     public void SwitchToSolar()
@@ -20,6 +22,8 @@ public class MainMachine_EnergyInput : MonoBehaviour
         solarUsed = true;
         machine.Disconnect(defaultEnergyModule);
         machine.Connect(solarModule);
+        solarModule.gameObject.SetActive(true);
+        InGameLog.Log("Switch To SolarModule");
     }
 
 }

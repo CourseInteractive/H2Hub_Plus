@@ -13,13 +13,13 @@ public class TutorialEventLibrary : MonoBehaviour
 
     }
 
-    public void ListenFor(string name)
+    public void ListenFor(string name, bool clearBefore = false)
     {
         foreach(GameEventListen listener in tutorialEvents)
         {
             if(listener.internName == name)
             {
-                GameEventManager.Instance.SetNewListener(listener);
+                GameEventManager.Instance.SetNewListener(listener,false);
                 return;
             }
         }

@@ -24,6 +24,8 @@ public class MachineUI : MonoBehaviour
     public TMP_Text powerLabel;
     public TMP_Text warningLabel;
 
+    public TMP_Text errorLabel;
+
     private void Update()
     {
         if (machine == null || label == null) return;
@@ -40,5 +42,7 @@ public class MachineUI : MonoBehaviour
             label.text  = labelStopped;
             label.color = colorStopped;
         }
+
+        errorLabel.text = machine.analysedError;
     }
 }

@@ -63,6 +63,8 @@ public class AlternatingMeshLight : MonoBehaviour
 
     void SetTo(float value)
     {
+        if (_material == null)
+            return;
         // Farbe direkt am Material setzen
         _material.SetColor(ColorID, Color.Lerp(color1, color2, value));
         _material.SetColor(ColorID2, Color.Lerp(color1, color2, value));

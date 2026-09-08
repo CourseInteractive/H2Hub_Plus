@@ -9,7 +9,7 @@ public class ActionListenForTutorialEvent : Action
     public bool clear;
     override public void ExecuteAction()
     {
-        if(clear)
+        if(clear && tutEventName.Trim() == "")
         {
             GameEventManager.Instance.ClearListeners();
             ReportActionEnd();
@@ -18,7 +18,7 @@ public class ActionListenForTutorialEvent : Action
 
         if(GameEventManager.Instance.tutEventLibrary)
         {
-            GameEventManager.Instance.tutEventLibrary.ListenFor(tutEventName);
+            GameEventManager.Instance.tutEventLibrary.ListenFor(tutEventName, clear);
         }
         ReportActionEnd();
     }

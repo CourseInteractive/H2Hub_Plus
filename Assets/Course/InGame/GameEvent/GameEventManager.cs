@@ -31,6 +31,20 @@ public class GameEventManager : MonoBehaviour
         listeners.Add(listener);
     }
 
+    public void RemoveListener(GameEventListen listener)
+    {
+        int indexToRemove = -1;
+        for(int i = 0; i < listeners.Count; i++)
+        {
+            if (listeners[i] == listener)
+                indexToRemove = i;
+        }
+        if(indexToRemove > -1)
+        {
+            listeners.RemoveAt(indexToRemove);
+        }
+    }
+
     public void PrintListeners()
     {
         foreach(GameEventListen listener in listeners)
@@ -68,6 +82,7 @@ public class GameEventManager : MonoBehaviour
                     if (possEvent.eventParameter.Trim() == "" || possEvent.eventParameter.Trim() == gEvent.eventParameter)
                     {
                         listener.Execute();
+                        RemoveListener(listener);
                         return;
                     }
 

@@ -9,11 +9,11 @@ public class VillageUI : MonoBehaviour
 
     public GameObject waterProblemObject;
     public GameObject energyProblemObject;
-
+    public GameObject warmthProblemObject;
     // Update is called once per frame
     void Update()
     {
-        costLabel.text = string.Format(costFormat, Village.Instance.waterPrice, Village.Instance.energyPrice);
+        costLabel.text = string.Format(costFormat, Village.Instance.waterPrice, Village.Instance.energyPrice, Village.Instance.warmthPrice);
         if (Village.Instance.energyProblemRunning)
             energyProblemObject.SetActive(true);
         else
@@ -22,6 +22,10 @@ public class VillageUI : MonoBehaviour
             waterProblemObject.SetActive(true);
         else
             waterProblemObject.SetActive(false);
+        if (Village.Instance.warmthProblemRunning)
+            warmthProblemObject.SetActive(true);
+        else
+            warmthProblemObject.SetActive(false);
 
     }
 

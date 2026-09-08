@@ -60,14 +60,22 @@ public class MainMachine : MonoBehaviour
 
     public Socket[] elektrolyseModuleSockets;
 
-    public Socket inputSocket_Water;
+    public Socket workSocket_Water;
+    public Socket workSocket_Refine;
 
+    public string analysedError;
+    public string errorStorage;
     private void Awake()
     {
         instance = this;
         TurnOff();
         SetRunningPower(0.6f);
         runningPowerKnob.value = runningPower;
+    }
+
+    public void ErrorAnalyse()
+    {
+        analysedError = errorStorage;
     }
 
 
@@ -119,7 +127,7 @@ public class MainMachine : MonoBehaviour
     {
         currentState = MachineState.Off;
         currentPowerLevel = 0f;
-        Debug.Log("[MainMachine] Ausgeschaltet.");
+ 
         mainLever.value = false;
     }
 
@@ -189,30 +197,37 @@ public class MainMachine : MonoBehaviour
         ProduceOutputs();
     }
 
+    List<RepairModule> workingModules;
+
     bool CheckModulesForProblems()
     {
-        bool elModulePresent = false;
-        foreach(Socket elSocket in elektrolyseModuleSockets)
+       
+        workingModules = new List<RepairModule>();
+        foreach (Socket elSocket in elektrolyseModuleSockets)
         {
             if (elSocket.lockedInteractable != null)
             {
-                elModulePresent = true;
                 ToSocketInteractable interactable = elSocket.lockedInteractable;
                 RepairModule module = interactable.GetComponent<RepairModule>();
                 if (elSocket.kind != module.kind)
                 {
-                    return false;
+                    continue;
                 }
                 if (!module.working)
                 {
-                    return false;
+                    continue;
                 }
+                workingModules.Add(module);
             }
              
         }
 
-        if(!elModulePresent)
+        if(workingModules.Count == 0)
+        {
+            errorStorage = "Defekt in Elektrolyseur";
             return false;
+        }
+           
         /*
         if (repairModuleSocket.lockedInteractable != null)
         {
@@ -236,26 +251,49 @@ public class MainMachine : MonoBehaviour
             return false;
         }*/
 
-        if (inputSocket_Water.lockedInteractable != null)
+        if (workSocket_Water.lockedInteractable != null)
         {
-            ToSocketInteractable interactable = inputSocket_Water.lockedInteractable;
+            ToSocketInteractable interactable = workSocket_Water.lockedInteractable;
             RepairModule module = interactable.GetComponent<RepairModule>();
-            if (inputSocket_Water.kind != module.kind)
+            if (workSocket_Water.kind != module.kind)
             {
-                Debug.Log("4");
+                errorStorage = "Defekt in Deionisier";
                 return false;
             }
             if (!module.working)
             {
-                Debug.Log("5");
+                errorStorage = "Defekt in Deionisier";
                 return false;
             }
         }
         else
         {
-            Debug.Log("6");
+            errorStorage = "Defekt in Deionisier";
             return false;
         }
+
+        if (workSocket_Refine.lockedInteractable != null)
+        {
+            ToSocketInteractable interactable = workSocket_Refine.lockedInteractable;
+            RepairModule module = interactable.GetComponent<RepairModule>();
+            if (workSocket_Refine.kind != module.kind)
+            {
+                errorStorage = "Defekt in Aufbereiter";
+                return false;
+            }
+            if (!module.working)
+            {
+                errorStorage = "Defekt in Aufbereiter";
+                return false;
+            }
+        }
+        else
+        {
+            errorStorage = "Defekt in Aufbereiter";
+            return false;
+        }
+        errorStorage = "";
+        analysedError = "";
         return true;
     }
 
@@ -273,7 +311,16 @@ public class MainMachine : MonoBehaviour
             module.TriggerImmediateRefill();
 
             if (module == null || !module.HasAtLeast(recipe.inputAmount * currentPowerLevel))
+            {
+                module.TriggerError();
+                if(module.ResourceType == ResourceType.H2O)
+                    errorStorage = "Defekt in Deionisier";
                 return false;
+            }
+            else
+            {
+                module.DeactivateError();
+            }
         }
         return true;
     }
@@ -284,6 +331,7 @@ public class MainMachine : MonoBehaviour
         {
             Container module = FindModule(inputModules, recipe.inputType);
             float realInputUsed = recipe.inputAmount * currentPowerLevel;
+            //TODO Einbauen, wie viele Zellen aktiv -> Höherer Konsum
             if (module.ResourceType == ResourceType.H2O && !BuildVersionSetup_Ingame.IsCustomSettingActive("UnlimitedWater"))
             {
                 module?.Remove(realInputUsed);
@@ -317,12 +365,12 @@ public class MainMachine : MonoBehaviour
 
     private void ProduceOutputs()
     {
-        float elModuleFactor = 0f;
-        foreach (Socket elSocket in elektrolyseModuleSockets)
+        float elModuleFactor = (workingModules.Count * 1f) * 0.33333f;
+     /*   foreach (Socket elSocket in elektrolyseModuleSockets)
         {
             if (elSocket.lockedInteractable)
                 elModuleFactor += 0.3333f;
-        }
+        }*/
 
 
         foreach (ConversionOutput output in outputs)
@@ -358,18 +406,25 @@ public class MainMachine : MonoBehaviour
 
     void ReduceOutputDurability(float amount)
     {
-        foreach (Socket elSocket in elektrolyseModuleSockets)
+        foreach (RepairModule module in workingModules)
         {
-            if(elSocket.lockedInteractable != null)
-                elSocket.lockedInteractable.GetComponent<RepairModule>().UseUpAmount(amount);
+            if(module != null)
+            {
+                workSocket_Refine.lockedInteractable.GetComponent<RepairModule>().UseUpAmount(amount);
+                module.GetComponent<RepairModule>().UseUpAmount(amount);
+            }
         }
-         //   repairModuleSocket.lockedInteractable.GetComponent<RepairModule>().UseUpAmount(amount);
     }
 
 
     void ReduceInputDurability(float amount)
     {
-        inputSocket_Water.lockedInteractable.GetComponent<RepairModule>().UseUpAmount(amount);
+        workSocket_Water.lockedInteractable.GetComponent<RepairModule>().UseUpAmount(amount);
+    }
+
+    void ReduceRefineDurability(float amount)
+    {
+        workSocket_Refine.lockedInteractable.GetComponent<RepairModule>().UseUpAmount(amount);
     }
 
     public ProblemManager problemManager;
@@ -547,12 +602,13 @@ public class MainMachine : MonoBehaviour
 
     void ProblemFound()
     {
+        TurnOff();
         if (problemOnMachine)
             return;
         GameEventManager.Instance.ReportGameEvent("Problem");
         problemOnMachine = true;
-        Debug.Log("Problem");
-        TurnOff();
+        Debug.Log("[MainMachine] Problem -> Turn Off.");
+
         problemDisplay.Activate();
     }
 

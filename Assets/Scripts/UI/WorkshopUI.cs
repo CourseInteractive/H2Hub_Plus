@@ -55,7 +55,7 @@ public class WorkshopUI : MonoBehaviour
 
     private void Update()
     {
-        timeLabel.text = DayNightCycle.instance.GetFormattedTime();
+        timeLabel.text = DayNightCycle.Instance.GetFormattedTime();
     }
 
     // ── Event-Handler ─────────────────────────────────────────────────────────

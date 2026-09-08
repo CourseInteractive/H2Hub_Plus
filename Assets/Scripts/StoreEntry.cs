@@ -16,6 +16,7 @@ public class StoreEntry : MonoBehaviour
     public bool activateImmediately;
     public bool repeatable = true;
     public bool instantiate = true;
+    public Transform instantiatePoint;
 
     public Store store;
     private void Start()
@@ -45,8 +46,16 @@ public class StoreEntry : MonoBehaviour
             Workshop.Instance.SubMoney(price);
         if(instantiate)
         {
-            GameObject nObj = Instantiate(objToActivate, objToActivate.transform.position, objToActivate.transform.rotation);
-            nObj.SetActive(true);
+            if(instantiatePoint != null)
+            {
+                GameObject nObj = Instantiate(objToActivate, instantiatePoint.position, instantiatePoint.rotation);
+                nObj.SetActive(true);
+            }
+            else
+            {
+                GameObject nObj = Instantiate(objToActivate, store.purchaseInstantiatePoint.position, objToActivate.transform.rotation);
+                nObj.SetActive(true);
+            }
         }
       else
         {

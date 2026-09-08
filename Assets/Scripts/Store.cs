@@ -58,6 +58,24 @@ public class Store : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (activeEntry != null)
+        {
+            UpdateBuyButtonActivity();
+        }
+    }
+
+    void UpdateBuyButtonActivity()
+    {
+        if (activeEntry.PurchasePossible())
+            buyButton.interactable = true;
+        else
+            buyButton.interactable = false;
+        if (blockAllOther && activeEntry != allowedEntry)
+            buyButton.interactable = false;
+    }
+
     public void SelectEntry(StoreEntry entry)
     {
       //  Debug.Log("Jo");
@@ -68,6 +86,8 @@ public class Store : MonoBehaviour
         
     }
 
+    public Transform purchaseInstantiatePoint;
+
     void UpdateDetailDisplay()
     {
         if (activeEntry == null)
@@ -77,12 +97,7 @@ public class Store : MonoBehaviour
         }
         detailHeader.text = activeEntry.labelText;
         buyButtonText.text = $"Kaufen ({ activeEntry.price})";
-        if (activeEntry.PurchasePossible())
-            buyButton.interactable = true;
-        else
-            buyButton.interactable = false;
-        if(blockAllOther && activeEntry != allowedEntry)
-            buyButton.interactable = false;
+        UpdateBuyButtonActivity();
         string details = activeEntry.detailToken;
         detail01_Text.text = "";
         detail02_Text.text = "";
@@ -113,7 +128,7 @@ public class Store : MonoBehaviour
     public bool blockAllOther;
     public void ReduceAllowedPurchases(bool value)
     {
-        blockAllOther = true;
+        blockAllOther = value;
 
         UpdateDetailDisplay();
     }

@@ -4,11 +4,13 @@ using UnityEngine.UI;
 public class InGameLogConsole : MonoBehaviour
 {
     private Text uiText;
+    public int maxLines = 40;
 
     void Awake()
     {
         uiText = GetComponent<Text>();
         InGameLog.OnLogChanged += UpdateDisplay;
+        InGameLog.maxLogs = maxLines;
         UpdateDisplay(); // initialer Aufbau
     }
 
@@ -31,6 +33,11 @@ public class InGameLogConsole : MonoBehaviour
     }
 
     public void OnDisable()
+    {
+        Clear();
+    }
+
+    public void Clear()
     {
         InGameLog.Clear();
     }

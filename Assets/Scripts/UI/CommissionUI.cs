@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 /// <summary>
 /// Displays a <see cref="Commission"/> in the UI using TextMeshPro elements.
@@ -36,6 +37,8 @@ public class CommissionUI : MonoBehaviour
     [Header("Reward Format")]
     [Tooltip("C# format string for the reward float, e.g. \"0\" or \"0.##\"")]
     [SerializeField] private string rewardFormat = "0";
+
+    public Button btn;
 
     public GameObject[] resourceIcons;
 
@@ -110,5 +113,12 @@ public class CommissionUI : MonoBehaviour
     public void PerformFailed()
     {
         GameEventManager.Instance.ReportGameEvent("Commission", "Failed");
+        btn.interactable = false;
+        Invoke("ResetButton", 2f);
+    }
+
+    void ResetButton()
+    {
+        btn.interactable = true;
     }
 }

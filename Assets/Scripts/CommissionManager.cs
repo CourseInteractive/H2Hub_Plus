@@ -33,6 +33,9 @@ public class CommissionManager : MonoBehaviour
     [ContextMenu("Create New")]
     public void CreateNewCommission(bool showMessage = true)
     {
+        if (currentCommissions.Count >= maximumCommissions)
+            return;
+
         CommissionDummy com = database.GetRandomCommission(currentCommissions);
         
         AddCommission(com, showMessage);
@@ -95,7 +98,12 @@ public class CommissionManager : MonoBehaviour
             return;
         if(timer > 0)
         {
-            timer -= Time.deltaTime;
+            float factor = 1f;
+            if (commissionCounter == 0)
+                factor = 3f;
+            if (commissionCounter == 1)
+                factor = 2f;
+            timer -= Time.deltaTime * factor;
             if(timer < 0)
             {
                 SetNewCommissionTimer();

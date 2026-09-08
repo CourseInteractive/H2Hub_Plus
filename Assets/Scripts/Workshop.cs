@@ -43,6 +43,8 @@ public class Workshop : MonoBehaviour
     public Socket[] sellSockets;
     List<Container> connectedContainers;
 
+    public Container spaceContainer_hydrogen;
+
     private void Start()
     {
         // Startwert setzen und UI sofort informieren
@@ -148,5 +150,23 @@ public class Workshop : MonoBehaviour
     private List<Container> FindModules(List<Container> list, ResourceType type)
     {
         return list.FindAll(c => c != null && c.ResourceType == type);
+    }
+
+    public void PumpHydrogenToSpaceContainer(int amount = 10)
+    {
+        if(AmountAvailable(amount, ResourceType.H))
+        {
+            RemoveAmount(amount, ResourceType.H);
+            spaceContainer_hydrogen.Add(amount);
+        }
+    }
+
+    public Course.PrototypeScripting.Sequence spaceQuestSequence;
+
+    public void StartSpaceQuest()
+    {
+        if ((spaceContainer_hydrogen.CurrentAmount / spaceContainer_hydrogen.MaxAmount) < 0.98f)
+            return;
+        spaceQuestSequence.ExecuteCompleteSequence();
     }
 }

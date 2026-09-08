@@ -133,6 +133,7 @@ public class BuildVersionSetup_Editor : EditorWindow
 			if (GUILayout.Button("+1 Patch"))
 			{
 				patch++;
+				build = 0;
 				version = $"{major}.{minor}.{patch}.{build:D3}"; // Format mit führenden Nullen
 			}
 
@@ -140,6 +141,11 @@ public class BuildVersionSetup_Editor : EditorWindow
 			if (GUILayout.Button("+1 Build"))
 			{
 				build++;
+				version = $"{major}.{minor}.{patch}.{build:D3}"; // Format mit führenden Nullen
+			}
+			if (GUILayout.Button("+100 Build"))
+			{
+				build += 100;
 				version = $"{major}.{minor}.{patch}.{build:D3}"; // Format mit führenden Nullen
 			}
 			PlayerSettings.bundleVersion = version;

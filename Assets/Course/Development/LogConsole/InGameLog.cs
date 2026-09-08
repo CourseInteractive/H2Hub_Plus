@@ -7,7 +7,7 @@ public static class InGameLog
     public static event Action OnLogChanged;
 
     private static List<string> logs = new List<string>();
-    private static int maxLogs = 100;
+    public static int maxLogs = 100;
 
     public static void Log(string message)
     {

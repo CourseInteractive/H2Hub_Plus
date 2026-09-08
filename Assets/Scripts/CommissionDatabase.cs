@@ -51,20 +51,46 @@ public class CommissionDatabase : ScriptableObject
         // Wenn nichts verfügbar → komplett random als Fallback
         if (available.Count == 0)
         {
+            InGameLog.Log("New Commission - Fallback (No Available)");
             CommissionPreset fallback = presets[Random.Range(0, presets.Length)];
             return new CommissionDummy(fallback);
         }
-
+        List<CommissionPreset> pool = available;
         // Priorisiere Typen, die ihr Minimum (limit.x > 0) noch nicht erreicht haben
-        List<CommissionPreset> prioritized = available.Where(p => {
+     /*   List<CommissionPreset> prioritized = available.Where(p => {
             CommissionPresetLimits l = limits.FirstOrDefault(l => l.type == p.type);
             if (l == null || l.limits.x <= 0) return false;
             int count = currentCounts.ContainsKey(p.type) ? currentCounts[p.type] : 0;
             return count < l.limits.x;
         }).ToList();
+      
+      
+        if (prioritized.Count > 0)
+        {
+            InGameLog.Log("New Commission: Prioritized");
+            pool = prioritized;
+        }*/
+        List<CommissionPreset> progressRelativePool = new List<CommissionPreset>();
+        float progress = ProgressRelativeWorld.instance.GeneralProgressValue();
+        foreach(CommissionPreset presetX in pool)
+        {
+            if (progress < 0.3f && presetX.type == CommissionPresetType.Standard_Small)
+                progressRelativePool.Add(presetX);
+            else if (progress < 0.7f && presetX.type == CommissionPresetType.Standard_Mid)
+                progressRelativePool.Add(presetX);
+            else if (progress > 0.7f && presetX.type == CommissionPresetType.Standard_Big)
+                progressRelativePool.Add(presetX);
+        }
+        // Wenn nichts verfügbar → komplett random als Fallback
+        if (progressRelativePool.Count == 0)
+        {
+            InGameLog.Log("New Commission: Fallback after No Progress Relative   (" + progress + ")");
+            CommissionPreset fallback = presets[Random.Range(0, presets.Length)];
+            return new CommissionDummy(fallback);
+        }
 
-        List<CommissionPreset> pool = prioritized.Count > 0 ? prioritized : available;
-        CommissionPreset preset = pool[Random.Range(0, pool.Count)];
+        InGameLog.Log("New Commission - ProgressRelative (" + progress + ")");
+        CommissionPreset preset = progressRelativePool[Random.Range(0, progressRelativePool.Count)];
         return new CommissionDummy(preset);
     }
 }
@@ -91,9 +117,11 @@ public class CommissionPreset
         return Mathf.RoundToInt( Random.Range(amountLimits.x, amountLimits.y));
     }
 
-    public int GetReward()
+    public int GetReward(int selectedAmount)
     {
-        return Mathf.RoundToInt(Random.Range(rewardLimits.x, rewardLimits.y));
+        float v = Mathf.InverseLerp(amountLimits.x, amountLimits.y, selectedAmount);
+        //return Mathf.RoundToInt(Random.Range(rewardLimits.x, rewardLimits.y));
+        return Mathf.RoundToInt(Mathf.Lerp(rewardLimits.x, rewardLimits.y, v));
     }
 }
 
@@ -104,7 +132,7 @@ public class CommissionDummy
     {
         type = preset.type;
         amount = preset.GetAmount();
-        reward = preset.GetReward();
+        reward = preset.GetReward(amount);
         resourceType = preset.resource;
         receiver = preset.receiver;
         icon = preset.icon;

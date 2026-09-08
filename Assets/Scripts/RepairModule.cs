@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class RepairModule : MonoBehaviour
@@ -9,7 +10,7 @@ public class RepairModule : MonoBehaviour
 
     public ToSocketInteractable socketConnection;
 
-    public enum RepairKind { MainMachine, Water }
+    public enum RepairKind { MainMachine, Water, Refine }
     public RepairKind kind;
 
     public float amountUsed;
@@ -69,19 +70,24 @@ public class RepairModule : MonoBehaviour
     {
         grabable = GetComponent<XRGrabInteractable>();
         rBody = GetComponent<Rigidbody>();
+        BoxCollider coll = GetComponent<BoxCollider>();
         if (grabable)
         {
-            if(value)
+            if(value)       //Greifbar
             {
-                rBody.useGravity = true;
-                grabable.enabled = true;
-                rBody.isKinematic = false;
+                // rBody.useGravity = true;
+                //grabable.enabled = true;
+                //rBody.isKinematic = false;
+                coll.enabled = true;
+                grabable.interactionLayers = InteractionLayerMask.GetMask("Repair");
             }
             else
             {
-                rBody.useGravity = false;
-                rBody.isKinematic = true;
-                grabable.enabled = false;
+                //rBody.useGravity = false;
+                //rBody.isKinematic = true;
+                //grabable.enabled = false;
+                grabable.interactionLayers = InteractionLayerMask.GetMask("NoInteract");
+                coll.enabled = false;
             }
 
         }

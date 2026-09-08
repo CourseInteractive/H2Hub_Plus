@@ -22,10 +22,15 @@ public class Container : MonoBehaviour
     float lossTimer = 0;
 
     public GameObject flowIndicator;
+    public AlternatingMeshLight errorIndicator;
+
+    public bool reportToProgressSystem;
 
     private void Awake()
     {
         HideFlowIndicator();
+        if (reportToProgressSystem)
+            ProgressRelativeWorld.instance.ReportNewContainer(this);
     }
 
     protected void HideFlowIndicator()
@@ -185,4 +190,15 @@ public class Container : MonoBehaviour
         }
     }
 
+    public void TriggerError()
+    {
+        if(errorIndicator)
+            errorIndicator.Activate();
+    }
+
+    public void DeactivateError()
+    {
+        if (errorIndicator)
+            errorIndicator.SetOff();
+    }
 }

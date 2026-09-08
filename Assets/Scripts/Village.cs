@@ -6,25 +6,32 @@ public class Village : MonoBehaviour
 
     public int defaultWaterPrice = 4;
     public int defaultEnergyPrice = 2;
+    public int defaultWarmthPrice = 2;
 
     public int waterPrice = 4;
     public int energyPrice = 2;
     public int hydrogenPrice = 10;
+    public int warmthPrice;
 
     public int waterSpikePrice = 10;
     public int energySpikePrice = 10;
+    public int warmthSpikePrice = 5;
 
     public Vector2 waterProblemTimeLimits;
     public Vector2 energyProblemTimeLimits;
+    public Vector2 warmthProblemTimeLimits;
     public Vector2 waterProblemRunningTimeLimits;
     public Vector2 energyProblemRunningTimeLimits;
+    public Vector2 warmthProblemRunningTimeLimits;
     float waterProblemTimer;
     float energyProblemTimer;
+    float warmthProblemTimer;
 
     public bool waterProblemRunning;
     public bool energyProblemRunning;
+    public bool warmthProblemRunning;
 
-    public int warmthPrice;
+
 
     public bool openForProblems;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -32,6 +39,7 @@ public class Village : MonoBehaviour
     {
         waterProblemTimer = Random.Range(waterProblemTimeLimits.x, waterProblemTimeLimits.y);
         energyProblemTimer = Random.Range(energyProblemTimeLimits.x, energyProblemTimeLimits.y);
+        warmthProblemTimer = Random.Range(warmthProblemTimeLimits.x, warmthProblemTimeLimits.y);
         Instance = this;
     }
 
@@ -67,7 +75,7 @@ public class Village : MonoBehaviour
             case ResourceType.O:
                 break;
             case ResourceType.W:
-                price = warmthPrice;
+                    price = warmthPrice;
                 break;
         }
 
@@ -84,7 +92,7 @@ public class Village : MonoBehaviour
     {
         if (!openForProblems)
             return;
-        waterProblemTimer -= Time.deltaTime;
+        waterProblemTimer -= Time.deltaTime * ProgressRelativeWorld.instance.GeneralProgressValue(); ;
         if(waterProblemTimer < 0)
         {
             if(waterProblemRunning)
@@ -92,13 +100,15 @@ public class Village : MonoBehaviour
                 waterProblemRunning = false;
                 waterPrice = defaultWaterPrice;
                 waterProblemTimer = Random.Range(waterProblemTimeLimits.x, waterProblemTimeLimits.y);
+                IncomingMessageUI.instance.FreeFromPosition();
+                IncomingMessageUI.instance.ShowMessage("Wasserknappheit", "Wir haben eine Lieferung Wasser bekommen, erhöhte Preise aufgehoben.", 6, 1);
             }
             else
             {
                 WaterProblem();
             }
         }
-        energyProblemTimer -= Time.deltaTime;
+        energyProblemTimer -= Time.deltaTime * ProgressRelativeWorld.instance.GeneralProgressValue(); ;
         if (energyProblemTimer < 0)
         {
             if (energyProblemRunning)
@@ -106,10 +116,28 @@ public class Village : MonoBehaviour
                 energyProblemRunning = false;
                 energyPrice = defaultEnergyPrice;
                 energyProblemTimer = Random.Range(energyProblemTimeLimits.x, energyProblemTimeLimits.y);
+                IncomingMessageUI.instance.FreeFromPosition();
+                IncomingMessageUI.instance.ShowMessage("Brennstoffmangel", "Neue Energie-Speicher und Module sind fertig. Energiepreise wieder herabgesetzt..", 1, 1);
             }
             else
             {
                 EnergyProblem();
+            }
+        }
+        warmthProblemTimer -= Time.deltaTime * ProgressRelativeWorld.instance.GeneralProgressValue();
+        if (warmthProblemTimer < 0)
+        {
+            if (warmthProblemRunning)
+            {
+                warmthProblemRunning = false;
+                warmthPrice = defaultWarmthPrice;
+                warmthProblemTimer = Random.Range(warmthProblemTimeLimits.x, warmthProblemTimeLimits.y);
+                IncomingMessageUI.instance.FreeFromPosition();
+                IncomingMessageUI.instance.ShowMessage("Brennstoffmangel", "Neue Energie-Speicher und Module sind fertig. Energiepreise wieder herabgesetzt..", 1, 1);
+            }
+            else
+            {
+                WarmthProblem();
             }
         }
     }
@@ -130,13 +158,24 @@ public class Village : MonoBehaviour
         waterProblemTimer = Random.Range(waterProblemRunningTimeLimits.x, waterProblemRunningTimeLimits.y);
 
         IncomingMessageUI.instance.FreeFromPosition();
-        IncomingMessageUI.instance.ShowMessage("Wasserknappheit", "Problem! Wasser wird teuer. Wir arbeiten dran.", 4, 1);
+        IncomingMessageUI.instance.ShowMessage("Wasserknappheit", "Problem! Wasser wird teuer. Wir arbeiten dran.", 6, 1);
+    }
+
+    public void WarmthProblem()
+    {
+        warmthProblemRunning = true;
+        warmthPrice = warmthSpikePrice;
+        warmthProblemTimer = Random.Range(warmthProblemRunningTimeLimits.x, warmthProblemRunningTimeLimits.y);
+
+        IncomingMessageUI.instance.FreeFromPosition();
+        IncomingMessageUI.instance.ShowMessage("Kälte", "Module für die Wärmeversorgung sind ausgefallen. Mit Wärme aus deiner Maschine könntest du uns versorgen.", 6, 1);
     }
 
     public void PrintTimers()
     {
-        InGameLog.Log("Energy Problem in " + energyProblemTimer);
-        InGameLog.Log("Water Problem in " + waterProblemTimer);
+        InGameLog.Log("Energie Problem in " + energyProblemTimer);
+        InGameLog.Log("Wasser Problem in " + waterProblemTimer);
+        InGameLog.Log("Wärme Problem in " + warmthProblemTimer);
     }
 
 }
