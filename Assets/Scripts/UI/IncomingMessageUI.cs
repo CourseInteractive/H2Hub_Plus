@@ -38,6 +38,19 @@ public class IncomingMessageUI : MonoBehaviour
         movementToCam.FreeFromPosition();
     }
 
+
+    public void ShowMessage(MessageInfo info)
+    {
+        ClearResourceInfo();
+        messageText.text = SimpleLocalization.GetLocalization(info.message);
+        callerText.text = SimpleLocalization.GetLocalization(info.caller);
+        icon.sprite = portraits[info.iconIndex];
+        buttonText.text = buttonTexts[info.buttonTextIndex];
+        if (!info.noResource)
+            SetResourceInfo(info.resType);
+        gameObject.SetActive(true);
+    }
+
     public void ShowMessage(string caller, string message)
     {
         ShowMessage(caller,message, 0, 0);
@@ -87,3 +100,90 @@ public class IncomingMessageUI : MonoBehaviour
         gameObject.SetActive(false);
     }
 }
+
+public class MessageInfo
+{
+    public string caller;
+    public string message;
+    public int iconIndex;
+    public int buttonTextIndex;
+    public ResourceType resType;
+    public bool noResource;
+    public MessageType mesType;
+    /// <summary>Wenn true: kein Button, nur Sound, Nachricht wird sofort geöffnet.</summary>
+    public bool openImmediately;
+    public enum MessageType
+    {
+        Commission,
+        Warning,
+        Important
+    }
+
+    // Parameterloser Konstruktor bleibt erhalten (für Object-Initializer & Serialisierung)
+    public MessageInfo() { }
+
+    /// <summary>Nachricht mit Ressource.</summary>
+    public MessageInfo(string caller, string message, MessageType mesType, ResourceType resType,
+                       int iconIndex = 0, int buttonTextIndex = 0, bool openImmediately = false)
+
+    {
+        this.caller = caller;
+        this.message = message;
+        this.mesType = mesType;
+        this.resType = resType;
+        this.iconIndex = iconIndex;
+        this.buttonTextIndex = buttonTextIndex;
+        this.openImmediately = openImmediately;
+        noResource = false;
+    }
+
+    /// <summary>Nachricht ohne Ressource.</summary>
+    public MessageInfo(string caller, string message, MessageType mesType,
+                       int iconIndex = 0, int buttonTextIndex = 0, bool openImmediately = false)
+
+    {
+        this.caller = caller;
+        this.message = message;
+        this.mesType = mesType;
+        this.iconIndex = iconIndex;
+        this.buttonTextIndex = buttonTextIndex;
+        this.openImmediately = openImmediately;
+        noResource = true;
+    }
+
+    /// <summary>
+    /// Markiert die Nachricht zum sofortigen Öffnen. Verkettbar:
+    /// MessageInfo.Warning("Technik", "Alarm!").Immediate()
+    /// </summary>
+    public MessageInfo Immediate(bool value = true)
+    {
+        openImmediately = value;
+        return this;
+    }
+
+    // ------------------------------------------------ Kurzformen pro Typ
+
+    public static MessageInfo Commission(string caller, string message, ResourceType res,
+                                          int icon = 0, int buttonText = 0, bool openImmediately = false)
+         => new MessageInfo(caller, message, MessageType.Commission, res, icon, buttonText, openImmediately);
+
+    public static MessageInfo Warning(string caller, string message,
+                                      int icon = 0, int buttonText = 0, bool openImmediately = false)
+        => new MessageInfo(caller, message, MessageType.Warning, icon, buttonText, openImmediately);
+
+    public static MessageInfo Important(string caller, string message,
+                                        int icon = 0, int buttonText = 0, bool openImmediately = false)
+        => new MessageInfo(caller, message, MessageType.Important, icon, buttonText, openImmediately);
+
+
+
+}
+/*
+public enum ResourceType
+{
+    H2O,    // Wasser (Input)
+    E,      // Energie (Input)
+    H,      // Wasserstoff (Output)
+    O,      // Sauerstoff (Output)
+    W       // Wärme (Output)
+}*/

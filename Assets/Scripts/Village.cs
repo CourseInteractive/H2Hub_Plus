@@ -101,7 +101,7 @@ public class Village : MonoBehaviour
                 waterPrice = defaultWaterPrice;
                 waterProblemTimer = Random.Range(waterProblemTimeLimits.x, waterProblemTimeLimits.y);
                 IncomingMessageUI.instance.FreeFromPosition();
-                IncomingMessageUI.instance.ShowMessage("Wasserknappheit", "Wir haben eine Lieferung Wasser bekommen, erhöhte Preise aufgehoben.", 6, 1);
+                MessageInbox.instance.AddMessage(MessageInfo.Warning("Wasserknappheit", "Wir haben eine Lieferung Wasser bekommen, erhöhte Preise aufgehoben.", icon: 6, buttonText: 1));
             }
             else
             {
@@ -117,7 +117,9 @@ public class Village : MonoBehaviour
                 energyPrice = defaultEnergyPrice;
                 energyProblemTimer = Random.Range(energyProblemTimeLimits.x, energyProblemTimeLimits.y);
                 IncomingMessageUI.instance.FreeFromPosition();
-                IncomingMessageUI.instance.ShowMessage("Brennstoffmangel", "Neue Energie-Speicher und Module sind fertig. Energiepreise wieder herabgesetzt..", 1, 1);
+                MessageInbox.instance.AddMessage(MessageInfo.Warning("Brennstoffmangel", "Neue Energie-Speicher und Module sind fertig. Energiepreise wieder herabgesetzt..", icon: 1, buttonText: 1));
+
+                //IncomingMessageUI.instance.ShowMessage("Brennstoffmangel", "Neue Energie-Speicher und Module sind fertig. Energiepreise wieder herabgesetzt..", 1, 1);
             }
             else
             {
@@ -133,7 +135,7 @@ public class Village : MonoBehaviour
                 warmthPrice = defaultWarmthPrice;
                 warmthProblemTimer = Random.Range(warmthProblemTimeLimits.x, warmthProblemTimeLimits.y);
                 IncomingMessageUI.instance.FreeFromPosition();
-                IncomingMessageUI.instance.ShowMessage("Brennstoffmangel", "Neue Energie-Speicher und Module sind fertig. Energiepreise wieder herabgesetzt..", 1, 1);
+                MessageInbox.instance.AddMessage(MessageInfo.Warning("Kälte", "Temperaturen normal. Wärmepreise wieder normal..", icon: 1, buttonText: 1));
             }
             else
             {
@@ -148,7 +150,8 @@ public class Village : MonoBehaviour
         energyPrice = energySpikePrice;
         energyProblemTimer = Random.Range(energyProblemRunningTimeLimits.x, energyProblemRunningTimeLimits.y);
         IncomingMessageUI.instance.FreeFromPosition();
-        IncomingMessageUI.instance.ShowMessage("Brennstoffmangel", "Problem! Energie wird teuer. Wir arbeiten dran.", 1, 1);
+        MessageInbox.instance.AddMessage(MessageInfo.Warning("Brennstoffmangel", "Problem! Energie wird teuer. Wir arbeiten dran", icon: 1, buttonText: 1));
+
     }
 
     public void WaterProblem()
@@ -158,7 +161,7 @@ public class Village : MonoBehaviour
         waterProblemTimer = Random.Range(waterProblemRunningTimeLimits.x, waterProblemRunningTimeLimits.y);
 
         IncomingMessageUI.instance.FreeFromPosition();
-        IncomingMessageUI.instance.ShowMessage("Wasserknappheit", "Problem! Wasser wird teuer. Wir arbeiten dran.", 6, 1);
+        MessageInbox.instance.AddMessage(MessageInfo.Warning("Wasserknappheit", "Problem! Wasser wird teuer. Wir arbeiten dran.", icon: 6, buttonText: 1));
     }
 
     public void WarmthProblem()
@@ -168,7 +171,7 @@ public class Village : MonoBehaviour
         warmthProblemTimer = Random.Range(warmthProblemRunningTimeLimits.x, warmthProblemRunningTimeLimits.y);
 
         IncomingMessageUI.instance.FreeFromPosition();
-        IncomingMessageUI.instance.ShowMessage("Kälte", "Module für die Wärmeversorgung sind ausgefallen. Mit Wärme aus deiner Maschine könntest du uns versorgen.", 6, 1);
+        MessageInbox.instance.AddMessage(MessageInfo.Warning("Kälte", "Module für die Wärmeversorgung sind ausgefallen. Mit Wärme aus deiner Maschine könntest du uns versorgen.", icon: 6, buttonText: 1));
     }
 
     public void PrintTimers()

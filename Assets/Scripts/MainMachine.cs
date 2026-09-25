@@ -76,6 +76,7 @@ public class MainMachine : MonoBehaviour
     public void ErrorAnalyse()
     {
         analysedError = errorStorage;
+        GameEventManager.Instance.ReportGameEvent("Analyse");
     }
 
 
@@ -201,8 +202,9 @@ public class MainMachine : MonoBehaviour
 
     bool CheckModulesForProblems()
     {
-       
+        int moduleDefect = -1;
         workingModules = new List<RepairModule>();
+        int counter = 1;
         foreach (Socket elSocket in elektrolyseModuleSockets)
         {
             if (elSocket.lockedInteractable != null)
@@ -211,20 +213,23 @@ public class MainMachine : MonoBehaviour
                 RepairModule module = interactable.GetComponent<RepairModule>();
                 if (elSocket.kind != module.kind)
                 {
+                    moduleDefect = counter;
                     continue;
                 }
                 if (!module.working)
                 {
+                    moduleDefect = counter;
                     continue;
                 }
                 workingModules.Add(module);
+                
             }
-             
+            counter++;
         }
 
         if(workingModules.Count == 0)
         {
-            errorStorage = "Defekt in Elektrolyseur";
+            errorStorage = "Defekt in Elektrolyseur ("+ moduleDefect +")";
             return false;
         }
            
@@ -603,8 +608,10 @@ public class MainMachine : MonoBehaviour
     void ProblemFound()
     {
         TurnOff();
+
         if (problemOnMachine)
             return;
+        analysedError = "Drücke 'Fehler-Analyse'";
         GameEventManager.Instance.ReportGameEvent("Problem");
         problemOnMachine = true;
         Debug.Log("[MainMachine] Problem -> Turn Off.");

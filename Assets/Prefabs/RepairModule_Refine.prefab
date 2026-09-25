@@ -78,6 +78,37 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &851435427898804416
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1906472034732648668}
+  m_Layer: 0
+  m_Name: Attach
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1906472034732648668
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851435427898804416}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7172860653543414659}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &2558501753039265110
 GameObject:
   m_ObjectHideFlags: 0
@@ -97,7 +128,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3026546697276861104
 Transform:
   m_ObjectHideFlags: 0
@@ -107,8 +138,8 @@ Transform:
   m_GameObject: {fileID: 2558501753039265110}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.143, z: 0.3}
-  m_LocalScale: {x: 0.1881395, y: 0.18813948, z: 0.1881395}
+  m_LocalPosition: {x: 0, y: 0.26, z: 0.3}
+  m_LocalScale: {x: 0.09168978, y: 0.09168977, z: 0.09168978}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9054796616278335947}
@@ -256,6 +287,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   targetLight: {fileID: 5466796366228430924}
+  active: 0
 --- !u!1 &3282608595903122283
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,6 +326,7 @@ Transform:
   m_LocalScale: {x: 0.2484506, y: 0.24845058, z: 0.2484506}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1906472034732648668}
   - {fileID: 7336667275068952150}
   - {fileID: 3026546697276861104}
   - {fileID: 3844459948913938838}
@@ -410,7 +443,7 @@ MonoBehaviour:
   kind: 2
   amountUsed: 0
   nextDefect: 0
-  randomDefectLimits: {x: 300, y: 400}
+  randomDefectLimits: {x: 250, y: 350}
 --- !u!54 &4188777921272108333
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -512,7 +545,7 @@ MonoBehaviour:
   m_StartingInteractionStrengthFilters: []
   m_AutoFindParentInteractableInHierarchy: 0
   m_ParentInteractableObject: {fileID: 0}
-  m_AttachTransform: {fileID: 0}
+  m_AttachTransform: {fileID: 1906472034732648668}
   m_SecondaryAttachTransform: {fileID: 0}
   m_UseDynamicAttach: 0
   m_MatchAttachPosition: 1
@@ -520,7 +553,7 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 2
+  m_MovementType: 0
   m_PredictedVisualsTransform: {fileID: 0}
   m_VelocityDamping: 1
   m_VelocityScale: 1
@@ -579,7 +612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c15a04da8dab54193d63c2fce5fd7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
-  title: Elektrolyse-Modul
+  title: Aufbereiter-Module
   sequenceOnInteraction: {fileID: 5224292979218425888}
   selected: 0
   selectionHighlightUI_Index: 0

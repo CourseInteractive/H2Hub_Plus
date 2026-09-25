@@ -9,7 +9,6 @@ public class RepairModule : MonoBehaviour
     public AlternatingMeshLight errorLight;
 
     public ToSocketInteractable socketConnection;
-
     public enum RepairKind { MainMachine, Water, Refine }
     public RepairKind kind;
 
@@ -26,8 +25,20 @@ public class RepairModule : MonoBehaviour
     public void Break()
     {
         working = false;
-        errorLight.Activate();
+     //   errorLight.Activate();
 
+    }
+
+    private void Update()
+    {
+        if (working)
+            return;
+        if (socketConnection.lockedSocket != null)
+            return;
+        if(errorLight && !errorLight.active)
+        {
+            errorLight.Activate();
+        }
     }
 
     public void PC_Interaction()

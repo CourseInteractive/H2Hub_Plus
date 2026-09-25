@@ -59,10 +59,17 @@ public class CommissionManager : MonoBehaviour
         string message = "Neuer Auftrag!";
         if (c.message.Trim() != "")
             message = c.message;
-        IncomingMessageUI.instance.ShowMessage(c.receiver, message, c.icon, 2);
-        IncomingMessageUI.instance.SetResourceInfo(c.resourceType);
-        IncomingMessageUI.instance.OnMessageAccepted += MessageAccepted;
-        SetToState(ActivationState.OnlyDisplay);
+
+        //Via Inbox
+        MessageInbox.instance.AddMessage(MessageInfo.Commission(c.receiver, message, c.resourceType, c.icon, buttonText: 2));
+        SetToState(ActivationState.RunningNormally);
+
+
+        // Old
+        //IncomingMessageUI.instance.ShowMessage(c.receiver, message, c.icon, 2); //
+        //IncomingMessageUI.instance.SetResourceInfo(c.resourceType);             //
+        //IncomingMessageUI.instance.OnMessageAccepted += MessageAccepted;        // ToDo für Inbox System
+        //SetToState(ActivationState.OnlyDisplay);
     }
 
     public void MessageAccepted()

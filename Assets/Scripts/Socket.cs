@@ -69,6 +69,7 @@ public class Socket : MonoBehaviour
         {
             machine.Disconnect(repairM);
         }
+        obj.ReactToDisconnect();
     }
 
     public void GiveFreeLockedElement()

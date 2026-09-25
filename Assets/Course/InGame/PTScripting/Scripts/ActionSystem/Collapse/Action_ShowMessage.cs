@@ -8,6 +8,7 @@ public class Action_ShowMessage : Action
     public string messageStringToken;
     public int iconIndex;
     public int buttonTextIndex;
+    public bool immediately;
 
     public Transform positionToHold;
 
@@ -24,7 +25,10 @@ public class Action_ShowMessage : Action
             IncomingMessageUI.instance.SetPositionToHold(positionToHold);
         else
             IncomingMessageUI.instance.FreeFromPosition();
-        IncomingMessageUI.instance.ShowMessage(callerStringToken, messageStringToken, iconIndex, buttonTextIndex);
+        //Direct Message??
+        //IncomingMessageUI.instance.ShowMessage(callerStringToken, messageStringToken, iconIndex, buttonTextIndex);
+        MessageInbox.instance.AddMessage(MessageInfo.Important(callerStringToken, messageStringToken, iconIndex, buttonTextIndex, immediately));
+        
         ReportActionEnd();
     }
 

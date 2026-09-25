@@ -126,9 +126,16 @@ public class Store : MonoBehaviour
 
     public StoreEntry allowedEntry;
     public bool blockAllOther;
-    public void ReduceAllowedPurchases(bool value)
+    public void RestrictAllowedPurchasesToTutorial()
     {
-        blockAllOther = value;
+        blockAllOther = true;
+
+        UpdateDetailDisplay();
+    }
+
+    public void AllowedAllPurchases()
+    {
+        blockAllOther = false;
 
         UpdateDetailDisplay();
     }

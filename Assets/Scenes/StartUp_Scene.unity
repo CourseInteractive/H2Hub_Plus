@@ -970,6 +970,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TeleportModeEvent
   interactor: {fileID: 249147596}
+--- !u!20 &249147606 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 7917674758326848207, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
+  m_PrefabInstance: {fileID: 249147594}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &307751605
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1034,7 +1039,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 249147595}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9bf3fd6b0adca0f438eaa20909180910, type: 3}
   m_Name: 
@@ -2050,6 +2055,7 @@ GameObject:
   - component: {fileID: 1609769552}
   - component: {fileID: 1609769551}
   - component: {fileID: 1609769555}
+  - component: {fileID: 1609769556}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2159,6 +2165,26 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RaycastTriggerInteraction: 1
+--- !u!114 &1609769556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1609769550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c7b55192e72c20469c9bfb7072883b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraRelative_UI
+  camera: {fileID: 249147606}
+  distance: 2
+  angle: 0
+  height: 0
+  delay: 0.2
+  movementThresholdAngle: 2
+  moveSpeed: 2
+  noMovement: 0
 --- !u!1 &1660452655
 GameObject:
   m_ObjectHideFlags: 0

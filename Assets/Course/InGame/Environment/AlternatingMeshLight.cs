@@ -79,7 +79,7 @@ public class AlternatingMeshLight : MonoBehaviour
         if (_material != null)
             Destroy(_material);
     }
-    bool active;
+    public bool active;
     public void SetOff()
     {
         _time = 0;
