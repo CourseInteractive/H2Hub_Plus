@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LowPoly_Machine_VR.unity
     guid: 8435e1021495b644cb56bc77a7893773
+  - enabled: 1
+    path: Assets/Scenes/LowPoly_SpaceTravel_VR.unity
+    guid: 184ee06e93beb3b47a353bb052317d92
   - enabled: 0
     path: Assets/Samples/XR Interaction Toolkit/3.4.0/Starter Assets/DemoSceneSetup.unity
     guid: dc64eb1c94603514aa2682e8d2871136

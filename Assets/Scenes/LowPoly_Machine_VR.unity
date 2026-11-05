@@ -1822,6 +1822,7 @@ MonoBehaviour:
   parallelSequenceIndex: 0
   tutEventName: TutDoorOpen
   clear: 0
+  source: 0
 --- !u!114 &33571200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4380,6 +4381,9 @@ GameObject:
   - component: {fileID: 62727041}
   - component: {fileID: 62727040}
   - component: {fileID: 62727044}
+  - component: {fileID: 62727048}
+  - component: {fileID: 62727046}
+  - component: {fileID: 62727047}
   - component: {fileID: 62727043}
   - component: {fileID: 62727042}
   - component: {fileID: 62727045}
@@ -4474,6 +4478,9 @@ MonoBehaviour:
   actions:
   - {fileID: 62727040}
   - {fileID: 62727044}
+  - {fileID: 62727048}
+  - {fileID: 62727046}
+  - {fileID: 62727047}
   - {fileID: 62727043}
   - {fileID: 62727042}
   - {fileID: 62727045}
@@ -4612,6 +4619,53 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!114 &62727046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62727038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dda0488affcde1d4ebe31aafe0ee56c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ActionListenForTutorialEvent
+  parallelSequenceIndex: 0
+  tutEventName: Chapter2
+  clear: 0
+  source: 1
+--- !u!114 &62727047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62727038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dda0488affcde1d4ebe31aafe0ee56c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ActionListenForTutorialEvent
+  parallelSequenceIndex: 0
+  tutEventName: SunOut
+  clear: 0
+  source: 1
+--- !u!114 &62727048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62727038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6b3308434bdc1549967cd1deb58afcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Action_TIme
+  parallelSequenceIndex: 0
+  timeAction: 1
+  value: 1
 --- !u!1 &66055032
 GameObject:
   m_ObjectHideFlags: 0
@@ -5055,6 +5109,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BuildRelative_AutomaticDestroy
   destroyOnScenario: 2
   vrActive: 1
+--- !u!114 &73242802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73242779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d945c3b2e0304646b6a6d0d41126636, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VR_Recenter
 --- !u!1001 &73575327
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7587,6 +7653,7 @@ MonoBehaviour:
   parallelSequenceIndex: 0
   tutEventName: ProblemSolved
   clear: 1
+  source: 0
 --- !u!114 &111691269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7809,6 +7876,130 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8786503895290436495, guid: d483600aef5b6184bb1cc78f3adaa2ff, type: 3}
   m_PrefabInstance: {fileID: 113292779}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &114479159
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 114479160}
+  - component: {fileID: 114479161}
+  m_Layer: 0
+  m_Name: Reset
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &114479160
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114479159}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 334840825}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114479161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114479159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a297ccb27da49a468b43fec3866673a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QC_UnityEvent
+  type: 0
+  content: []
+  optionalIcon: {fileID: 0}
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1137337293}
+        m_TargetAssemblyTypeName: ProgressionObserver, Assembly-CSharp
+        m_MethodName: ResetAllValues
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!1 &115891121
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 115891122}
+  - component: {fileID: 115891123}
+  m_Layer: 0
+  m_Name: Print_Progress
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &115891122
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115891121}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 334840825}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &115891123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115891121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a297ccb27da49a468b43fec3866673a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QC_UnityEvent
+  type: 0
+  content: []
+  optionalIcon: {fileID: 0}
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1137337293}
+        m_TargetAssemblyTypeName: ProgressionObserver, Assembly-CSharp
+        m_MethodName: LogCurrentValues
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &116056679
 GameObject:
   m_ObjectHideFlags: 0
@@ -10864,6 +11055,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameEventManager
   listeners: []
   tutEventLibrary: {fileID: 163893854}
+  ingameEventLibrary: {fileID: 1370001714}
   dev_DisplayAllEvents: 1
 --- !u!4 &163893856
 Transform:
@@ -11170,6 +11362,7 @@ MonoBehaviour:
   parallelSequenceIndex: 0
   tutEventName: LookContainer
   clear: 1
+  source: 0
 --- !u!114 &166351160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11255,6 +11448,7 @@ MonoBehaviour:
   parallelSequenceIndex: 0
   tutEventName: GrabContainer
   clear: 0
+  source: 0
 --- !u!1001 &176337855
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11487,9 +11681,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3022504643210138584, guid: b0141205e12e7fb4c89be95f3bfab895, type: 3}
+      propertyPath: vrActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4605051917784953958, guid: b0141205e12e7fb4c89be95f3bfab895, type: 3}
       propertyPath: m_Name
       value: QuickDevConsole_VR
+      objectReference: {fileID: 0}
+    - target: {fileID: 5821266087789712272, guid: b0141205e12e7fb4c89be95f3bfab895, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7664429888070050249, guid: b0141205e12e7fb4c89be95f3bfab895, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
@@ -14670,6 +14872,7 @@ MonoBehaviour:
   parallelSequenceIndex: 0
   tutEventName: CommissionStartUp
   clear: 0
+  source: 0
 --- !u!114 &216478675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17629,6 +17832,7 @@ MonoBehaviour:
   parallelSequenceIndex: 0
   tutEventName: ContainerOnMachine
   clear: 0
+  source: 0
 --- !u!114 &278544761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19852,7 +20056,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1489545986}
+    m_TransformParent: {fileID: 2118727430}
     m_Modifications:
     - target: {fileID: 4731571368402538990, guid: 98791a0faf189f744ac00e41271de57b, type: 3}
       propertyPath: m_Name
@@ -19864,19 +20068,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5395940980735773524, guid: 98791a0faf189f744ac00e41271de57b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.57925
+      value: 0.5792501
       objectReference: {fileID: 0}
     - target: {fileID: 5395940980735773524, guid: 98791a0faf189f744ac00e41271de57b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 24.598005
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5395940980735773524, guid: 98791a0faf189f744ac00e41271de57b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.9220357
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5395940980735773524, guid: 98791a0faf189f744ac00e41271de57b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.714
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5395940980735773524, guid: 98791a0faf189f744ac00e41271de57b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -20126,6 +20330,56 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4956255927207046, guid: c04be9f92ebf58b46b2204ac3aaa8785, type: 3}
   m_PrefabInstance: {fileID: 333738761}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &334840824
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 334840825}
+  - component: {fileID: 334840826}
+  m_Layer: 0
+  m_Name: Progress
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &334840825
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 334840824}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 115891122}
+  - {fileID: 1099692121}
+  - {fileID: 114479160}
+  m_Father: {fileID: 1230609528}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &334840826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 334840824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2ea65f1fe97ece489355d96a4c1709e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuickConsole_Entry
+  type: 0
+  content: []
+  optionalIcon: {fileID: 0}
 --- !u!1001 &335467875
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24768,6 +25022,7 @@ MonoBehaviour:
   parallelSequenceIndex: 0
   tutEventName: GrabContainer
   clear: 0
+  source: 0
 --- !u!114 &390659493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28463,6 +28718,68 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7165299039360790824, guid: fda9047d698503b43864c0755ff308c3, type: 3}
   m_PrefabInstance: {fileID: 446140354}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &448878308
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 448878309}
+  - component: {fileID: 448878310}
+  m_Layer: 0
+  m_Name: Set_TimeMult
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &448878309
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 448878308}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 24434.303, y: -639.56006, z: -671.1562}
+  m_LocalScale: {x: 6.235383, y: 6.235383, z: 6.235383}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 701118782}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &448878310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 448878308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a297ccb27da49a468b43fec3866673a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QC_UnityEvent
+  type: 0
+  content: []
+  optionalIcon: {fileID: 0}
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1931440323}
+        m_TargetAssemblyTypeName: DayNightCycle, Assembly-CSharp
+        m_MethodName: SetTimeMultiplier
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 3
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &453059849
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30140,6 +30457,8 @@ GameObject:
   - component: {fileID: 483807870}
   - component: {fileID: 483807871}
   - component: {fileID: 483807872}
+  - component: {fileID: 483807874}
+  - component: {fileID: 483807873}
   m_Layer: 0
   m_Name: GameStart_Skip
   m_TagString: Untagged
@@ -30180,6 +30499,8 @@ MonoBehaviour:
   - {fileID: 483807870}
   - {fileID: 483807871}
   - {fileID: 483807872}
+  - {fileID: 483807874}
+  - {fileID: 483807873}
   parallelSequenceIndex: 0
 --- !u!114 &483807870
 MonoBehaviour:
@@ -30274,6 +30595,51 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Up
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &483807873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483807867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2f2c4132be8dac44802adc3c8cc0ed0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Course.PrototypeScripting.ActionStartSequence
+  parallelSequenceIndex: 0
+  sequenceToStart: {fileID: 62727041}
+  terminateThisSequenceAfterwards: 0
+  terminateAllOtherSequencesBefore: 0
+  terminateAllSequencesButThis: 0
+--- !u!114 &483807874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483807867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2f48e8de661cd142852c0cbf3f52ac3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Course.PrototypeScripting.ActionUnityEvent
+  parallelSequenceIndex: 0
+  _event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 994253391}
+        m_TargetAssemblyTypeName: Container, Assembly-CSharp
+        m_MethodName: AddExtern
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 20
+          m_FloatArgument: 0
+          m_StringArgument: Teleport
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1001 &483877297
@@ -32325,6 +32691,7 @@ MonoBehaviour:
   parallelSequenceIndex: 0
   tutEventName: WindowOpen
   clear: 0
+  source: 0
 --- !u!114 &523571679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33953,6 +34320,7 @@ MonoBehaviour:
   parallelSequenceIndex: 0
   tutEventName: PutOnSellSocket
   clear: 0
+  source: 0
 --- !u!114 &537725751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34124,6 +34492,7 @@ MonoBehaviour:
   parallelSequenceIndex: 0
   tutEventName: 
   clear: 1
+  source: 0
 --- !u!4 &538727873 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6576052136861865289, guid: 07e1125e1017d1e4ea894dcc586696ee, type: 3}
@@ -39421,6 +39790,8 @@ GameObject:
   m_Component:
   - component: {fileID: 623403921}
   - component: {fileID: 623403923}
+  - component: {fileID: 623403928}
+  - component: {fileID: 623403927}
   - component: {fileID: 623403926}
   - component: {fileID: 623403925}
   - component: {fileID: 623403924}
@@ -39462,6 +39833,8 @@ MonoBehaviour:
   allowedGameState: -1
   priority: 3
   actions:
+  - {fileID: 623403928}
+  - {fileID: 623403927}
   - {fileID: 623403926}
   - {fileID: 623403925}
   - {fileID: 623403924}
@@ -39522,6 +39895,34 @@ MonoBehaviour:
   parallelSequenceIndex: 0
   obj: {fileID: 73242779}
   state: 0
+--- !u!114 &623403927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 623403920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad3b7dad434f3ce4ea01931794762a15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Course.PrototypeScripting.ActionSetActivity
+  parallelSequenceIndex: 0
+  obj: {fileID: 820557234}
+  state: 0
+--- !u!114 &623403928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 623403920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daad711428f9cf349a6e36d06f8ef508, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ActionRecenter_VR
+  parallelSequenceIndex: 0
 --- !u!1001 &624573590
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40717,6 +41118,68 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4384400948941904, guid: 41e722f5443cbd048b675375e24f1beb, type: 3}
   m_PrefabInstance: {fileID: 652247496}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &652844155
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 652844156}
+  - component: {fileID: 652844157}
+  m_Layer: 0
+  m_Name: Set_Time8
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &652844156
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652844155}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 24434.303, y: -639.56006, z: -671.1562}
+  m_LocalScale: {x: 6.235383, y: 6.235383, z: 6.235383}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 701118782}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &652844157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652844155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a297ccb27da49a468b43fec3866673a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QC_UnityEvent
+  type: 0
+  content: []
+  optionalIcon: {fileID: 0}
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1931440323}
+        m_TargetAssemblyTypeName: DayNightCycle, Assembly-CSharp
+        m_MethodName: SetTime
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 8
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &653442050
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41987,6 +42450,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8806329115733545877, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
       insertIndex: -1
       addedObject: {fileID: 73242794}
+    - targetCorrespondingSourceObject: {fileID: 8806329115733545877, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 73242802}
     - targetCorrespondingSourceObject: {fileID: 7917674758326848201, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1106375094}
@@ -44279,6 +44745,8 @@ Transform:
   - {fileID: 583819058}
   - {fileID: 1070072957}
   - {fileID: 601277641}
+  - {fileID: 652844156}
+  - {fileID: 448878309}
   m_Father: {fileID: 538727873}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &701118783
@@ -48070,6 +48538,7 @@ MonoBehaviour:
   parallelSequenceIndex: 0
   tutEventName: Analyse
   clear: 0
+  source: 0
 --- !u!114 &778006152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48426,6 +48895,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1811173487}
+  - {fileID: 1084170416}
   m_Father: {fileID: 538727873}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &787428129
@@ -49814,6 +50284,7 @@ MonoBehaviour:
   parallelSequenceIndex: 0
   tutEventName: FilterTaken
   clear: 0
+  source: 0
 --- !u!114 &808928805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51592,6 +52063,7 @@ MonoBehaviour:
   currentCommissions: []
   maximumCommissions: 5
   timeForUpdate: 60
+  oxygenTimeForUpdate: 30
   state: 0
   startUpPanel: {fileID: 1220817173}
 --- !u!114 &836209971
@@ -56639,6 +57111,7 @@ MonoBehaviour:
   parallelSequenceIndex: 0
   tutEventName: FilterBought
   clear: 0
+  source: 0
 --- !u!114 &934296556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57725,6 +58198,7 @@ MonoBehaviour:
   parallelSequenceIndex: 0
   tutEventName: LookShop
   clear: 1
+  source: 0
 --- !u!114 &951408416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57881,6 +58355,7 @@ MonoBehaviour:
   parallelSequenceIndex: 0
   tutEventName: FilterBought
   clear: 0
+  source: 0
 --- !u!1 &952112466
 GameObject:
   m_ObjectHideFlags: 0
@@ -60121,6 +60596,7 @@ MonoBehaviour:
   parallelSequenceIndex: 0
   tutEventName: ProblemStart
   clear: 0
+  source: 0
 --- !u!114 &988329678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64837,6 +65313,7 @@ MonoBehaviour:
   parallelSequenceIndex: 0
   tutEventName: Teleport02
   clear: 0
+  source: 0
 --- !u!114 &1060356930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66106,6 +66583,68 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6460353303491326060, guid: efbe3a7a9763005418aac2d1e6301d16, type: 3}
   m_PrefabInstance: {fileID: 1084145800}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1084170415
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1084170416}
+  - component: {fileID: 1084170417}
+  m_Layer: 5
+  m_Name: New Oxygen Commission
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1084170416
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084170415}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 787428128}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1084170417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084170415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a297ccb27da49a468b43fec3866673a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QC_UnityEvent
+  type: 0
+  content: []
+  optionalIcon: {fileID: 0}
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 836209970}
+        m_TargetAssemblyTypeName: CommissionManager, Assembly-CSharp
+        m_MethodName: CreateNewOxygenCommission
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1001 &1085821427
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66771,6 +67310,68 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1095442861}
   m_CullTransparentMesh: 1
+--- !u!1 &1099692120
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1099692121}
+  - component: {fileID: 1099692122}
+  m_Layer: 0
+  m_Name: Print_ProgressConditions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1099692121
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099692120}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 334840825}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1099692122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099692120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a297ccb27da49a468b43fec3866673a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QC_UnityEvent
+  type: 0
+  content: []
+  optionalIcon: {fileID: 0}
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1137337293}
+        m_TargetAssemblyTypeName: ProgressionObserver, Assembly-CSharp
+        m_MethodName: LogConditions
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1099822221
 GameObject:
   m_ObjectHideFlags: 0
@@ -67794,6 +68395,7 @@ GameObject:
   - component: {fileID: 1117442472}
   - component: {fileID: 1117442475}
   - component: {fileID: 1117442473}
+  - component: {fileID: 1117442477}
   m_Layer: 0
   m_Name: Tut_CommissionDialog
   m_TagString: Untagged
@@ -67817,6 +68419,7 @@ MonoBehaviour:
   priority: 3
   actions:
   - {fileID: 1117442473}
+  - {fileID: 1117442477}
   parallelSequenceIndex: 0
 --- !u!114 &1117442473
 MonoBehaviour:
@@ -67946,6 +68549,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 163893856}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1117442477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117442471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dda0488affcde1d4ebe31aafe0ee56c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ActionListenForTutorialEvent
+  parallelSequenceIndex: 0
+  tutEventName: GrabContainer
+  clear: 0
+  source: 0
 --- !u!1001 &1117953014
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -69288,6 +69907,68 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7691105580480241842, guid: 9772b81678034f34ab83d14e622cc3f8, type: 3}
   m_PrefabInstance: {fileID: 1126979415}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1130568369
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1130568370}
+  - component: {fileID: 1130568371}
+  m_Layer: 0
+  m_Name: KillTutWalls
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1130568370
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130568369}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1230609528}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1130568371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130568369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a297ccb27da49a468b43fec3866673a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QC_UnityEvent
+  type: 0
+  content: []
+  optionalIcon: {fileID: 0}
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2118727429}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1130903363
 GameObject:
   m_ObjectHideFlags: 0
@@ -70191,6 +70872,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1137337291}
   - component: {fileID: 1137337292}
+  - component: {fileID: 1137337293}
   m_Layer: 0
   m_Name: Progress
   m_TagString: Untagged
@@ -70233,6 +70915,41 @@ MonoBehaviour:
   hasOxygenContainer: 0
   hasSolarModule: 0
   hasWarmthModule: 0
+  chapter: 1
+--- !u!114 &1137337293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137337290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9973aee0db36074fb9c3dd657314415, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ProgressionObserver
+  conditions:
+  - type: 0
+    threshold: 2000
+    eventParameter: Ch2
+  - type: 1
+    threshold: 150
+    eventParameter: Ch2
+  - type: 3
+    threshold: 3
+    eventParameter: Ch2
+  - type: 2
+    threshold: 9
+    eventParameter: SunOut
+  - type: 0
+    threshold: 5000
+    eventParameter: Ch3
+  - type: 1
+    threshold: 500
+    eventParameter: Ch3
+  - type: 3
+    threshold: 6
+    eventParameter: Ch3
 --- !u!1 &1140888036
 GameObject:
   m_ObjectHideFlags: 0
@@ -71370,7 +72087,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1489545986}
+    m_TransformParent: {fileID: 2118727430}
     m_Modifications:
     - target: {fileID: 4731571368402538990, guid: 98791a0faf189f744ac00e41271de57b, type: 3}
       propertyPath: m_Name
@@ -71382,19 +72099,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5395940980735773524, guid: 98791a0faf189f744ac00e41271de57b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.57925
+      value: 0.5792501
       objectReference: {fileID: 0}
     - target: {fileID: 5395940980735773524, guid: 98791a0faf189f744ac00e41271de57b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.33467
+      value: -4.263336
       objectReference: {fileID: 0}
     - target: {fileID: 5395940980735773524, guid: 98791a0faf189f744ac00e41271de57b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.9220357
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5395940980735773524, guid: 98791a0faf189f744ac00e41271de57b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.714
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5395940980735773524, guid: 98791a0faf189f744ac00e41271de57b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -73200,12 +73917,12 @@ GameObject:
   - component: {fileID: 1219419696}
   - component: {fileID: 1219419697}
   m_Layer: 5
-  m_Name: ---
+  m_Name: Print Refiner Use
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1219419696
 Transform:
   m_ObjectHideFlags: 0
@@ -73230,12 +73947,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 1219419695}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2ea65f1fe97ece489355d96a4c1709e, type: 3}
+  m_Script: {fileID: 11500000, guid: e2f48e8de661cd142852c0cbf3f52ac3, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::QuickConsole_Entry
-  type: 0
-  content: []
-  optionalIcon: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::Course.PrototypeScripting.ActionUnityEvent
+  parallelSequenceIndex: 0
+  _event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1969734823}
+        m_TargetAssemblyTypeName: MainMachine, Assembly-CSharp
+        m_MethodName: PrintRefineUseUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1220755113
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73690,6 +74420,7 @@ MonoBehaviour:
   parallelSequenceIndex: 0
   tutEventName: DialogStart
   clear: 0
+  source: 0
 --- !u!82 &1223267322
 AudioSource:
   m_ObjectHideFlags: 0
@@ -74555,6 +75286,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1224945970}
+  - {fileID: 334840825}
+  - {fileID: 1130568370}
   m_Father: {fileID: 538727873}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1230609529
@@ -79187,9 +79920,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1313252754}
   - component: {fileID: 1313252750}
+  - component: {fileID: 1313252772}
   - component: {fileID: 1313252753}
   - component: {fileID: 1313252752}
   - component: {fileID: 1313252751}
+  - component: {fileID: 1313252771}
   - component: {fileID: 1313252755}
   - component: {fileID: 1313252757}
   - component: {fileID: 1313252756}
@@ -79205,6 +79940,7 @@ GameObject:
   - component: {fileID: 1313252766}
   - component: {fileID: 1313252769}
   - component: {fileID: 1313252768}
+  - component: {fileID: 1313252770}
   m_Layer: 0
   m_Name: _START_TUTORIAL
   m_TagString: Untagged
@@ -79227,9 +79963,11 @@ MonoBehaviour:
   allowedGameState: -1
   priority: 3
   actions:
+  - {fileID: 1313252772}
   - {fileID: 1313252753}
   - {fileID: 1313252752}
   - {fileID: 1313252751}
+  - {fileID: 1313252771}
   - {fileID: 1313252755}
   - {fileID: 1313252757}
   - {fileID: 1313252756}
@@ -79244,6 +79982,7 @@ MonoBehaviour:
   - {fileID: 1313252766}
   - {fileID: 1313252769}
   - {fileID: 1313252768}
+  - {fileID: 1313252770}
   parallelSequenceIndex: 0
 --- !u!114 &1313252751
 MonoBehaviour:
@@ -79338,7 +80077,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ActionListenForTutorialEvent
   parallelSequenceIndex: 0
   tutEventName: TutTeleport
-  clear: 0
+  clear: 1
+  source: 0
 --- !u!114 &1313252756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79825,6 +80565,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Course.PrototypeScripting.ActionWait
   parallelSequenceIndex: 0
   waitTimeInSeconds: 2
+--- !u!114 &1313252770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313252749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6b3308434bdc1549967cd1deb58afcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Action_TIme
+  parallelSequenceIndex: 0
+  timeAction: 1
+  value: 0
+--- !u!114 &1313252771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313252749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dda0488affcde1d4ebe31aafe0ee56c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ActionListenForTutorialEvent
+  parallelSequenceIndex: 0
+  tutEventName: 
+  clear: 1
+  source: 0
+--- !u!114 &1313252772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313252749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daad711428f9cf349a6e36d06f8ef508, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ActionRecenter_VR
+  parallelSequenceIndex: 0
 --- !u!1001 &1313381296
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -82508,6 +83292,72 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1370001713
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1370001715}
+  - component: {fileID: 1370001714}
+  m_Layer: 0
+  m_Name: InGameEvents
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1370001714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370001713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d71e898e5da08cb42a21ee5c4904e35d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TutorialEventLibrary
+  tutorialEvents:
+  - internName: SunOut
+    possibleEvents:
+    - eventKey: Progression
+      eventParameter: SunOut
+    seq: {fileID: 1735498341}
+    deactivateOnExecution: 1
+  - internName: Chapter2
+    possibleEvents:
+    - eventKey: Progression
+      eventParameter: Ch2
+    seq: {fileID: 1493233256}
+    deactivateOnExecution: 1
+  - internName: Chapter3
+    possibleEvents:
+    - eventKey: Progression
+      eventParameter: Ch3
+    seq: {fileID: 1909597704}
+    deactivateOnExecution: 1
+--- !u!4 &1370001715
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370001713}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 29.16066, y: -1.19333, z: -2.9941}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1735498343}
+  - {fileID: 1493233252}
+  - {fileID: 1909597701}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1370955422
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -84915,6 +85765,7 @@ MonoBehaviour:
   parallelSequenceIndex: 0
   tutEventName: CommissionDialogEnd
   clear: 1
+  source: 0
 --- !u!82 &1410292008
 AudioSource:
   m_ObjectHideFlags: 0
@@ -85062,6 +85913,7 @@ MonoBehaviour:
   parallelSequenceIndex: 0
   tutEventName: CommissionFailed
   clear: 0
+  source: 0
 --- !u!1001 &1414126144
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -85612,6 +86464,7 @@ MonoBehaviour:
   parallelSequenceIndex: 0
   tutEventName: 
   clear: 1
+  source: 0
 --- !u!114 &1430030035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89960,16 +90813,12 @@ Transform:
   - {fileID: 586153337}
   - {fileID: 827680937}
   - {fileID: 119306384}
-  - {fileID: 1588862028}
-  - {fileID: 1567308168}
   - {fileID: 183577291}
   - {fileID: 1788846553}
   - {fileID: 291705372}
   - {fileID: 560456815}
   - {fileID: 1953919101}
   - {fileID: 748350778}
-  - {fileID: 328596344}
-  - {fileID: 1162669077}
   - {fileID: 878979424}
   - {fileID: 1455344993}
   - {fileID: 1244905421}
@@ -90478,6 +91327,137 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4571849449299561081, guid: f3bf6f3a451e2dd42a856d3e0273aeca, type: 3}
   m_PrefabInstance: {fileID: 1493006556}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1493233251
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1493233252}
+  - component: {fileID: 1493233256}
+  - component: {fileID: 1493233255}
+  - component: {fileID: 1493233254}
+  - component: {fileID: 1493233253}
+  m_Layer: 0
+  m_Name: Chapter2_Start
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1493233252
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493233251}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -29.16066, y: 1.19333, z: 2.9941}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1370001715}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1493233253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493233251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dda0488affcde1d4ebe31aafe0ee56c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ActionListenForTutorialEvent
+  parallelSequenceIndex: 0
+  tutEventName: Chapter3
+  clear: 0
+  source: 1
+--- !u!114 &1493233254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493233251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2f48e8de661cd142852c0cbf3f52ac3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Course.PrototypeScripting.ActionUnityEvent
+  parallelSequenceIndex: 0
+  _event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1137337293}
+        m_TargetAssemblyTypeName: ProgressionObserver, Assembly-CSharp
+        m_MethodName: ResetAllValues
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1137337292}
+        m_TargetAssemblyTypeName: ProgressRelativeWorld, Assembly-CSharp
+        m_MethodName: SetChapterValue
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1493233255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493233251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2605169f840fb2847ad0e93513246c99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Action_ShowMessage
+  parallelSequenceIndex: 0
+  onlyClose: 0
+  callerStringToken: System
+  messageStringToken: Du machst gute Fortschritte! Kapitel 2 der Geschichte startet.
+    Mach weiter so!
+  iconIndex: 0
+  buttonTextIndex: 0
+  immediately: 0
+  positionToHold: {fileID: 0}
+--- !u!114 &1493233256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493233251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8f61d7ef208864c97a8f6249537488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Course.PrototypeScripting.Sequence
+  allowedGameState: -1
+  priority: 3
+  actions:
+  - {fileID: 1493233255}
+  - {fileID: 1493233254}
+  - {fileID: 1493233253}
+  parallelSequenceIndex: 0
 --- !u!1 &1493794384
 GameObject:
   m_ObjectHideFlags: 0
@@ -96097,7 +97077,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1489545986}
+    m_TransformParent: {fileID: 2118727430}
     m_Modifications:
     - target: {fileID: 4731571368402538990, guid: 98791a0faf189f744ac00e41271de57b, type: 3}
       propertyPath: m_Name
@@ -96105,15 +97085,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5395940980735773524, guid: 98791a0faf189f744ac00e41271de57b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.334667
+      value: -4.263338
       objectReference: {fileID: 0}
     - target: {fileID: 5395940980735773524, guid: 98791a0faf189f744ac00e41271de57b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.9220357
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5395940980735773524, guid: 98791a0faf189f744ac00e41271de57b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.1187286
+      value: -3.5952716
       objectReference: {fileID: 0}
     - target: {fileID: 5395940980735773524, guid: 98791a0faf189f744ac00e41271de57b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -97579,7 +98559,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1489545986}
+    m_TransformParent: {fileID: 2118727430}
     m_Modifications:
     - target: {fileID: 4731571368402538990, guid: 98791a0faf189f744ac00e41271de57b, type: 3}
       propertyPath: m_Name
@@ -97587,15 +98567,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5395940980735773524, guid: 98791a0faf189f744ac00e41271de57b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 24.598003
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5395940980735773524, guid: 98791a0faf189f744ac00e41271de57b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.9220357
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5395940980735773524, guid: 98791a0faf189f744ac00e41271de57b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.1187286
+      value: -3.5952716
       objectReference: {fileID: 0}
     - target: {fileID: 5395940980735773524, guid: 98791a0faf189f744ac00e41271de57b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -106724,6 +107704,7 @@ MonoBehaviour:
   parallelSequenceIndex: 0
   tutEventName: TutDialogEnded
   clear: 0
+  source: 0
 --- !u!114 &1732149779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107125,6 +108106,93 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8521069165603006135, guid: 242102fc8992d6140925ec8e14e180c5, type: 3}
   m_PrefabInstance: {fileID: 1735268560}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1735498340
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1735498343}
+  - component: {fileID: 1735498341}
+  - component: {fileID: 1735498342}
+  - component: {fileID: 1735498347}
+  m_Layer: 0
+  m_Name: SunOut
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1735498341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735498340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8f61d7ef208864c97a8f6249537488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Course.PrototypeScripting.Sequence
+  allowedGameState: -1
+  priority: 3
+  actions:
+  - {fileID: 1735498342}
+  - {fileID: 1735498347}
+  parallelSequenceIndex: 0
+--- !u!114 &1735498342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735498340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2605169f840fb2847ad0e93513246c99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Action_ShowMessage
+  parallelSequenceIndex: 0
+  onlyClose: 0
+  callerStringToken: System
+  messageStringToken: "Die Sonne geht auf. Du k\xF6nntest ein Solarmodul kaufen!"
+  iconIndex: 0
+  buttonTextIndex: 0
+  immediately: 0
+  positionToHold: {fileID: 0}
+--- !u!4 &1735498343
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735498340}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -29.16066, y: 1.19333, z: 2.9941}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1370001715}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1735498347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735498340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6b3308434bdc1549967cd1deb58afcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Action_Time
+  parallelSequenceIndex: 0
+  timeAction: 1
+  value: 0.5
 --- !u!1 &1737337562
 GameObject:
   m_ObjectHideFlags: 0
@@ -108113,7 +109181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Container
   resourceType: 2
-  maxAmount: 200
+  maxAmount: 100
   currentAmount: 0
   ImmediateRefill: 0
   timePerLoss: -1
@@ -109519,6 +110587,7 @@ MonoBehaviour:
   parallelSequenceIndex: 0
   tutEventName: EndCommission
   clear: 0
+  source: 0
 --- !u!114 &1787071600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116033,6 +117102,119 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 143870536517179915, guid: d90f5d297f4d59b4b957d0f332013edb, type: 3}
   m_PrefabInstance: {fileID: 1909555371}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1909597700
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1909597701}
+  - component: {fileID: 1909597704}
+  - component: {fileID: 1909597703}
+  - component: {fileID: 1909597702}
+  m_Layer: 0
+  m_Name: Chapter3_Start
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1909597701
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909597700}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -29.16066, y: 1.19333, z: 2.9941}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1370001715}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1909597702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909597700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2f48e8de661cd142852c0cbf3f52ac3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Course.PrototypeScripting.ActionUnityEvent
+  parallelSequenceIndex: 0
+  _event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 820557234}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1137337292}
+        m_TargetAssemblyTypeName: ProgressRelativeWorld, Assembly-CSharp
+        m_MethodName: SetChapterValue
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+--- !u!114 &1909597703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909597700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2605169f840fb2847ad0e93513246c99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Action_ShowMessage
+  parallelSequenceIndex: 0
+  onlyClose: 0
+  callerStringToken: System
+  messageStringToken: "Du machst tolle Fortschritte! Kapitel 3 der Geschichte startet,
+    f\xFClle nun Wasserstoff in den Beh\xE4lter f\xFCr die Weltraumreise!"
+  iconIndex: 0
+  buttonTextIndex: 0
+  immediately: 0
+  positionToHold: {fileID: 0}
+--- !u!114 &1909597704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909597700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8f61d7ef208864c97a8f6249537488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Course.PrototypeScripting.Sequence
+  allowedGameState: -1
+  priority: 3
+  actions:
+  - {fileID: 1909597703}
+  - {fileID: 1909597702}
+  parallelSequenceIndex: 0
 --- !u!1001 &1910668389
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -123132,6 +124314,7 @@ MonoBehaviour:
   parallelSequenceIndex: 0
   tutEventName: MessageOpened
   clear: 0
+  source: 0
 --- !u!114 &2034566748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127505,6 +128688,41 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4339339452558723020, guid: 1aaa0e17cdd6be64e878719ac9c38ff9, type: 3}
   m_PrefabInstance: {fileID: 2118514613}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2118727429
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2118727430}
+  m_Layer: 0
+  m_Name: TutWalls
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2118727430
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118727429}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 29.26367, y: -2.1856294, z: 1.1698503}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 328596344}
+  - {fileID: 1162669077}
+  - {fileID: 1588862028}
+  - {fileID: 1567308168}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2120494077
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -132032,14 +133250,15 @@ SceneRoots:
   - {fileID: 1069201577}
   - {fileID: 376717417}
   - {fileID: 2017114549}
+  - {fileID: 1064827153}
   - {fileID: 1917782299}
   - {fileID: 1159948998}
   - {fileID: 520281624}
-  - {fileID: 1064827153}
   - {fileID: 1316735699}
   - {fileID: 820557235}
   - {fileID: 1032563611}
   - {fileID: 163893856}
+  - {fileID: 1370001715}
   - {fileID: 1046667440}
   - {fileID: 1059629409}
   - {fileID: 672646451}
@@ -132049,3 +133268,4 @@ SceneRoots:
   - {fileID: 573862163}
   - {fileID: 43864474}
   - {fileID: 9221175717126312385}
+  - {fileID: 2118727430}

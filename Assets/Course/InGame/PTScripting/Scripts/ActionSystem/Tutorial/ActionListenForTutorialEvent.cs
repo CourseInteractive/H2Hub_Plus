@@ -7,18 +7,31 @@ public class ActionListenForTutorialEvent : Action
 {
     public string tutEventName;
     public bool clear;
+
+    public enum EventSource { Tutorial, InGame}
+    public EventSource source;
     override public void ExecuteAction()
     {
-        if(clear && tutEventName.Trim() == "")
+        if(clear)
         {
             GameEventManager.Instance.ClearListeners();
-            ReportActionEnd();
-            return;
+            if (tutEventName.Trim() == "")
+            {
+                ReportActionEnd();
+                return;
+            }
         }
 
-        if(GameEventManager.Instance.tutEventLibrary)
+       
+
+        if (source == EventSource.Tutorial && GameEventManager.Instance.tutEventLibrary)
         {
-            GameEventManager.Instance.tutEventLibrary.ListenFor(tutEventName, clear);
+            GameEventManager.Instance.tutEventLibrary.ListenFor(tutEventName);
+        }
+
+        if (source == EventSource.InGame && GameEventManager.Instance.ingameEventLibrary)
+        {
+            GameEventManager.Instance.ingameEventLibrary.ListenFor(tutEventName);
         }
         ReportActionEnd();
     }

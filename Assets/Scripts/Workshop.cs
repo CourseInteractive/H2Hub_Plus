@@ -60,6 +60,7 @@ public class Workshop : MonoBehaviour
         if (amount <= 0) return;
 
         _money += amount;
+        ProgressionObserver.Instance.AddMoney(amount);
         OnMoneyChanged?.Invoke(_money);
     }
     /// <summary>

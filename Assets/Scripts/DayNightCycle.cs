@@ -166,7 +166,7 @@ public class DayNightCycle : MonoBehaviour
         float t    = GetBlendT(phase);
         ApplyLightSettings(t);
         ApplyRotation();
-
+        ProgressionObserver.Instance.SetTime(currentHour);
         isDayActive   = (phase == CyclePhase.Day);
         isNightActive = (phase == CyclePhase.Night);
     }
@@ -246,6 +246,9 @@ public class DayNightCycle : MonoBehaviour
     private void AdvanceTime()
     {
         float hoursPerSecond = timeMultiplier / 60f;
+        ProgressionObserver.Instance.AddTime(hoursPerSecond * Time.deltaTime);
+
+
         currentHour = Mathf.Repeat(currentHour + hoursPerSecond * Time.deltaTime, 24f);
     }
 

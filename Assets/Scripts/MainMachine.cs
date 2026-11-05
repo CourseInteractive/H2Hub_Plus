@@ -44,6 +44,8 @@ public class MainMachine : MonoBehaviour
 
     public MachineProblem currentProblem;
 
+    public bool spaceShipMachine;
+
     // Laufzeit-Zustand
     private float tickTimer = 0f;
 
@@ -255,48 +257,51 @@ public class MainMachine : MonoBehaviour
             Debug.Log("3");
             return false;
         }*/
-
-        if (workSocket_Water.lockedInteractable != null)
+        if(!spaceShipMachine)
         {
-            ToSocketInteractable interactable = workSocket_Water.lockedInteractable;
-            RepairModule module = interactable.GetComponent<RepairModule>();
-            if (workSocket_Water.kind != module.kind)
+            if (workSocket_Water.lockedInteractable != null)
+            {
+                ToSocketInteractable interactable = workSocket_Water.lockedInteractable;
+                RepairModule module = interactable.GetComponent<RepairModule>();
+                if (workSocket_Water.kind != module.kind)
+                {
+                    errorStorage = "Defekt in Deionisier";
+                    return false;
+                }
+                if (!module.working)
+                {
+                    errorStorage = "Defekt in Deionisier";
+                    return false;
+                }
+            }
+            else
             {
                 errorStorage = "Defekt in Deionisier";
                 return false;
             }
-            if (!module.working)
-            {
-                errorStorage = "Defekt in Deionisier";
-                return false;
-            }
-        }
-        else
-        {
-            errorStorage = "Defekt in Deionisier";
-            return false;
-        }
 
-        if (workSocket_Refine.lockedInteractable != null)
-        {
-            ToSocketInteractable interactable = workSocket_Refine.lockedInteractable;
-            RepairModule module = interactable.GetComponent<RepairModule>();
-            if (workSocket_Refine.kind != module.kind)
+            if (workSocket_Refine.lockedInteractable != null)
             {
-                errorStorage = "Defekt in Aufbereiter";
-                return false;
+                ToSocketInteractable interactable = workSocket_Refine.lockedInteractable;
+                RepairModule module = interactable.GetComponent<RepairModule>();
+                if (workSocket_Refine.kind != module.kind)
+                {
+                    errorStorage = "Defekt in Aufbereiter";
+                    return false;
+                }
+                if (!module.working)
+                {
+                    errorStorage = "Defekt in Aufbereiter";
+                    return false;
+                }
             }
-            if (!module.working)
+            else
             {
                 errorStorage = "Defekt in Aufbereiter";
                 return false;
             }
         }
-        else
-        {
-            errorStorage = "Defekt in Aufbereiter";
-            return false;
-        }
+        
         errorStorage = "";
         analysedError = "";
         return true;
@@ -371,19 +376,22 @@ public class MainMachine : MonoBehaviour
     private void ProduceOutputs()
     {
         float elModuleFactor = (workingModules.Count * 1f) * 0.33333f;
-     /*   foreach (Socket elSocket in elektrolyseModuleSockets)
-        {
-            if (elSocket.lockedInteractable)
-                elModuleFactor += 0.3333f;
-        }*/
-
+        /*   foreach (Socket elSocket in elektrolyseModuleSockets)
+           {
+               if (elSocket.lockedInteractable)
+                   elModuleFactor += 0.3333f;
+           }*/
+        
 
         foreach (ConversionOutput output in outputs)
         {
             Container module = FindModule(outputModules, output.outputType);
+
             float outputPower = currentPowerLevel * Mathf.Lerp(GameData.Instance.Values.outputFactorLimitsByDial.x, GameData.Instance.Values.outputFactorLimitsByDial.y, runningPower);
 
             float realOutput = output.outputAmount * outputPower * elModuleFactor;
+           if(output.outputType == ResourceType.H && ProgressionObserver.Instance)
+                ProgressionObserver.Instance.AddHydrogen(realOutput);
             float dividedOutput = realOutput * (1f / (realOutput * 3f));
             if (module != null)
             {
@@ -409,13 +417,23 @@ public class MainMachine : MonoBehaviour
         }
     }
 
+    public void PrintRefineUseUp()
+    {
+        if(workSocket_Refine.lockedInteractable != null)
+        {
+            InGameLog.Log("RefinerUseup: " + workSocket_Refine.lockedInteractable.GetComponent<RepairModule>().amountUsed);
+        }
+        
+    }
+
     void ReduceOutputDurability(float amount)
     {
         foreach (RepairModule module in workingModules)
         {
             if(module != null)
             {
-                workSocket_Refine.lockedInteractable.GetComponent<RepairModule>().UseUpAmount(amount);
+                if (!spaceShipMachine)
+                    workSocket_Refine.lockedInteractable.GetComponent<RepairModule>().UseUpAmount(amount);
                 module.GetComponent<RepairModule>().UseUpAmount(amount);
             }
         }
@@ -424,13 +442,15 @@ public class MainMachine : MonoBehaviour
 
     void ReduceInputDurability(float amount)
     {
-        workSocket_Water.lockedInteractable.GetComponent<RepairModule>().UseUpAmount(amount);
+        if(!spaceShipMachine)
+            workSocket_Water.lockedInteractable.GetComponent<RepairModule>().UseUpAmount(amount);
     }
 
-    void ReduceRefineDurability(float amount)
+    /*void ReduceRefineDurability(float amount)
     {
-        workSocket_Refine.lockedInteractable.GetComponent<RepairModule>().UseUpAmount(amount);
-    }
+        if (spaceShipMachine)
+            workSocket_Refine.lockedInteractable.GetComponent<RepairModule>().UseUpAmount(amount);
+    }*/
 
     public ProblemManager problemManager;
     /// <summary>

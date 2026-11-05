@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CommissionDatabase
   presets:
   - type: 0
-    amountLimits: {x: 20, y: 40}
+    amountLimits: {x: 15, y: 35}
     rewardLimits: {x: 650, y: 800}
     resource: 2
     receiver: "Gew\xE4chshaus"
@@ -35,7 +35,7 @@ MonoBehaviour:
     icon: 5
     message: Hey, unser Wasserstoff wird knapp!
   - type: 0
-    amountLimits: {x: 20, y: 40}
+    amountLimits: {x: 15, y: 35}
     rewardLimits: {x: 550, y: 700}
     resource: 3
     receiver: Kolonie
@@ -55,6 +55,13 @@ MonoBehaviour:
     receiver: Forschung
     icon: 4
     message: Uns geht langsam der Wasserstoff aus. Erbitte Nachschub.
+  - type: 2
+    amountLimits: {x: 70, y: 100}
+    rewardLimits: {x: 1400, y: 1800}
+    resource: 3
+    receiver: Forschung
+    icon: 4
+    message: Wir brauchen Sauerstoff!
   limits:
   - type: 0
     limits: {x: 1, y: 2}

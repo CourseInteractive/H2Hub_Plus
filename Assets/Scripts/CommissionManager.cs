@@ -20,9 +20,8 @@ public class CommissionManager : MonoBehaviour
         instance = this;
         currentCommissions = new List<Commission>();
         SetToState(state);
-        CreateNewCommission(false);
-        CreateNewCommission(false);
         SetNewCommissionTimer();
+        SetNewOxygenCommissionTimer();
     }
 
     public void SetActivity(bool value)
@@ -40,6 +39,19 @@ public class CommissionManager : MonoBehaviour
         
         AddCommission(com, showMessage);
     }
+
+    [ContextMenu("Create New Oxygen")]
+    public void CreateNewOxygenCommission(bool showMessage = true)
+    {
+        if (currentCommissions.Count >= maximumCommissions)
+            return;
+
+        CommissionDummy com = database.GetRandomOxygenCommission(currentCommissions);
+        if (com == null)
+            return;
+        AddCommission(com, showMessage);
+    }
+
 
     public void AddCommission(CommissionDummy com, bool showMessage = true)
     {
@@ -98,6 +110,9 @@ public class CommissionManager : MonoBehaviour
     }
     float timer = -1;
     public float timeForUpdate = 30f;
+
+    float oxygenTimer = -1;
+    public float oxygenTimeForUpdate = 30f;
     // Update is called once per frame
     void Update()
     {
@@ -117,6 +132,20 @@ public class CommissionManager : MonoBehaviour
                 CreateNewCommission();
             }
         }
+        if (oxygenTimer > 0)
+        {
+            float factor = 1f;
+            if (commissionCounter == 0)
+                factor = 3f;
+            if (commissionCounter == 1)
+                factor = 2f;
+            oxygenTimer -= Time.deltaTime * factor;
+            if (oxygenTimer < 0)
+            {
+                SetNewOxygenCommissionTimer();
+                CreateNewOxygenCommission();
+            }
+        }
     }
 
     void SetNewCommissionTimer()
@@ -127,6 +156,12 @@ public class CommissionManager : MonoBehaviour
             timer = timeForUpdate * 0.6f;
         else
             timer = timeForUpdate;
+    }
+
+    void SetNewOxygenCommissionTimer()
+    {
+        oxygenTimer = oxygenTimeForUpdate;
+
     }
 
     public void ClearCommissions()
@@ -176,6 +211,7 @@ public class CommissionManager : MonoBehaviour
     public void PrintTimers()
     {
         InGameLog.Log("Next Commission in " + timer);
+        InGameLog.Log("Next Oxygen Commission in " + oxygenTimer + "(if allowed)");
     }
 
 }

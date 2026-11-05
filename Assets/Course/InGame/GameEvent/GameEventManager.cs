@@ -10,7 +10,7 @@ public class GameEventManager : MonoBehaviour
     public List<GameEventListen> listeners;
 
     public TutorialEventLibrary tutEventLibrary;
-
+    public TutorialEventLibrary ingameEventLibrary;
     public bool dev_DisplayAllEvents;
 
     private void Awake()

@@ -8,16 +8,16 @@ public class TutorialEventLibrary : MonoBehaviour
 
     private void Start()
     {
-        if (GameEventManager.Instance)
-            GameEventManager.Instance.tutEventLibrary = this;
+     //   if (GameEventManager.Instance)
+     //       GameEventManager.Instance.tutEventLibrary = this;
 
     }
 
-    public void ListenFor(string name, bool clearBefore = false)
+    public void ListenFor(string name)
     {
         foreach(GameEventListen listener in tutorialEvents)
         {
-            if(listener.internName == name)
+            if (listener.internName.Trim() == name.Trim())
             {
                 GameEventManager.Instance.SetNewListener(listener,false);
                 return;

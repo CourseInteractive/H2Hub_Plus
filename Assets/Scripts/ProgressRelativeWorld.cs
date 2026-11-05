@@ -24,6 +24,13 @@ public class ProgressRelativeWorld : MonoBehaviour
     public bool hasSolarModule; //
     public bool hasWarmthModule;    //
 
+    public int chapter = 1;
+
+    public void SetChapterValue(int value)
+    {
+        chapter = value;
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -76,15 +83,21 @@ public class ProgressRelativeWorld : MonoBehaviour
     public float GeneralProgressValue()
     {
         FetchReadyResources();
-        float moneyFactor = Mathf.InverseLerp(800, 3000, money);
-        float hydrogenFactor = Mathf.InverseLerp(50, 110, hydrogenReady);
+        float moneyFactor = Mathf.InverseLerp(1200, 3000, money);
+        float hydrogenFactor = Mathf.InverseLerp(70, 140, hydrogenReady);
+        float chapterFactor = 0;
+        if (chapter == 2)
+            chapterFactor = 0.15f;
+        else if (chapter == 3)
+            chapterFactor = 0.3f;
         float moduleFactor = 0;
         if (hasSolarModule)
             moduleFactor += 0.6f;
         if (hasWarmthModule)
             moduleFactor += 0.4f;
-        float additionFactor = (Mathf.InverseLerp(50, 100, water) * 0.5f) + moduleFactor * 0.5f;
-        return Mathf.Clamp01(moneyFactor * 0.7f + hydrogenFactor * 0.4f + additionFactor * 0.3f);
+       // float additionFactor = (Mathf.InverseLerp(50, 100, water) * 0.5f) + moduleFactor * 0.5f;
+        float additionFactor = moduleFactor * 0.5f;
+        return Mathf.Clamp01(chapterFactor + moneyFactor * 0.6f + hydrogenFactor * 0.2f + additionFactor * 0.15f);
     }
 
 }

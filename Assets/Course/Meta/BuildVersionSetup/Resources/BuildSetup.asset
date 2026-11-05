@@ -25,23 +25,23 @@ MonoBehaviour:
     specialKeystore: 0
   - useMainInfo: 0
     title: 
-    identifier: 
+    identifier: com.HoMe.collapse_plus
     steam_GameID: 0
     splitBinary: 0
     specialKeystore: 0
   - useMainInfo: 0
     title: 
-    identifier: 
+    identifier: com.HoMe.collapse_plus
     steam_GameID: 0
     splitBinary: 0
     specialKeystore: 0
   - useMainInfo: 0
     title: Collapse 2 - Test
-    identifier: 
+    identifier: com.HoMe.collapse_plus
     steam_GameID: 0
     splitBinary: 0
     specialKeystore: 0
-  activeBuildKind: 0
+  activeBuildKind: 3
   mainPlayMode: 3
   testModeType: 0
   marketingModeType: 0
@@ -49,10 +49,10 @@ MonoBehaviour:
   - name: NoUI
     active: 0
   - name: NoCosts
-    active: 1
+    active: 0
   - name: MachineDoesNotBreak
-    active: 1
+    active: 0
   - name: UnlimitedWater
-    active: 1
+    active: 0
   - name: DevUI
     active: 0

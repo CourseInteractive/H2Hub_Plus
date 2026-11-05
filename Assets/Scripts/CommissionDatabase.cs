@@ -19,27 +19,21 @@ public class CommissionDatabase : ScriptableObject
     {
         // Zähle aktuelle Aufträge pro Typ
         Dictionary<CommissionPresetType, int> currentCounts = new Dictionary<CommissionPresetType, int>();
-        Dictionary<ResourceType, int> currentResourceCounts = new Dictionary<ResourceType, int>();
-        currentResourceCounts.Add(ResourceType.H, 0);
-        currentResourceCounts.Add(ResourceType.O, 0);
         foreach (Commission c in currentCommission)
         {
+            if (c.resourceType == ResourceType.O)
+                continue;
             if (!currentCounts.ContainsKey(c.presetType))
                 currentCounts[c.presetType] = 0;
 
             currentCounts[c.presetType]++;
-            currentResourceCounts[c.resourceType]++;
         }
-
-        float ratio = ((currentResourceCounts[ResourceType.H]+1) * 1f / (currentResourceCounts[ResourceType.O]+1) * 1f)-1f;
-        bool oxygenPossible = ratio > unlockOxygenRatio;
-        Debug.Log($"Oxygen possible {ratio}: => {oxygenPossible}");
         // Filtere Presets, die ihr Limit.y (Maximum) noch nicht erreicht haben
         List<CommissionPreset> available = 
             presets.Where(p => 
             
             {
-                if (!oxygenPossible && p.resource == ResourceType.O)
+                if (p.resource == ResourceType.O)
                     return false;
                 CommissionPresetLimits l = limits.FirstOrDefault(l => l.type == p.type);
             if (l == null) return true; // Kein Limit definiert → immer erlaubt
@@ -56,20 +50,6 @@ public class CommissionDatabase : ScriptableObject
             return new CommissionDummy(fallback);
         }
         List<CommissionPreset> pool = available;
-        // Priorisiere Typen, die ihr Minimum (limit.x > 0) noch nicht erreicht haben
-     /*   List<CommissionPreset> prioritized = available.Where(p => {
-            CommissionPresetLimits l = limits.FirstOrDefault(l => l.type == p.type);
-            if (l == null || l.limits.x <= 0) return false;
-            int count = currentCounts.ContainsKey(p.type) ? currentCounts[p.type] : 0;
-            return count < l.limits.x;
-        }).ToList();
-      
-      
-        if (prioritized.Count > 0)
-        {
-            InGameLog.Log("New Commission: Prioritized");
-            pool = prioritized;
-        }*/
         List<CommissionPreset> progressRelativePool = new List<CommissionPreset>();
         float progress = ProgressRelativeWorld.instance.GeneralProgressValue();
         foreach(CommissionPreset presetX in pool)
@@ -87,6 +67,88 @@ public class CommissionDatabase : ScriptableObject
             InGameLog.Log("New Commission: Fallback after No Progress Relative   (" + progress + ")");
             CommissionPreset fallback = presets[Random.Range(0, presets.Length)];
             return new CommissionDummy(fallback);
+        }
+
+        InGameLog.Log("New Commission - ProgressRelative (" + progress + ")");
+        CommissionPreset preset = progressRelativePool[Random.Range(0, progressRelativePool.Count)];
+        return new CommissionDummy(preset);
+    }
+
+    public CommissionDummy GetRandomOxygenCommission(List<Commission> currentCommission)
+    {
+        // Zähle aktuelle Aufträge pro Typ
+        Dictionary<CommissionPresetType, int> currentCounts = new Dictionary<CommissionPresetType, int>();
+        int oxygenCommissionAmounts = 0;
+        foreach (Commission c in currentCommission)
+        {
+            if (c.resourceType != ResourceType.O)
+                continue;
+            if (!currentCounts.ContainsKey(c.presetType))
+            currentCounts[c.presetType] = 0;
+
+            currentCounts[c.presetType]++;
+           
+            oxygenCommissionAmounts++;
+        }
+        Debug.Log("O2 Comm: " + oxygenCommissionAmounts);
+        if (ProgressRelativeWorld.instance.chapter < 2)
+        {
+            return null;
+        }
+
+        if (ProgressRelativeWorld.instance.chapter == 2)
+        {
+            if (oxygenCommissionAmounts >= 1)
+            {
+                Debug.Log("No oxygenCommission - Blocked in ch2 - too many o commissions.");
+                return null;
+            }
+        }
+        if (ProgressRelativeWorld.instance.chapter >= 3)
+        {
+            if (oxygenCommissionAmounts >= 2)
+            {
+                Debug.Log("No oxygenCommission - Blocked in ch3 - too many o commissions.");
+                return null;
+            }
+        }
+            
+
+        // Filtere Presets, die ihr Limit.y (Maximum) noch nicht erreicht haben
+           List<CommissionPreset> available =
+               presets.Where(p =>
+
+               {
+                   if (p.resource != ResourceType.O)
+                       return false;
+                   CommissionPresetLimits l = limits.FirstOrDefault(l => l.type == p.type);
+                   if (l == null) return true; // Kein Limit definiert → immer erlaubt
+                   int count = currentCounts.ContainsKey(p.type) ? currentCounts[p.type] : 0;
+                   return count < l.limits.y;
+               }
+               ).ToList();
+           
+        // Wenn nichts verfügbar → komplett random als Fallback
+        if (available.Count == 0)
+        {
+            return null;
+        }
+        List<CommissionPreset> pool = available;
+        List<CommissionPreset> progressRelativePool = new List<CommissionPreset>();
+        float progress = ProgressRelativeWorld.instance.GeneralProgressValue();
+        foreach (CommissionPreset presetX in pool)
+        {
+            if (progress < 0.3f && presetX.type == CommissionPresetType.Standard_Small)
+                progressRelativePool.Add(presetX);
+            else if (progress < 0.7f && presetX.type == CommissionPresetType.Standard_Mid)
+                progressRelativePool.Add(presetX);
+            else if (progress > 0.7f && presetX.type == CommissionPresetType.Standard_Big)
+                progressRelativePool.Add(presetX);
+        }
+        // Wenn nichts verfügbar → komplett random als Fallback
+        if (progressRelativePool.Count == 0)
+        {
+            return null;
         }
 
         InGameLog.Log("New Commission - ProgressRelative (" + progress + ")");

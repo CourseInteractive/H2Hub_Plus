@@ -169,6 +169,7 @@ public class Container : MonoBehaviour
 
     public void RefillAmountForMoney(int amount)
     {
+
         Village.Instance.RefillContainer(this, amount);
     }
 
