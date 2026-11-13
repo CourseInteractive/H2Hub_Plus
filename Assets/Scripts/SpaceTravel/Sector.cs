@@ -8,6 +8,8 @@ using UnityEngine;
 public class Sector : MonoBehaviour
 {
     [Header("Sektor")]
+    [Tooltip("ID aus der SectorMapData")]
+    [SerializeField] private string id;
     [SerializeField] private string sectorName = "Unbekannter Sektor";
 
     [Tooltip("0 = keine Sonne, 1 = volle Sonne")]
@@ -26,6 +28,7 @@ public class Sector : MonoBehaviour
     private bool isAnalysed;
     private float analysisTimer;
 
+    public string Id => id;
     public string SectorName => sectorName;
     public float Sun => sun;
     public float WaterAmount => waterAmount;
@@ -43,6 +46,23 @@ public class Sector : MonoBehaviour
     private void Awake()
     {
         initialWaterAmount = waterAmount;
+    }
+
+    /// <summary>Übernimmt alle Werte aus der SectorMapData und setzt den Zustand zurück.</summary>
+    public void Initialize(SectorData data)
+    {
+        if (data == null) return;
+
+        id = data.id;
+        sectorName = data.displayName;
+        sun = Mathf.Clamp01(data.sun);
+        waterAmount = Mathf.Max(0f, data.waterAmount);
+        initialWaterAmount = waterAmount;
+        analysisDuration = data.analysisDuration;
+
+        isAnalysing = false;
+        isAnalysed = false;
+        analysisTimer = 0f;
     }
 
     private void Update()

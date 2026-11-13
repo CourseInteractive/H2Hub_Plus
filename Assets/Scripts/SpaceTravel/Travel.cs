@@ -59,6 +59,11 @@ public class Travel : MonoBehaviour
         ClearNoFuel();
     }
 
+    public void UseTestSpeed()
+    {
+        travelSpeed = 5f;
+    }
+
     /// <summary>Setzt die Entfernung zum Zielsektor. Während einer Reise nicht möglich.</summary>
     public void SetDistance(float newDistance)
     {
@@ -67,6 +72,7 @@ public class Travel : MonoBehaviour
             Debug.LogWarning("Travel: Entfernung kann während einer Reise nicht geändert werden.");
             return;
         }
+
         distance = Mathf.Max(0f, newDistance);
         ClearNoFuel();
     }

@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1243e0574ec75ba488e91962a7f32ceb, type: 3}
+  m_Name: SectorMap
+  m_EditorClassIdentifier: Assembly-CSharp::SectorMapData
+  startSectorId: Start
+  sectors:
+  - id: Start
+    displayName: 
+    level: 0
+    sun: 0.366
+    waterAmount: 30
+    analysisDuration: 3
+    connections:
+    - targetSectorId: Sector 2
+      distance: 50
+    - targetSectorId: Sector 3
+      distance: 50
+  - id: Sector 2
+    displayName: 
+    level: 1
+    sun: 0
+    waterAmount: 40
+    analysisDuration: 3
+    connections:
+    - targetSectorId: Sector 4
+      distance: 40
+  - id: Sector 3
+    displayName: 
+    level: 1
+    sun: 0.792
+    waterAmount: 0
+    analysisDuration: 3
+    connections:
+    - targetSectorId: Sector 4
+      distance: 40
+  - id: Sector 4
+    displayName: 
+    level: 2
+    sun: 0.567
+    waterAmount: 80
+    analysisDuration: 3
+    connections:
+    - targetSectorId: 
+      distance: 0
