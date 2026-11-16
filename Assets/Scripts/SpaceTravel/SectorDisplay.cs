@@ -28,6 +28,9 @@ public class SectorDisplay : MonoBehaviour
     [SerializeField] private string analysingStatus = "Analyse läuft...";
     [SerializeField] private string analysedStatus = "Analyse abgeschlossen";
 
+    [SerializeField] private string waterPrefix = "";
+    [SerializeField] private string sunPrefix = "";
+
     private static readonly CultureInfo Culture = CultureInfo.GetCultureInfo("de-DE");
 
     private enum DisplayMode { Empty, NotAnalysed, Analysing, Analysed }
@@ -89,14 +92,14 @@ public class SectorDisplay : MonoBehaviour
         if (sunPercent != lastSunPercent)
         {
             lastSunPercent = sunPercent;
-            SetText(sunText, sunPercent + " %");
+            SetText(sunText, sunPrefix + " " + sunPercent + " %");
         }
 
         float water = Mathf.Round(sector.WaterAmount * 10f) / 10f;
         if (water != lastWater)
         {
             lastWater = water;
-            SetText(waterText, water.ToString("0.0", Culture) + " L");
+            SetText(waterText, waterPrefix + " " + water.ToString("0.0", Culture) + " L");
         }
     }
 

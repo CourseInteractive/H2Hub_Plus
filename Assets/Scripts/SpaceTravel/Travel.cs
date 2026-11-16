@@ -59,9 +59,10 @@ public class Travel : MonoBehaviour
         ClearNoFuel();
     }
 
+    public float testTravelSpeed = 8f;
     public void UseTestSpeed()
     {
-        travelSpeed = 5f;
+        travelSpeed = testTravelSpeed;
     }
 
     /// <summary>Setzt die Entfernung zum Zielsektor. Während einer Reise nicht möglich.</summary>
@@ -94,7 +95,7 @@ public class Travel : MonoBehaviour
     /// Startet die Reise. Verbraucht Wasserstoff und zieht Sonnensegel und Wassersammler ein.
     /// Gibt false zurück, wenn die Reise nicht gestartet werden konnte.
     /// </summary>
-    public bool StartTravelIfPossible()
+    public bool StartTravelIfPossible(bool force = false)
     {
         if (IsTraveling)
         {
@@ -113,7 +114,8 @@ public class Travel : MonoBehaviour
         }
 
         // Treibstoff prüfen und abziehen.
-        if (ship && !ship.TryConsumeFuel(distance))
+        // Umgehen für Testing
+        if (!force && ship && !ship.TryConsumeFuel(distance))
         {
             state = TravelState.NoFuel;
             onNoFuel?.Invoke();
@@ -162,9 +164,16 @@ public class Travel : MonoBehaviour
         if (ship)
             ship.SetSector(targetSector);
 
+
+        if(targetSector.IsEnd)
+        {
+            OnEndSectorReached?.Invoke();
+        }
         targetSector = null;
         distance = 0f;
 
         onTravelFinished?.Invoke();
     }
+
+    public UnityEvent OnEndSectorReached;
 }

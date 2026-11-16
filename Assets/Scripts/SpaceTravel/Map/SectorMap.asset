@@ -17,17 +17,19 @@ MonoBehaviour:
   - id: Start
     displayName: 
     level: 0
+    isEnd: 0
     sun: 0.366
     waterAmount: 30
     analysisDuration: 3
     connections:
     - targetSectorId: Sector 2
-      distance: 50
+      distance: 60
     - targetSectorId: Sector 3
-      distance: 50
+      distance: 30
   - id: Sector 2
     displayName: 
     level: 1
+    isEnd: 0
     sun: 0
     waterAmount: 40
     analysisDuration: 3
@@ -37,17 +39,29 @@ MonoBehaviour:
   - id: Sector 3
     displayName: 
     level: 1
+    isEnd: 0
     sun: 0.792
     waterAmount: 0
     analysisDuration: 3
     connections:
     - targetSectorId: Sector 4
-      distance: 40
+      distance: 60
   - id: Sector 4
     displayName: 
     level: 2
+    isEnd: 0
     sun: 0.567
     waterAmount: 80
+    analysisDuration: 3
+    connections:
+    - targetSectorId: Sector 5
+      distance: 30
+  - id: Sector 5
+    displayName: 
+    level: 3
+    isEnd: 1
+    sun: 0.832
+    waterAmount: 100
     analysisDuration: 3
     connections:
     - targetSectorId: 

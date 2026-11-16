@@ -55505,7 +55505,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Course.PrototypeScripting.ActionSwitchScene
   parallelSequenceIndex: 0
-  sceneName: Space Scene
+  sceneName: LowPoly_SpaceTravel_VR
 --- !u!4 &912383739
 Transform:
   m_ObjectHideFlags: 0
@@ -75288,6 +75288,7 @@ Transform:
   - {fileID: 1224945970}
   - {fileID: 334840825}
   - {fileID: 1130568370}
+  - {fileID: 1471733397}
   m_Father: {fileID: 538727873}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1230609529
@@ -89957,6 +89958,68 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5770629131164045246, guid: ed73ecbc3702fa640b22d291b9c71ba1, type: 3}
   m_PrefabInstance: {fileID: 1471639074}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1471733396
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1471733397}
+  - component: {fileID: 1471733398}
+  m_Layer: 0
+  m_Name: UnlockSpaceTravel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1471733397
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471733396}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1230609528}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1471733398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471733396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a297ccb27da49a468b43fec3866673a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QC_UnityEvent
+  type: 0
+  content: []
+  optionalIcon: {fileID: 0}
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1909597704}
+        m_TargetAssemblyTypeName: Course.PrototypeScripting.Sequence, Assembly-CSharp
+        m_MethodName: ExecuteCompleteSequence
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1472507829
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -120436,6 +120499,7 @@ MonoBehaviour:
   outputModules:
   - {fileID: 1783670354}
   currentProblem: {fileID: 0}
+  spaceShipMachine: 0
   currentState: 0
   problemOnMachine: 0
   timeToFullPower: 10

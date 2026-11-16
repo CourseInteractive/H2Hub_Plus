@@ -11,6 +11,8 @@ public class Sector : MonoBehaviour
     [Tooltip("ID aus der SectorMapData")]
     [SerializeField] private string id;
     [SerializeField] private string sectorName = "Unbekannter Sektor";
+    [Tooltip("Endsektor")]
+    [SerializeField] private bool isEnd;
 
     [Tooltip("0 = keine Sonne, 1 = volle Sonne")]
     [Range(0f, 1f)]
@@ -30,6 +32,7 @@ public class Sector : MonoBehaviour
 
     public string Id => id;
     public string SectorName => sectorName;
+    public bool IsEnd => isEnd;
     public float Sun => sun;
     public float WaterAmount => waterAmount;
     public float InitialWaterAmount => initialWaterAmount;
@@ -55,6 +58,7 @@ public class Sector : MonoBehaviour
 
         id = data.id;
         sectorName = data.displayName;
+        isEnd = data.isEnd;
         sun = Mathf.Clamp01(data.sun);
         waterAmount = Mathf.Max(0f, data.waterAmount);
         initialWaterAmount = waterAmount;

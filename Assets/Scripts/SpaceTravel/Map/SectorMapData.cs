@@ -179,6 +179,8 @@ public class SectorData
     public string displayName = "Neuer Sektor";
     [Tooltip("Ebene auf der Karte, für die spätere Anordnung")]
     public int level = 0;
+    [Tooltip("Markiert diesen Sektor als Ende")]
+    public bool isEnd;
 
     [Header("Eigenschaften")]
     [Tooltip("0 = keine Sonne, 1 = volle Sonne")]
