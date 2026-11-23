@@ -448,7 +448,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 884d84fb85ba70f4c968208739f741d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HeaderAndContent_Loca
-  token: Tutorial_Teleport
+  loca:
+    token: Tutorial_Teleport
+    draftText: 
+  token: 
   header: {fileID: 3180507674924387012}
   content: {fileID: 2812168057141447132}
 --- !u!1 &5015273419011686787

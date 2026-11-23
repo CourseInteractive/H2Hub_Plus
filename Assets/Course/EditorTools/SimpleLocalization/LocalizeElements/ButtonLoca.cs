@@ -9,7 +9,7 @@ public class ButtonLoca : LokaElement
     {
         base.LocalizeElement();
         FindText();
-        textElement.text = GetLocaEntry(token);
+        textElement.text = GetLocaEntry();
        
     }
     Text textElement;

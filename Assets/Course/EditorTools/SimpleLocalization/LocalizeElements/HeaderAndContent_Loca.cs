@@ -15,7 +15,7 @@ public class HeaderAndContent_Loca : LokaElement
             content.text = "";
 
 
-        string[] parts = GetLocaEntry(token).Split('~');
+        string[] parts = GetLocaEntry().Split('~');
         if (parts.Length == 1 && content)
             content.text = parts[0];
         else if(header)

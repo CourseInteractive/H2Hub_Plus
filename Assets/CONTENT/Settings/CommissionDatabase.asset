@@ -17,49 +17,63 @@ MonoBehaviour:
     amountLimits: {x: 15, y: 35}
     rewardLimits: {x: 650, y: 800}
     resource: 2
-    receiver: "Gew\xE4chshaus"
+    receiverToken:
+      token: Msg_Caller_GreenHouse
+      draftText: 
     icon: 5
     message: "Hi, Gew\xE4chshaus braucht Wasserstoff!"
   - type: 1
     amountLimits: {x: 40, y: 70}
     rewardLimits: {x: 800, y: 1200}
     resource: 2
-    receiver: Stahlwerk
+    receiverToken:
+      token: Msg_Caller_Steelmill
+      draftText: 
     icon: 2
     message: Wir brauchen dringend Wasserstoff, um Stahl zu produzieren.
   - type: 2
     amountLimits: {x: 90, y: 140}
     rewardLimits: {x: 1800, y: 2800}
     resource: 2
-    receiver: "Gew\xE4chshaus"
+    receiverToken:
+      token: Msg_Caller_GreenHouse
+      draftText: 
     icon: 5
     message: Hey, unser Wasserstoff wird knapp!
   - type: 0
     amountLimits: {x: 15, y: 35}
     rewardLimits: {x: 550, y: 700}
     resource: 3
-    receiver: Kolonie
+    receiverToken:
+      token: Msg_Caller_Colony
+      draftText: 
     icon: 3
     message: Die Kolonie braucht mehr Sauerstoff.
   - type: 1
     amountLimits: {x: 40, y: 70}
     rewardLimits: {x: 700, y: 1100}
     resource: 3
-    receiver: Kolonie
+    receiverToken:
+      token: Msg_Caller_Colony
+      draftText: 
     icon: 3
     message: Eine Maschine ist ausgefallen, liefere uns bitte Sauerstoff.
   - type: 1
     amountLimits: {x: 40, y: 70}
     rewardLimits: {x: 800, y: 1200}
     resource: 2
-    receiver: Forschung
+    receiverToken:
+      token: Msg_Caller_Research
+      draftText: 
     icon: 4
     message: Uns geht langsam der Wasserstoff aus. Erbitte Nachschub.
   - type: 2
     amountLimits: {x: 70, y: 100}
     rewardLimits: {x: 1400, y: 1800}
     resource: 3
-    receiver: Forschung
+    receiverToken:
+      token: Msg_Caller_Research
+      draftText: 
     icon: 4
     message: Wir brauchen Sauerstoff!
   limits:

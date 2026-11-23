@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00b4dbf7f46d7404aa588f39229f9cdd, type: 3}
   m_Name: LokaKit
   m_EditorClassIdentifier: Assembly-CSharp::LokaKit
-  nextLineID: 23
+  nextLineID: 36
   entries:
   - lineID: 0
     token: Tutorial_Interact01
@@ -20,8 +20,15 @@ MonoBehaviour:
     translationText:
     - "Interaktion~Du bet\xE4tigst Objekte mit dem Trigger.\n(Zeigefinger)\nRichte
       den Strahl auf den T\xFCrknopf.\nDr\xFCcke dann den Trigger."
-    - 
-    lastChangedInVersion: 0.3.7.303
+    - 'Interaction~You operate objects with the trigger.
+
+      (Index finger)
+
+      Point
+      the beam at the door knob.
+
+      Then press the trigger.'
+    lastChangedInVersion: 0.4.2.000
     tagMask: 0
   - lineID: 1
     token: Tutorial_Teleport
@@ -30,8 +37,9 @@ MonoBehaviour:
     - "Bewegung~Teleportiere dich durch den Raum.\nDr\xFCcke den Stick am Controller
       \nnach vorn.\nRichte den Strahl auf einen \nTeleport-Punkt aus.\n(Wird blau)
       \n\nLasse dann los."
-    - 
-    lastChangedInVersion: 0.3.7.303
+    - "Movement~Teleport through the room.\nPush the stick on the controller \nforward.\nPoint
+      the beam at a \nteleport point.\n(Turns blue) \n\nThen release."
+    lastChangedInVersion: 0.4.2.000
     tagMask: 0
   - lineID: 2
     token: Tutorial_Dialog
@@ -39,8 +47,13 @@ MonoBehaviour:
     translationText:
     - "Hey! Da bist du ja.\nKann es sein, dass du gestern einen Auftrag nicht abgeschlossen
       hast?\nGeh durch die n\xE4chste T\xFCr und schau aufs Display."
-    - 
-    lastChangedInVersion: 0.3.2.040
+    - 'Hey! There you are.
+
+      Could it be that you didn''t complete a commission
+      yesterday?
+
+      Go through the next door and look at the display.'
+    lastChangedInVersion: 0.4.2.000
     tagMask: 0
   - lineID: 3
     token: Tutorial_Commission
@@ -49,25 +62,30 @@ MonoBehaviour:
     - "Auftr\xE4ge~Auftr\xE4ge erscheinen im \nDisplay hier rechts.\n\nStarte es.
       \nDer Auftrag von gestern ist noch aktiv.\n\nSchlie\xDFe ihn ab, indem du ihn
       anklickst.\n(Trigger)"
-    - 
-    lastChangedInVersion: 0.3.7.303
+    - "Commissions~Commissions appear on the \ndisplay here on the right.\n\nStart
+      it. \nYesterday's commission is still active.\n\nComplete it by clicking on
+      it.\n(Trigger)"
+    lastChangedInVersion: 0.4.2.000
     tagMask: 0
   - lineID: 4
     token: Tutorial_Grab
     textType: 0
     translationText:
     - "Gegenst\xE4nde~Hebe den Container mit dem Grip auf.\n(Mittelfinger)"
-    - 
-    lastChangedInVersion: 0.3.7.303
+    - 'Items~Pick up the container with the grip.
+
+      (Middle finger)'
+    lastChangedInVersion: 0.4.2.000
     tagMask: 0
   - lineID: 5
     token: Tutorial_SellSocket
     textType: 0
     translationText:
     - "Verkaufen~Mit dem Stick kannst du Objekte\nauch nach vorn und hinten bewegen.\n\nStelle
-      den Container \nauf eines der \"Verkaufs-Ventile\"."
-    - 
-    lastChangedInVersion: 0.3.7.303
+      den Container \nauf eines der 'Verkaufs-Ventile'."
+    - "Selling~With the stick you can also move objects\nforward and backward.\n\nPlace
+      the container \non one of the 'sales valves'."
+    lastChangedInVersion: 0.4.2.000
     tagMask: 0
   - lineID: 6
     token: Tutorial_Commission02
@@ -76,8 +94,9 @@ MonoBehaviour:
     - "Auftr\xE4ge~Um einen Auftrag abschlie\xDFen\nzu k\xF6nnen,\nmuss ein Container
       mit \ngen\xFCgend Inhalt auf\neiner dieser Ventile stehen.\n\nSchlie\xDFe nun
       den Auftrag ab."
-    - 
-    lastChangedInVersion: 0.3.7.303
+    - "Commissions~To be able to complete\na commission,\na container with \nenough
+      content must be standing on\none of these valves.\n\nNow complete the commission."
+    lastChangedInVersion: 0.4.2.000
     tagMask: 0
   - lineID: 7
     token: Tutorial_StartMachine
@@ -85,8 +104,8 @@ MonoBehaviour:
     translationText:
     - "Hauptmaschine~Nun kannst du die Maschine starten. \n\nBewege den gro\xDFen
       Hebel nach oben.\n"
-    - 
-    lastChangedInVersion: 0.3.7.303
+    - "Main Machine~Now you can start the machine. \n\nMove the big lever up."
+    lastChangedInVersion: 0.4.2.000
     tagMask: 0
   - lineID: 8
     token: Tutorial_TakeFilter
@@ -94,8 +113,9 @@ MonoBehaviour:
     translationText:
     - "Reparieren~Das Elektrolyse-Modul ist defekt,\ndas ist der orangene Kasten
       \nunten am Ger\xE4t.\n\nEntferne es mit dem Grip\nund lege es weg."
-    - 
-    lastChangedInVersion: 0.3.7.303
+    - "Repairing~The electrolysis module is broken,\nthat's the orange box \nat the
+      bottom of the machine.\n\nRemove it with the grip\nand put it aside."
+    lastChangedInVersion: 0.4.2.000
     tagMask: 0
   - lineID: 9
     token: Tutorial_Shop
@@ -103,8 +123,9 @@ MonoBehaviour:
     translationText:
     - "Kaufen~An diesem Display kannst \ndu Objekte kaufen,\nwenn du gen\xFCgend
       Geld besitzt.\n\nKaufe ein neues Elektrolyse-Modul\nund setze ihn ein."
-    - 
-    lastChangedInVersion: 0.3.7.303
+    - "Buying~At this display you can \nbuy objects\nif you have enough money.\n\nBuy
+      a new electrolysis module\nand insert it."
+    lastChangedInVersion: 0.4.2.000
     tagMask: 0
   - lineID: 10
     token: Tutorial_CommissionFail
@@ -112,8 +133,9 @@ MonoBehaviour:
     translationText:
     - "Auftr\xE4ge~Das hat nicht geklappt, \nvielleicht ist nicht genug \nWasserstoff
       vorhanden.\n\nDrehe dich um, dort sind die entsprechenden Ventile und der Container."
-    - 
-    lastChangedInVersion: 0.3.7.303
+    - "Commissions~That didn't work, \nmaybe there isn't enough \nhydrogen available.\n\nTurn
+      around, the corresponding valves and the container are over there."
+    lastChangedInVersion: 0.4.2.000
     tagMask: 0
   - lineID: 11
     token: Tutorial_NeedNewFilter
@@ -121,8 +143,9 @@ MonoBehaviour:
     translationText:
     - "Kaufen~Dieses kannst du wegwerfen, \noder in den Recycler hinter dir legen.\n\nWir
       brauchen ein neues Elektrolyse-Modul.\n\nDrehe dich zum Shop-Display."
-    - 
-    lastChangedInVersion: 0.3.8.000
+    - "Buying~You can throw this one away \nor put it in the recycler behind you.\n\nWe
+      need a new electrolysis module.\n\nTurn to the shop display."
+    lastChangedInVersion: 0.4.2.000
     tagMask: 0
   - lineID: 12
     token: Tutorial_ContainerOnMachine
@@ -136,8 +159,13 @@ MonoBehaviour:
       Container auf das Wasserstoffventil stellen.
 
 '
-    - 
-    lastChangedInVersion: 0.3.7.303
+    - 'Output~To capture the produced hydrogen,
+
+      you need to place a
+
+      container
+      on the hydrogen valve.'
+    lastChangedInVersion: 0.4.2.000
     tagMask: 0
   - lineID: 13
     token: Tutorial_EnterFilter
@@ -146,8 +174,11 @@ MonoBehaviour:
     - 'Reparieren~Setze das neue Modul unten ein
 
       und starte die Maschine erneut.'
-    - 
-    lastChangedInVersion: 0.3.7.303
+    - 'Repairing~Insert the new module at the bottom
+
+      and start the machine
+      again.'
+    lastChangedInVersion: 0.4.2.000
     tagMask: 0
   - lineID: 14
     token: Tutorial_OpenWindow
@@ -155,8 +186,16 @@ MonoBehaviour:
     translationText:
     - "Sehr gut!~Okay, der Laden l\xE4uft.\nDann lassen wir den Tag hinein.\n\n\xD6ffne
       hinter dir die Fenster.\n(Knopf hinter Auftragsmonitor)"
-    - 
-    lastChangedInVersion: 0.3.7.303
+    - 'Very good!~Okay, business is running.
+
+      Then let''s let the day in.
+
+
+      Open
+      the windows behind you.
+
+      (Button behind the commission monitor)'
+    lastChangedInVersion: 0.4.2.000
     tagMask: 0
   - lineID: 15
     token: InMessage_Stahlwerk
@@ -165,16 +204,17 @@ MonoBehaviour:
     - "Hi!  Wir brauchen mal wieder deine Dienste. Eine neue Kuppel wird gebaut und
       f\xFCr den Stahl brauchen wir Wasserstoff. Sonst m\xFCssen wir wieder Kohle
       nehmen...."
-    - 
-    lastChangedInVersion: 0.3.2.040
+    - Hi! We need your services again. A new dome is being built and we need hydrogen
+      for the steel. Otherwise we'll have to use coal again....
+    lastChangedInVersion: 0.4.2.000
     tagMask: 0
   - lineID: 16
     token: InMessage_Stahlwerk_Caller
     textType: 0
     translationText:
     - '- Stahlwerk -'
-    - 
-    lastChangedInVersion: 0.3.2.040
+    - '- Steelworks -'
+    lastChangedInVersion: 0.4.2.000
     tagMask: 0
   - lineID: 17
     token: Tut_DialogEnd
@@ -182,8 +222,11 @@ MonoBehaviour:
     translationText:
     - "Danke! Immer dran denken: Wenn du Auftr\xE4ge nicht abschlie\xDFt, gibt es
       kein Geld.\nDann starte mal deine Maschine."
-    - 
-    lastChangedInVersion: 0.3.2.040
+    - 'Thanks! Always remember: if you don''t complete commissions, you don''t get
+      paid.
+
+      Now go start your machine.'
+    lastChangedInVersion: 0.4.2.000
     tagMask: 0
   - lineID: 18
     token: Tut_CommissionStartUp
@@ -191,34 +234,37 @@ MonoBehaviour:
     translationText:
     - "Ha! Dacht ichs doch!\nDann schlie\xDF den Auftrag mal ab. Hop hop. Wir brauchen
       das Zeug."
-    - 
-    lastChangedInVersion: 0.3.2.040
+    - 'Ha! I knew it!
+
+      Then go ahead and complete the commission. Chop chop.
+      We need the stuff.'
+    lastChangedInVersion: 0.4.2.000
     tagMask: 0
   - lineID: 19
     token: RepairModule-ShopEntry
     textType: 0
     translationText:
-    - 'Elektrolyse-Zellen:500|Haltbarkeit: Mittel'
-    - 
-    lastChangedInVersion: 0.3.2.040
+    - 'Elektrolyse-Zellen:500~Haltbarkeit: Mittel'
+    - 'Electrolysis Cells:500~Durability: Medium'
+    lastChangedInVersion: 0.4.2.000
     tagMask: 0
   - lineID: 20
     token: RefineModule-ShopEntry
     textType: 0
     translationText:
-    - "Filter f\xFCr Aufbereiter|Verlust: Mittel"
-    - 
-    lastChangedInVersion: 0.3.6.300
+    - "Filter f\xFCr Aufbereiter~Verlust: Mittel"
+    - 'Filter for Refiner~Loss: Medium'
+    lastChangedInVersion: 0.4.2.000
     tagMask: 0
   - lineID: 21
     token: Tutorial_ErrorAnalyse
     textType: 0
     translationText:
     - "Fehleranalyse~Mist, die Maschine hat ein Problem.\nDas m\xFCssen wir l\xF6sen.\n\nUm
-      den Fehler zu identifizieren\n dr\xFCcke den gr\xFCnen\n\"Fehler-Analyse\"
-      Knopf."
-    - 
-    lastChangedInVersion: 0.3.7.303
+      den Fehler zu identifizieren\n dr\xFCcke den gr\xFCnen\n'Fehler-Analyse' Knopf."
+    - "Error Analysis~Damn, the machine has a problem.\nWe need to fix that.\n\nTo
+      identify the error,\n press the green\n'Error Analysis' button."
+    lastChangedInVersion: 0.4.2.000
     tagMask: 0
   - lineID: 22
     token: Tutorial_Message
@@ -227,12 +273,135 @@ MonoBehaviour:
     - "Nachrichten~Du hast eine neue Nachricht erhalten.\nNachrichten siehst du als
       \nSymbole an deinem linken Arm.\n\nRichte den rechten Strahl \nauf das Symbol
       und \nnutze den Trigger zum \xD6ffnen."
-    - 
-    lastChangedInVersion: 0.3.8.010
+    - "Messages~You have received a new message.\nMessages appear as \nicons on your
+      left arm.\n\nPoint the right beam \nat the icon and \nuse the trigger to open
+      it."
+    lastChangedInVersion: 0.4.2.000
+    tagMask: 0
+  - lineID: 23
+    token: Tutorial_SpaceTravel01
+    textType: 0
+    translationText:
+    - "\xDCberleben~Du verbrauchst permanent Sauerstoff, der automatisch durch die
+      Elektrolyse wieder hergestellt wird.\xA7\xA7\xA7\xA7Die Temperatur darf sich
+      nur in einem bestimmten Rahmen bewegen. Die Wasserstoffmaschine heizt stark
+      auf. Das verweilen in einem recht starken Sonnen-Sektor heizt ein wenig auf.\xA7\xA7\xA7\xA7Liegt
+      nichts von beiden an, k\xFChlt der Raum langsam aus."
+    - "Survival~You constantly consume oxygen, which is automatically replenished
+      by the electrolysis.\xA7\xA7\xA7\xA7The temperature must stay within a certain
+      range. The hydrogen machine heats up a lot. Staying in a fairly strong solar
+      sector heats things up a little.\xA7\xA7\xA7\xA7If neither is active, the room
+      slowly cools down."
+    lastChangedInVersion: 0.4.2.000
+    tagMask: 0
+  - lineID: 24
+    token: IntObj_AnalyzeSector
+    textType: 0
+    translationText:
+    - Sektor analysieren
+    - Analyze sector
+    lastChangedInVersion: 0.4.1.311
+    tagMask: 0
+  - lineID: 25
+    token: Msg_Caller_System
+    textType: 0
+    translationText:
+    - System
+    - System
+    lastChangedInVersion: 0.4.2.023
+    tagMask: 0
+  - lineID: 26
+    token: Msg_Main_Chapter2
+    textType: 0
+    translationText:
+    - Du machst gute Fortschritte! Kapitel 2 der Geschichte startet. Mach weiter
+      so!
+    - You're making good progress! Chapter 2 of the story begins. Keep it up!
+    lastChangedInVersion: 0.4.2.023
+    tagMask: 0
+  - lineID: 27
+    token: Msg_Main_Chapter3
+    textType: 0
+    translationText:
+    - "Du machst tolle Fortschritte! Kapitel 3 der Geschichte startet, f\xFClle nun
+      Wasserstoff in den Beh\xE4lter f\xFCr die Weltraumreise!"
+    - You're making great progress! Chapter 3 of the story begins. Now fill hydrogen
+      into the tank for the space journey!
+    lastChangedInVersion: 0.4.2.023
+    tagMask: 0
+  - lineID: 28
+    token: Msg_Caller_GreenHouse
+    textType: 0
+    translationText:
+    - "Gew\xE4chshaus"
+    - Greenhouse
+    lastChangedInVersion: 0.4.2.020
+    tagMask: 0
+  - lineID: 29
+    token: Msg_Caller_Steelmill
+    textType: 0
+    translationText:
+    - Stahlwerk
+    - Steel mill
+    lastChangedInVersion: 0.4.2.020
+    tagMask: 0
+  - lineID: 30
+    token: Msg_Caller_Colony
+    textType: 0
+    translationText:
+    - Kolonie
+    - Colony
+    lastChangedInVersion: 0.4.2.020
+    tagMask: 0
+  - lineID: 31
+    token: Msg_Caller_Research
+    textType: 0
+    translationText:
+    - Forschung
+    - Research
+    lastChangedInVersion: 0.4.2.020
+    tagMask: 0
+  - lineID: 32
+    token: Msg_Main_SolarBuild
+    textType: 0
+    translationText:
+    - "Eine Solaranlage, Klasse! Damit kannst du am Tag unabh\xE4ngig von fossilen
+      Brennstoffen arbeiten. Vergiss nicht rechtzeitig den neuen Hebel links an der
+      Maschine umzulegen um zwischen den Energieformen zu wechseln."
+    - A solar plant, great! With it you can work independently of fossil fuels during
+      the day. Don't forget to flip the new lever on the left side of the machine
+      in time to switch between energy sources.
+    lastChangedInVersion: 0.4.2.023
+    tagMask: 0
+  - lineID: 33
+    token: Msg_Caller_TutorialGuy
+    textType: 0
+    translationText:
+    - John
+    - John
+    lastChangedInVersion: 0.4.2.023
+    tagMask: 0
+  - lineID: 34
+    token: Msg_Main_SolarPossible
+    textType: 0
+    translationText:
+    - "Die Sonne geht auf. Du k\xF6nntest ein Solarmodul kaufen!"
+    - The sun is rising. You could buy a solar module!
+    lastChangedInVersion: 0.4.2.023
+    tagMask: 0
+  - lineID: 35
+    token: Msg_Main_WarmthBuild
+    textType: 0
+    translationText:
+    - "Super! Mit dem Abw\xE4rmemodul verkaufst du automatisch die anfallende Abw\xE4rme
+      der Maschine. Wenn sie l\xE4uft, nat\xFCrlich."
+    - Great! With the waste heat module you automatically sell the waste heat generated
+      by the machine. When it's running, of course.
+    lastChangedInVersion: 0.4.2.023
     tagMask: 0
   tagList:
   - TEST
   types:
   - UI
-  languageCount: 1
+  languageCount: 2
   exportOptions: []

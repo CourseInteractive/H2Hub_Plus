@@ -3930,7 +3930,7 @@ PrefabInstance:
       value: -Dummy Dialog-
       objectReference: {fileID: 0}
     - target: {fileID: 4325271791967957271, guid: f3bf6f3a451e2dd42a856d3e0273aeca, type: 3}
-      propertyPath: token
+      propertyPath: loca.token
       value: Tutorial_Message
       objectReference: {fileID: 0}
     - target: {fileID: 4571849449299561081, guid: f3bf6f3a451e2dd42a856d3e0273aeca, type: 3}
@@ -10217,6 +10217,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
   title: Weiter
+  titleLoca:
+    token: 
+    draftText: 
   sequenceOnInteraction: {fileID: 693779888}
   selected: 0
   selectionHighlightUI_Index: 0
@@ -11428,7 +11431,13 @@ MonoBehaviour:
   parallelSequenceIndex: 0
   onlyClose: 1
   callerStringToken: 
+  callerLabel:
+    token: 
+    draftText: 
   messageStringToken: 
+  messageLabel:
+    token: 
+    draftText: 
   iconIndex: 0
   buttonTextIndex: 0
   immediately: 0
@@ -16254,6 +16263,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
   title: Weltraumreise
+  titleLoca:
+    token: 
+    draftText: 
   sequenceOnInteraction: {fileID: 1871311055}
   selected: 0
   selectionHighlightUI_Index: 0
@@ -27329,6 +27341,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
   title: Fehler analysieren
+  titleLoca:
+    token: 
+    draftText: 
   sequenceOnInteraction: {fileID: 105974326}
   selected: 0
   selectionHighlightUI_Index: 0
@@ -29223,7 +29238,7 @@ PrefabInstance:
       value: "Auftr\xE4ge"
       objectReference: {fileID: 0}
     - target: {fileID: 4325271791967957271, guid: f3bf6f3a451e2dd42a856d3e0273aeca, type: 3}
-      propertyPath: token
+      propertyPath: loca.token
       value: Tutorial_CommissionFail
       objectReference: {fileID: 0}
     - target: {fileID: 4571849449299561081, guid: f3bf6f3a451e2dd42a856d3e0273aeca, type: 3}
@@ -32598,7 +32613,7 @@ PrefabInstance:
       value: "Ausl\xF6sen"
       objectReference: {fileID: 0}
     - target: {fileID: 4325271791967957271, guid: f3bf6f3a451e2dd42a856d3e0273aeca, type: 3}
-      propertyPath: token
+      propertyPath: loca.token
       value: Tutorial_Interact01
       objectReference: {fileID: 0}
     - target: {fileID: 4571849449299561081, guid: f3bf6f3a451e2dd42a856d3e0273aeca, type: 3}
@@ -37000,7 +37015,7 @@ PrefabInstance:
       value: Ventile
       objectReference: {fileID: 0}
     - target: {fileID: 4325271791967957271, guid: f3bf6f3a451e2dd42a856d3e0273aeca, type: 3}
-      propertyPath: token
+      propertyPath: loca.token
       value: Tutorial_ContainerOnMachine
       objectReference: {fileID: 0}
     - target: {fileID: 4571849449299561081, guid: f3bf6f3a451e2dd42a856d3e0273aeca, type: 3}
@@ -43729,6 +43744,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
   title: Weiter
+  titleLoca:
+    token: 
+    draftText: 
   sequenceOnInteraction: {fileID: 1109793106}
   selected: 0
   selectionHighlightUI_Index: 0
@@ -47134,6 +47152,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
   title: Wasserstoff-Tank
+  titleLoca:
+    token: 
+    draftText: 
   sequenceOnInteraction: {fileID: 0}
   selected: 0
   selectionHighlightUI_Index: 0
@@ -47266,9 +47287,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Action_ShowMessage
   parallelSequenceIndex: 0
   onlyClose: 0
-  callerStringToken: John
-  messageStringToken: "Super! Mit dem Abw\xE4rmemodul verkaufst du automatisch die
-    anfallende Abw\xE4rme der Maschine. Wenn sie l\xE4uft, nat\xFCrlich."
+  callerStringToken: 
+  callerLabel:
+    token: Msg_Caller_TutorialGuy
+    draftText: 
+  messageStringToken: 
+  messageLabel:
+    token: Msg_Main_WarmthBuild
+    draftText: 
   iconIndex: 0
   buttonTextIndex: 0
   immediately: 0
@@ -48026,7 +48052,7 @@ PrefabInstance:
       value: Ventile
       objectReference: {fileID: 0}
     - target: {fileID: 4325271791967957271, guid: f3bf6f3a451e2dd42a856d3e0273aeca, type: 3}
-      propertyPath: token
+      propertyPath: loca.token
       value: Tutorial_SellSocket
       objectReference: {fileID: 0}
     - target: {fileID: 4571849449299561081, guid: f3bf6f3a451e2dd42a856d3e0273aeca, type: 3}
@@ -61274,6 +61300,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
   title: Wasserstoff-Tank
+  titleLoca:
+    token: 
+    draftText: 
   sequenceOnInteraction: {fileID: 0}
   selected: 0
   selectionHighlightUI_Index: 0
@@ -64851,6 +64880,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
   title: Reparieren
+  titleLoca:
+    token: 
+    draftText: 
   sequenceOnInteraction: {fileID: 1689913455}
   selected: 0
   selectionHighlightUI_Index: 0
@@ -69490,6 +69522,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
   title: Sauerstoff-Tank
+  titleLoca:
+    token: 
+    draftText: 
   sequenceOnInteraction: {fileID: 0}
   selected: 0
   selectionHighlightUI_Index: 0
@@ -70793,10 +70828,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Action_ShowMessage
   parallelSequenceIndex: 0
   onlyClose: 0
-  callerStringToken: John
-  messageStringToken: "Eine Solaranlage, Klasse! Damit kannst du am Tag unabh\xE4ngig
-    von fossilen Brennstoffen arbeiten. Vergiss nicht rechtzeitig den neuen Hebel
-    links an der Maschine umzulegen um zwischen den Energieformen zu wechseln."
+  callerStringToken: 
+  callerLabel:
+    token: Msg_Caller_TutorialGuy
+    draftText: 
+  messageStringToken: 
+  messageLabel:
+    token: 
+    draftText: Msg_Main_SolarBuild
   iconIndex: 0
   buttonTextIndex: 0
   immediately: 0
@@ -74173,7 +74212,7 @@ PrefabInstance:
       value: Greifen
       objectReference: {fileID: 0}
     - target: {fileID: 4325271791967957271, guid: f3bf6f3a451e2dd42a856d3e0273aeca, type: 3}
-      propertyPath: token
+      propertyPath: loca.token
       value: Tutorial_Grab
       objectReference: {fileID: 0}
     - target: {fileID: 4571849449299561081, guid: f3bf6f3a451e2dd42a856d3e0273aeca, type: 3}
@@ -81898,6 +81937,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
   title: Weiter
+  titleLoca:
+    token: 
+    draftText: 
   sequenceOnInteraction: {fileID: 524891068}
   selected: 0
   selectionHighlightUI_Index: 0
@@ -85894,7 +85936,13 @@ MonoBehaviour:
   parallelSequenceIndex: 0
   onlyClose: 0
   callerStringToken: John
-  messageStringToken: Tut_CommissionStartUp
+  callerLabel:
+    token: Msg_Caller_TutorialGuy
+    draftText: 
+  messageStringToken: 
+  messageLabel:
+    token: Tut_CommissionStartUp
+    draftText: 
   iconIndex: 0
   buttonTextIndex: 0
   immediately: 1
@@ -88358,6 +88406,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
   title: "T\xFCr \xF6ffnen"
+  titleLoca:
+    token: 
+    draftText: 
   sequenceOnInteraction: {fileID: 1229414632}
   selected: 0
   selectionHighlightUI_Index: 0
@@ -90281,7 +90332,7 @@ PrefabInstance:
       value: Modul austauschen
       objectReference: {fileID: 0}
     - target: {fileID: 4325271791967957271, guid: f3bf6f3a451e2dd42a856d3e0273aeca, type: 3}
-      propertyPath: token
+      propertyPath: loca.token
       value: Tutorial_TakeFilter
       objectReference: {fileID: 0}
     - target: {fileID: 4571849449299561081, guid: f3bf6f3a451e2dd42a856d3e0273aeca, type: 3}
@@ -91364,7 +91415,7 @@ PrefabInstance:
       value: Maschine starten
       objectReference: {fileID: 0}
     - target: {fileID: 4325271791967957271, guid: f3bf6f3a451e2dd42a856d3e0273aeca, type: 3}
-      propertyPath: token
+      propertyPath: loca.token
       value: Tutorial_StartMachine
       objectReference: {fileID: 0}
     - target: {fileID: 4571849449299561081, guid: f3bf6f3a451e2dd42a856d3e0273aeca, type: 3}
@@ -91495,9 +91546,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Action_ShowMessage
   parallelSequenceIndex: 0
   onlyClose: 0
-  callerStringToken: System
-  messageStringToken: Du machst gute Fortschritte! Kapitel 2 der Geschichte startet.
-    Mach weiter so!
+  callerStringToken: 
+  callerLabel:
+    token: Msg_Caller_System
+    draftText: 
+  messageStringToken: 
+  messageLabel:
+    token: Msg_Main_Chapter2
+    draftText: 
   iconIndex: 0
   buttonTextIndex: 0
   immediately: 0
@@ -96765,7 +96821,7 @@ PrefabInstance:
       value: Modul einsetzen
       objectReference: {fileID: 0}
     - target: {fileID: 4325271791967957271, guid: f3bf6f3a451e2dd42a856d3e0273aeca, type: 3}
-      propertyPath: token
+      propertyPath: loca.token
       value: Tutorial_EnterFilter
       objectReference: {fileID: 0}
     - target: {fileID: 4571849449299561081, guid: f3bf6f3a451e2dd42a856d3e0273aeca, type: 3}
@@ -97678,7 +97734,7 @@ PrefabInstance:
       value: "Ersatz ben\xF6tigt"
       objectReference: {fileID: 0}
     - target: {fileID: 4325271791967957271, guid: f3bf6f3a451e2dd42a856d3e0273aeca, type: 3}
-      propertyPath: token
+      propertyPath: loca.token
       value: Tutorial_NeedNewFilter
       objectReference: {fileID: 0}
     - target: {fileID: 4571849449299561081, guid: f3bf6f3a451e2dd42a856d3e0273aeca, type: 3}
@@ -102069,7 +102125,7 @@ PrefabInstance:
       value: Teile kaufen
       objectReference: {fileID: 0}
     - target: {fileID: 4325271791967957271, guid: f3bf6f3a451e2dd42a856d3e0273aeca, type: 3}
-      propertyPath: token
+      propertyPath: loca.token
       value: Tutorial_Shop
       objectReference: {fileID: 0}
     - target: {fileID: 4571849449299561081, guid: f3bf6f3a451e2dd42a856d3e0273aeca, type: 3}
@@ -102310,6 +102366,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
   title: "Einstellung \xE4ndern"
+  titleLoca:
+    token: 
+    draftText: 
   sequenceOnInteraction: {fileID: 694625592}
   selected: 0
   selectionHighlightUI_Index: 0
@@ -102739,6 +102798,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
   title: "T\xFCr \xF6ffnen"
+  titleLoca:
+    token: 
+    draftText: 
   sequenceOnInteraction: {fileID: 1529861698}
   selected: 0
   selectionHighlightUI_Index: 0
@@ -103143,6 +103205,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
   title: Sauerstoff-Tank
+  titleLoca:
+    token: 
+    draftText: 
   sequenceOnInteraction: {fileID: 0}
   selected: 0
   selectionHighlightUI_Index: 0
@@ -104830,7 +104895,13 @@ MonoBehaviour:
   parallelSequenceIndex: 0
   onlyClose: 0
   callerStringToken: InMessage_Stahlwerk_Caller
+  callerLabel:
+    token: 
+    draftText: 
   messageStringToken: InMessage_Stahlwerk
+  messageLabel:
+    token: 
+    draftText: 
   iconIndex: 0
   buttonTextIndex: 0
   immediately: 0
@@ -105400,6 +105471,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
   title: Wasserstoff-Tank
+  titleLoca:
+    token: 
+    draftText: 
   sequenceOnInteraction: {fileID: 0}
   selected: 0
   selectionHighlightUI_Index: 0
@@ -106603,6 +106677,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
   title: "Dialog f\xFChren"
+  titleLoca:
+    token: 
+    draftText: 
   sequenceOnInteraction: {fileID: 1888910622}
   selected: 0
   selectionHighlightUI_Index: 0
@@ -107896,7 +107973,13 @@ MonoBehaviour:
   parallelSequenceIndex: 0
   onlyClose: 0
   callerStringToken: John
-  messageStringToken: Tut_DialogEnd
+  callerLabel:
+    token: Msg_Caller_TutorialGuy
+    draftText: 
+  messageStringToken: 
+  messageLabel:
+    token: Tut_DialogEnd
+    draftText: 
   iconIndex: 0
   buttonTextIndex: 0
   immediately: 1
@@ -108221,7 +108304,13 @@ MonoBehaviour:
   parallelSequenceIndex: 0
   onlyClose: 0
   callerStringToken: System
-  messageStringToken: "Die Sonne geht auf. Du k\xF6nntest ein Solarmodul kaufen!"
+  callerLabel:
+    token: Msg_Caller_System
+    draftText: 
+  messageStringToken: 
+  messageLabel:
+    token: Msg_Main_SolarPossible
+    draftText: 
   iconIndex: 0
   buttonTextIndex: 0
   immediately: 0
@@ -109489,7 +109578,7 @@ PrefabInstance:
       value: Bereit
       objectReference: {fileID: 0}
     - target: {fileID: 4325271791967957271, guid: f3bf6f3a451e2dd42a856d3e0273aeca, type: 3}
-      propertyPath: token
+      propertyPath: loca.token
       value: Tutorial_Commission02
       objectReference: {fileID: 0}
     - target: {fileID: 4571849449299561081, guid: f3bf6f3a451e2dd42a856d3e0273aeca, type: 3}
@@ -111913,7 +112002,7 @@ PrefabInstance:
       value: "Fenster \xF6ffnen"
       objectReference: {fileID: 0}
     - target: {fileID: 4325271791967957271, guid: f3bf6f3a451e2dd42a856d3e0273aeca, type: 3}
-      propertyPath: token
+      propertyPath: loca.token
       value: Tutorial_OpenWindow
       objectReference: {fileID: 0}
     - target: {fileID: 4571849449299561081, guid: f3bf6f3a451e2dd42a856d3e0273aeca, type: 3}
@@ -117253,9 +117342,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Action_ShowMessage
   parallelSequenceIndex: 0
   onlyClose: 0
-  callerStringToken: System
-  messageStringToken: "Du machst tolle Fortschritte! Kapitel 3 der Geschichte startet,
-    f\xFClle nun Wasserstoff in den Beh\xE4lter f\xFCr die Weltraumreise!"
+  callerStringToken: 
+  callerLabel:
+    token: Msg_Caller_System
+    draftText: 
+  messageStringToken: 
+  messageLabel:
+    token: Msg_Main_Chapter3
+    draftText: 
   iconIndex: 0
   buttonTextIndex: 0
   immediately: 0
@@ -117423,7 +117517,7 @@ PrefabInstance:
       value: "Auftr\xE4ge"
       objectReference: {fileID: 0}
     - target: {fileID: 4325271791967957271, guid: f3bf6f3a451e2dd42a856d3e0273aeca, type: 3}
-      propertyPath: token
+      propertyPath: loca.token
       value: Tutorial_Commission
       objectReference: {fileID: 0}
     - target: {fileID: 4571849449299561081, guid: f3bf6f3a451e2dd42a856d3e0273aeca, type: 3}
@@ -123655,7 +123749,7 @@ PrefabInstance:
       value: Fehler-Analyse
       objectReference: {fileID: 0}
     - target: {fileID: 4325271791967957271, guid: f3bf6f3a451e2dd42a856d3e0273aeca, type: 3}
-      propertyPath: token
+      propertyPath: loca.token
       value: Tutorial_ErrorAnalyse
       objectReference: {fileID: 0}
     - target: {fileID: 4571849449299561081, guid: f3bf6f3a451e2dd42a856d3e0273aeca, type: 3}
@@ -123960,6 +124054,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
   title: 10 Liter H2 in Tank
+  titleLoca:
+    token: 
+    draftText: 
   sequenceOnInteraction: {fileID: 1438876562}
   selected: 0
   selectionHighlightUI_Index: 0
@@ -124527,8 +124624,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Action_ShowMessage
   parallelSequenceIndex: 0
   onlyClose: 0
-  callerStringToken: John
-  messageStringToken: Tutorial_Dialog
+  callerStringToken: 
+  callerLabel:
+    token: Msg_Caller_TutorialGuy
+    draftText: 
+  messageStringToken: 
+  messageLabel:
+    token: Tutorial_Dialog
+    draftText: 
   iconIndex: 0
   buttonTextIndex: 1
   immediately: 0
@@ -124827,6 +124930,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
   title: "Auff\xFCllen"
+  titleLoca:
+    token: 
+    draftText: 
   sequenceOnInteraction: {fileID: 1780484570}
   selected: 0
   selectionHighlightUI_Index: 0
@@ -129312,6 +129418,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
   title: Wasserstoff-Tank
+  titleLoca:
+    token: 
+    draftText: 
   sequenceOnInteraction: {fileID: 0}
   selected: 0
   selectionHighlightUI_Index: 0

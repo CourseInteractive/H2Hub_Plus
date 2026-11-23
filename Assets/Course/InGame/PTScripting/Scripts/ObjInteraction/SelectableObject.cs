@@ -5,6 +5,7 @@ namespace Course.PrototypeScripting
     public class SelectableObject : MonoBehaviour
     {
         public string title;
+        public LocaString titleLoca;
         public Sequence sequenceOnInteraction;
         [HideInInspector]
         public bool selected = false;
@@ -14,10 +15,14 @@ namespace Course.PrototypeScripting
 
         public string GetTitle()
         {
-            if (title.Trim() == "")
-                return gameObject.name;
-            else
-                return title;
+            if (titleLoca == null || titleLoca.IsEmpty)
+            {
+                if (title.Trim() == "")
+                    return gameObject.name;
+                else
+                    return title;
+            }
+            return SimpleLocalization.GetLocalization(titleLoca.Token);    
         }
 
         public void InteractWith()

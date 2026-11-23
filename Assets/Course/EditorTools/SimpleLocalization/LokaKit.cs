@@ -22,7 +22,7 @@ public class LokaKit : ScriptableObject
 
     public LokaKitEntry GetLine(int lineID)
     {
-        if (lineID > entries.Count)
+        if (lineID >= 0 && lineID < entries.Count)
         {
             LokaKitEntry entry = entries[lineID];
             if (entry != null && entry.lineID == lineID)
@@ -53,9 +53,9 @@ public class LokaKit : ScriptableObject
         foreach (LokaKitEntry entry in entries)
         {
             if (entry.token.ToLower() == token.ToLower())
-                return entry.translationText[language].Replace("§§", "\n");
+                return entry.translationText[language].Replace("Â§Â§", "\n");
         }
-        token = token.Replace("§§", "\n");
+        token = token.Replace("Â§Â§", "\n");
         return token;
         // Todo: Build Setup: Highlight plain Texts (also Texte die noch nicht lokalisiert wurden besonders kennzeichnen)
         return "-" + token + "-";

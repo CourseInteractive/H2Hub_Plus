@@ -5,7 +5,9 @@ public class Action_ShowMessage : Action
     public bool onlyClose;
 
     public string callerStringToken;
+    public LocaString callerLabel;
     public string messageStringToken;
+    public LocaString messageLabel;
     public int iconIndex;
     public int buttonTextIndex;
     public bool immediately;
@@ -27,8 +29,18 @@ public class Action_ShowMessage : Action
             IncomingMessageUI.instance.FreeFromPosition();
         //Direct Message??
         //IncomingMessageUI.instance.ShowMessage(callerStringToken, messageStringToken, iconIndex, buttonTextIndex);
-        MessageInbox.instance.AddMessage(MessageInfo.Important(callerStringToken, messageStringToken, iconIndex, buttonTextIndex, immediately));
-        
+        if(messageLabel.IsEmpty)
+        {
+            MessageInbox.instance.AddMessage(MessageInfo.Important(callerStringToken, messageStringToken, iconIndex, buttonTextIndex, immediately));
+
+        }
+        else
+        {
+            MessageInbox.instance.AddMessage(MessageInfo.Important(callerLabel.Token, messageLabel.Token, iconIndex, buttonTextIndex, immediately));
+
+        }
+
+
         ReportActionEnd();
     }
 

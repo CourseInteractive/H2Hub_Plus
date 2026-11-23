@@ -10,6 +10,9 @@ public static class SimpleLocalization
     public static List<LokaElement> knownElements;
     public static int activeLanguage = 0;
 
+    /// <summary>Wird nach jedem Sprachwechsel ausgelöst – für Scripts, die kein LokaElement sind.</summary>
+    public static event System.Action OnLanguageChanged;
+
     public static string GetLocalization(string token)
     {
         if (inGame == null)
@@ -21,11 +24,15 @@ public static class SimpleLocalization
     public static void LanguageChanged(int newLanguage)
     {
         activeLanguage = newLanguage;
-        foreach(LokaElement element in knownElements)
+        if (knownElements != null)
         {
-            if (element != null)
-                element.LocalizeElement();
+            foreach(LokaElement element in knownElements)
+            {
+                if (element != null)
+                    element.LocalizeElement();
+            }
         }
+        OnLanguageChanged?.Invoke();
     }
 
 

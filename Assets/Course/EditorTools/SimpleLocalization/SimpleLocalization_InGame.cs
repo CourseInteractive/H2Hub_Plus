@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Muss vor allen Komponenten laufen, die Texte abfragen oder sich in knownElements eintragen
+[DefaultExecutionOrder(-1000)]
 public class SimpleLocalization_InGame : MonoBehaviour
 {
     //public TextAsset text;

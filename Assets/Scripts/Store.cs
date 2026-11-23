@@ -103,7 +103,7 @@ public class Store : MonoBehaviour
         detail02_Text.text = "";
         if (details.Trim() != "")
         {
-            string[] detailContent = (SimpleLocalization.GetLocalization(details)).Split('|');
+            string[] detailContent = (SimpleLocalization.GetLocalization(details)).Split('~');
             detail01_Text.text = detailContent[0];
             if (detailContent.Length > 1)
             {

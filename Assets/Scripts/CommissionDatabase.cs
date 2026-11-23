@@ -170,7 +170,7 @@ public class CommissionPreset
     public Vector2 amountLimits;
     public Vector2 rewardLimits;
     public ResourceType resource;
-    public string receiver;
+    public LocaString receiverToken;
     public int icon;
     public string message;
 
@@ -196,7 +196,7 @@ public class CommissionDummy
         amount = preset.GetAmount();
         reward = preset.GetReward(amount);
         resourceType = preset.resource;
-        receiver = preset.receiver;
+        receiver = preset.receiverToken;
         icon = preset.icon;
         message = preset.message;
     }

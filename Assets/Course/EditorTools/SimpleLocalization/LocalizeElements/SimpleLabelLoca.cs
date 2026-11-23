@@ -12,9 +12,9 @@ public class SimpleLabelLoca : LokaElement
     {
         TMP_Text text = GetComponent<TMP_Text>();
         if(text)
-            text.text = GetLocaEntry(token);
+            text.text = GetLocaEntry();
         else
-            GetComponent<Text>().text = GetLocaEntry(token);
+            GetComponent<Text>().text = GetLocaEntry();
     }
 
     

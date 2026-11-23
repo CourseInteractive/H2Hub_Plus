@@ -8863,6 +8863,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
   title: Sektor analysieren
+  titleLoca:
+    token: IntObj_AnalyzeSector
+    draftText: 
   sequenceOnInteraction: {fileID: 648558410}
   selected: 0
   selectionHighlightUI_Index: 0
@@ -9686,6 +9689,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
   title: Fehler analysieren
+  titleLoca:
+    token: 
+    draftText: 
   sequenceOnInteraction: {fileID: 105974326}
   selected: 0
   selectionHighlightUI_Index: 0
@@ -12977,7 +12983,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4325271791967957271, guid: f3bf6f3a451e2dd42a856d3e0273aeca, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4325271791967957271, guid: f3bf6f3a451e2dd42a856d3e0273aeca, type: 3}
+      propertyPath: loca.token
+      value: Tutorial_SpaceTravel01
       objectReference: {fileID: 0}
     - target: {fileID: 4571849449299561081, guid: f3bf6f3a451e2dd42a856d3e0273aeca, type: 3}
       propertyPath: m_Name
@@ -16823,6 +16833,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
   title: Wasserstoff-Tank
+  titleLoca:
+    token: 
+    draftText: 
   sequenceOnInteraction: {fileID: 0}
   selected: 0
   selectionHighlightUI_Index: 0
@@ -17782,6 +17795,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
   title: Karte
+  titleLoca:
+    token: 
+    draftText: 
   sequenceOnInteraction: {fileID: 1723102719}
   selected: 0
   selectionHighlightUI_Index: 0
@@ -19702,6 +19718,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
   title: Sonnensegel
+  titleLoca:
+    token: 
+    draftText: 
   sequenceOnInteraction: {fileID: 650601452}
   selected: 0
   selectionHighlightUI_Index: 0
@@ -24187,6 +24206,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
   title: Reparieren
+  titleLoca:
+    token: 
+    draftText: 
   sequenceOnInteraction: {fileID: 1689913455}
   selected: 0
   selectionHighlightUI_Index: 0
@@ -25551,6 +25573,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
   title: Wassersammler
+  titleLoca:
+    token: 
+    draftText: 
   sequenceOnInteraction: {fileID: 522633816}
   selected: 0
   selectionHighlightUI_Index: 0
@@ -26302,6 +26327,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
   title: Sauerstoff-Tank
+  titleLoca:
+    token: 
+    draftText: 
   sequenceOnInteraction: {fileID: 0}
   selected: 0
   selectionHighlightUI_Index: 0
@@ -37213,6 +37241,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
   title: Sauerstoff-Tank
+  titleLoca:
+    token: 
+    draftText: 
   sequenceOnInteraction: {fileID: 0}
   selected: 0
   selectionHighlightUI_Index: 0
@@ -38348,6 +38379,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
   title: Wasserstoff-Tank
+  titleLoca:
+    token: 
+    draftText: 
   sequenceOnInteraction: {fileID: 0}
   selected: 0
   selectionHighlightUI_Index: 0
@@ -47162,6 +47196,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
   title: Wasserstoff-Tank
+  titleLoca:
+    token: 
+    draftText: 
   sequenceOnInteraction: {fileID: 0}
   selected: 0
   selectionHighlightUI_Index: 0

@@ -6,6 +6,7 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 public class InteractableObject : SelectableObject
 {
     public string label;
+
     public bool deactivateInteraction;
 
     public Sequence seqOnInteraction;
